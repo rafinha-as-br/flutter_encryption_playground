@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../caesar/presentation/pages/ceasar_tab.dart';
-import '../../../diffie_hellman/presentation/pages/diffie_hellman_page.dart';
+import '../../../diffie_hellman/presentation/pages/diffie_hellman_tab.dart';
 import '../../../hash/presentation/pages/hash_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         physics: const NeverScrollableScrollPhysics(), // Disable swipe to avoid navigator conflicts
         children: [
           _buildTab(0, const CaesarTab()),
-          _buildTab(1, const DiffieHellmanPage()),
+          _buildTab(1, const DiffieHellmanTab()),
           _buildTab(2, const HashPage()),
         ],
       ),
