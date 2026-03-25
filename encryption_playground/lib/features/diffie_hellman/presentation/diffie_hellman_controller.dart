@@ -3,23 +3,69 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 
-class DiffieHellmanController extends ChangeNotifier{
+class DiffieHellmanController extends ChangeNotifier {
+  int? _p;
+  int? _g;
 
-  int? p;
-  int? g;
+  int? userAPrivateKey;
+  int? userBPrivateKey;
+  int? userAPublicKey;
+  int? userBPublicKey;
+  int? sharedSecretA;
+  int? sharedSecretB;
+
+  int? get p => _p;
+  set p(int? value) {
+    _p = value;
+    calculate();
+  }
+
+  int? get g => _g;
+  set g(int? value) {
+    _g = value;
+    calculate();
+  }
+
   final Random _random = Random.secure();
 
+  void calculate() {
+    if (_p == null || _g == null || _p! <= 2) {
+      _resetKeys();
+      notifyListeners();
+      return;
+    }
 
-  int generatePrivateKey() {
-    return _random.nextInt(p! - 2) + 1;
+    userAPrivateKey = _generatePrivateKey();
+    userBPrivateKey = _generatePrivateKey();
+
+    userAPublicKey = _generatePublicKey(userAPrivateKey!);
+    userBPublicKey = _generatePublicKey(userBPrivateKey!);
+
+    sharedSecretA = _generateSharedSecret(userAPrivateKey!, userBPublicKey!);
+    sharedSecretB = _generateSharedSecret(userBPrivateKey!, userAPublicKey!);
+
+    notifyListeners();
   }
 
-  int generatePublicKey(int privateKey) {
-    return _modExp(g!, privateKey, p!);
+  void _resetKeys() {
+    userAPrivateKey = null;
+    userBPrivateKey = null;
+    userAPublicKey = null;
+    userBPublicKey = null;
+    sharedSecretA = null;
+    sharedSecretB = null;
   }
 
-  int generateSharedSecret(int privateKey, int receivedPublicKey) {
-    return _modExp(receivedPublicKey, privateKey, p!);
+  int _generatePrivateKey() {
+    return _random.nextInt(_p! - 2) + 1;
+  }
+
+  int _generatePublicKey(int privateKey) {
+    return _modExp(_g!, privateKey, _p!);
+  }
+
+  int _generateSharedSecret(int privateKey, int receivedPublicKey) {
+    return _modExp(receivedPublicKey, privateKey, _p!);
   }
 
   int _modExp(int base, int exp, int mod) {
@@ -36,7 +82,4 @@ class DiffieHellmanController extends ChangeNotifier{
 
     return result;
   }
-
-
-
-}
+}
