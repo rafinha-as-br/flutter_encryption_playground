@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../caesar/presentation/pages/ceasar_tab.dart';
 import '../../../diffie_hellman/presentation/pages/diffie_hellman_tab.dart';
-import '../../../hash/presentation/pages/hash_page.dart';
+import '../../../hash/presentation/pages/hash_tab.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         children: [
           _buildTab(0, const CaesarTab()),
           _buildTab(1, const DiffieHellmanTab()),
-          _buildTab(2, const HashPage()),
+          _buildTab(2, const HashTab()),
         ],
       ),
     );
