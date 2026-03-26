@@ -1,4 +1,5 @@
 import 'package:encryption_playground/features/hash/presentation/hash_controller.dart';
+import 'package:encryption_playground/features/hash/presentation/pages/hash_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -29,6 +30,17 @@ class _HashTryOutState extends State<HashTryOut> {
   Widget build(BuildContext context) {
     return Consumer<HashController>(builder: (context, controller, child){
       return Scaffold(
+        appBar: AppBar(
+          title: const Text('HashCode try out'),
+          actions: [
+            IconButton(
+                onPressed: (){
+                  HashNavigationService.instance.navigatorKey.currentState!.pushNamed('about');
+                },
+                icon: const Icon(Icons.info_outline)
+            )
+          ],
+        ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
