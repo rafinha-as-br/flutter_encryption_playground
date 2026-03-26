@@ -1,43 +1,42 @@
 import 'package:flutter/material.dart';
 
+import '../../../../l10n/app_localizations.dart';
+
 class DiffieHellmanAboutIt extends StatelessWidget {
   const DiffieHellmanAboutIt({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('About Diffie hellman algorithm'),
+        title: Text(l10n.aboutDiffieHellmanTitle),
       ),
       body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: [
           _buildSection(
             context,
-            title: '📌 O que é',
-            content:
-                'O Algoritmo de Diffie-Hellman é um método de troca segura de chaves criptográficas.\n\nEle permite que duas partes criem uma chave secreta compartilhada sem nunca transmiti-la diretamente.',
+            title: l10n.whatIsDiffieHellmanTitle,
+            content: l10n.whatIsDiffieHellmanContent,
           ),
           const Divider(),
           _buildSection(
             context,
-            title: '🏛️ Origem Histórica',
-            content:
-                'Proposto em 1976 por:\n• Whitfield Diffie\n• Martin Hellman\n\nFoi o primeiro método prático de criptografia de chave pública.',
+            title: l10n.originDiffieHellmanTitle,
+            content: l10n.originDiffieHellmanContent,
           ),
           const Divider(),
           _buildSection(
             context,
-            title: '💡 Ideia Central',
-            content:
-                'Resolver o problema:\n"Como duas pessoas podem compartilhar um segredo sem nunca terem se comunicado antes de forma segura?"',
+            title: l10n.ideaDiffieHellmanTitle,
+            content: l10n.ideaDiffieHellmanContent,
           ),
           const Divider(),
           _buildSection(
             context,
-            title: '⚙️ Como funciona (conceitualmente)',
-            content:
-                '1. Ambas as partes concordam publicamente em:\n   - Um número primo grande (p)\n   - Um gerador (g)\n2. Cada lado escolhe um segredo privado:\n   - A escolhe a\n   - B escolhe b\n3. Calculam valores públicos:',
+            title: l10n.howItWorksDiffieHellmanTitle,
+            content: l10n.howItWorksDiffieHellmanContent,
           ),
           _buildCodeBlock(
             context,
@@ -46,7 +45,7 @@ class DiffieHellmanAboutIt extends StatelessWidget {
           _buildSection(
             context,
             title: '',
-            content: '4. Trocam A e B\n5. Calculam a chave compartilhada:',
+            content: l10n.step45DiffieHellmanContent,
           ),
           _buildCodeBlock(
             context,
@@ -55,37 +54,32 @@ class DiffieHellmanAboutIt extends StatelessWidget {
           const Divider(),
           _buildSection(
             context,
-            title: '🧠 Conceito Matemático',
-            content:
-                'Baseado no problema do logaritmo discreto.\n\nEsse problema é computacionalmente difícil de resolver, garantindo segurança.',
+            title: l10n.mathConceptDiffieHellmanTitle,
+            content: l10n.mathConceptDiffieHellmanContent,
           ),
           const Divider(),
           _buildSection(
             context,
-            title: '🛡️ Características Técnicas',
-            content:
-                '• Tipo: Criptografia de chave pública\n• Objetivo: Troca de chaves, não criptografia direta\n• Segurança: Alta (com parâmetros corretos)\n• Base: Matemática modular',
+            title: l10n.characteristicsDiffieHellmanTitle,
+            content: l10n.characteristicsDiffieHellmanContent,
           ),
           const Divider(),
           _buildSection(
             context,
-            title: '🌐 Uso ao Longo da História',
-            content:
-                'Base para protocolos modernos como:\n• TLS/HTTPS\n• VPNs\n• SSH',
+            title: l10n.usageHistoryDiffieHellmanTitle,
+            content: l10n.usageHistoryDiffieHellmanContent,
           ),
           const Divider(),
           _buildSection(
             context,
-            title: '📱 Uso Atual',
-            content:
-                '• Estabelecimento de conexões seguras na internet\n• Aplicações bancárias\n• Comunicação criptografada',
+            title: l10n.currentUsageDiffieHellmanTitle,
+            content: l10n.currentUsageDiffieHellmanContent,
           ),
           const Divider(),
           _buildSection(
             context,
-            title: '🚨 Limitações',
-            content:
-                '• Vulnerável a ataques Man-in-the-Middle se não autenticado\n• Requer uso com certificados digitais',
+            title: l10n.limitationsDiffieHellmanTitle,
+            content: l10n.limitationsDiffieHellmanContent,
           ),
         ],
       ),

@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 
+import '../../../../l10n/app_localizations.dart';
+
 class HashAboutIt extends StatelessWidget {
   const HashAboutIt({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('About Hash algorithm'),
+        title: Text(l10n.aboutHashTitle),
       ),
       body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: [
           _buildSection(
             context,
-            title: '📌 O que é',
-            content:
-                'Uma função hash transforma um dado de entrada de tamanho arbitrário em uma saída de tamanho fixo.',
+            title: l10n.whatIsHashTitle,
+            content: l10n.whatIsHashContent,
           ),
           _buildCodeBlock(
             context,
@@ -25,58 +27,50 @@ class HashAboutIt extends StatelessWidget {
           const Divider(),
           _buildSection(
             context,
-            title: '🏛️ Origem Histórica',
-            content:
-                'O conceito surgiu dentro da computação, especialmente em estruturas de dados nos anos 1950–1970.\n\nCom o avanço da criptografia, surgiram funções hash criptográficas modernas como:\n• MD5\n• SHA-1\n• SHA-256',
+            title: l10n.originHashTitle,
+            content: l10n.originHashContent,
           ),
           const Divider(),
           _buildSection(
             context,
-            title: '⚙️ Como funciona (conceitualmente)',
-            content:
-                '• Recebe uma entrada qualquer\n• Aplica uma série de transformações matemáticas\n• Produz um valor fixo (hash)',
+            title: l10n.howItWorksHashTitle,
+            content: l10n.howItWorksHashContent,
           ),
           const Divider(),
           _buildSection(
             context,
-            title: '🧠 Propriedades Importantes',
-            content:
-                'Uma boa função hash deve ter:\n\n• Determinismo: Mesma entrada → mesma saída\n• Rapidez: Computação eficiente\n• Efeito avalanche: Pequena mudança → saída completamente diferente\n• Resistência a colisões: Difícil encontrar duas entradas com mesmo hash',
+            title: l10n.importantPropertiesHashTitle,
+            content: l10n.importantPropertiesHashContent,
           ),
           const Divider(),
           _buildSection(
             context,
-            title: '🛡️ Características Técnicas',
-            content:
-                '• Tipo: Função unidirecional\n• Não reversível\n• Usada para integridade e verificação',
+            title: l10n.characteristicsHashTitle,
+            content: l10n.characteristicsHashContent,
           ),
           const Divider(),
           _buildSection(
             context,
-            title: '🌐 Uso ao Longo da História',
-            content:
-                '• Estruturas de dados (HashMap, HashTable)\n• Armazenamento seguro de senhas\n• Assinaturas digitais',
+            title: l10n.usageHistoryHashTitle,
+            content: l10n.usageHistoryHashContent,
           ),
           const Divider(),
           _buildSection(
             context,
-            title: '📱 Uso Atual',
-            content:
-                '• Autenticação de usuários\n• Blockchain\n• Verificação de integridade de arquivos\n• Sistemas distribuídos',
+            title: l10n.currentUsageHashTitle,
+            content: l10n.currentUsageHashContent,
           ),
           const Divider(),
           _buildSection(
             context,
-            title: '🚨 Limitações',
-            content:
-                '• Colisões são possíveis (dependendo do algoritmo)\n• Algoritmos antigos (MD5, SHA-1) são considerados inseguros',
+            title: l10n.limitationsHashTitle,
+            content: l10n.limitationsHashContent,
           ),
           const Divider(),
           _buildSection(
             context,
-            title: '⚠️ Observação importante (arquitetural)',
-            content:
-                'Hash ≠ criptografia reversível\n\n• Criptografia → pode ser revertida com chave\n• Hash → não pode ser revertido (idealmente)',
+            title: l10n.importantObservationHashTitle,
+            content: l10n.importantObservationHashContent,
           ),
         ],
       ),

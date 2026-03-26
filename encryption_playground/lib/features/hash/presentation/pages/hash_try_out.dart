@@ -3,6 +3,8 @@ import 'package:encryption_playground/features/hash/presentation/pages/hash_tab.
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../l10n/app_localizations.dart';
+
 class HashTryOut extends StatefulWidget {
   const HashTryOut({super.key});
 
@@ -28,10 +30,11 @@ class _HashTryOutState extends State<HashTryOut> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Consumer<HashController>(builder: (context, controller, child){
       return Scaffold(
         appBar: AppBar(
-          title: const Text('HashCode try out'),
+          title: Text(l10n.hashCodeTryOut),
           actions: [
             IconButton(
                 onPressed: (){
@@ -47,7 +50,7 @@ class _HashTryOutState extends State<HashTryOut> {
             spacing: 15,
             children: [
               _buildCard(
-                  title: 'Input A',
+                  title: l10n.inputA,
                   textController: _textAController,
                   dartController: _dartAController,
                   sha1Controller: _sha1AController,
@@ -71,7 +74,7 @@ class _HashTryOutState extends State<HashTryOut> {
               ),
 
               _buildCard(
-                  title: 'Input B',
+                  title: l10n.inputB,
                   textController: _textBController,
                   dartController: _dartBController,
                   sha1Controller: _sha1BController,
@@ -102,6 +105,7 @@ class _HashTryOutState extends State<HashTryOut> {
     required TextEditingController sha256Controller,
     required void Function(String)? onChanged
   }){
+    final l10n = AppLocalizations.of(context)!;
     return Container(
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey),
@@ -121,8 +125,8 @@ class _HashTryOutState extends State<HashTryOut> {
                   child: TextField(
                     controller: textController,
                     onChanged: onChanged,
-                    decoration: const InputDecoration(
-                      hintText: 'Enter text',
+                    decoration: InputDecoration(
+                      hintText: l10n.enterText,
                     ),
                   ),
                 ),
@@ -143,8 +147,8 @@ class _HashTryOutState extends State<HashTryOut> {
                 Expanded(
                   child: TextField(
                     controller: dartController,
-                    decoration: const InputDecoration(
-                      hintText: 'Dart hashcode',
+                    decoration: InputDecoration(
+                      hintText: l10n.dartHashCode,
                     ),
                     enabled: false,
                   ),
@@ -163,8 +167,8 @@ class _HashTryOutState extends State<HashTryOut> {
                 Expanded(
                   child: TextField(
                     controller: sha1Controller,
-                    decoration: const InputDecoration(
-                      hintText: 'sha-1 hashcode',
+                    decoration: InputDecoration(
+                      hintText: l10n.sha1HashCode,
                     ),
                     enabled: false,
                   ),
@@ -184,8 +188,8 @@ class _HashTryOutState extends State<HashTryOut> {
                 Expanded(
                   child: TextField(
                     controller: sha256Controller,
-                    decoration: const InputDecoration(
-                      hintText: 'sha256 hashcode',
+                    decoration: InputDecoration(
+                      hintText: l10n.sha256HashCode,
                     ),
                     enabled: false,
                   ),
@@ -210,6 +214,7 @@ class _HashTryOutState extends State<HashTryOut> {
     required HashType type,
   }) {
     final info = getHashInfo(type);
+    final l10n = AppLocalizations.of(context)!;
     return showDialog(
       context: context,
       builder: (dialogContext) {
@@ -249,7 +254,7 @@ class _HashTryOutState extends State<HashTryOut> {
                   alignment: Alignment.centerRight,
                   child: TextButton(
                     onPressed: () => Navigator.of(dialogContext).pop(),
-                    child: const Text('Fechar'),
+                    child: Text(l10n.close),
                   ),
                 ),
               ],

@@ -1,6 +1,7 @@
 import 'package:encryption_playground/features/caesar/presentation/ceasar_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../../l10n/app_localizations.dart';
 import 'ceasar_tab.dart';
 
 class CeasarTryOutScreen extends StatefulWidget {
@@ -27,10 +28,11 @@ class _CeasarTryOutScreenState extends State<CeasarTryOutScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Consumer<CeasarController>(builder: (context, controller, child) {
       return Scaffold(
         appBar: AppBar(
-          title: const Text('Caesar Try Out'),
+          title: Text(l10n.caesarTryOut),
           actions: [
             IconButton(
               icon: const Icon(Icons.info_outline),
@@ -58,8 +60,8 @@ class _CeasarTryOutScreenState extends State<CeasarTryOutScreen> {
                 },
                 decoration: InputDecoration(
                   hintText: controller.isEncrypting
-                      ? 'Enter text to encrypt'
-                      : 'Enter text to decrypt',
+                      ? l10n.enterTextToEncrypt
+                      : l10n.enterTextToDecrypt,
                 ),
               ),
 
@@ -83,8 +85,8 @@ class _CeasarTryOutScreenState extends State<CeasarTryOutScreen> {
                           }
                         }
                       },
-                      decoration: const InputDecoration(
-                        hintText: 'Enter key',
+                      decoration: InputDecoration(
+                        hintText: l10n.enterKey,
 
                       ),
                       textAlign: TextAlign.center,
@@ -109,8 +111,8 @@ class _CeasarTryOutScreenState extends State<CeasarTryOutScreen> {
                 controller: _resultController,
                 decoration: InputDecoration(
                   hintText: controller.isEncrypting
-                      ? 'Encrypted text'
-                      : 'Decrypted text',
+                      ? l10n.encryptedText
+                      : l10n.decryptedText,
                 ),
                 enabled: false,
               )
