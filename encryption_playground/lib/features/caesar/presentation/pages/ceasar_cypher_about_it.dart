@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../l10n/app_localizations.dart';
 import 'ceasar_tab.dart';
 
 class CeasarCypherAboutIt extends StatefulWidget {
@@ -11,9 +12,10 @@ class CeasarCypherAboutIt extends StatefulWidget {
 class _CeasarCypherAboutItState extends State<CeasarCypherAboutIt> {
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('About Caesar Cipher algorithm'),
+        title: Text(l10n.aboutCaesarTitle),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -26,23 +28,20 @@ class _CeasarCypherAboutItState extends State<CeasarCypherAboutIt> {
         children: [
           _buildSection(
             context,
-            title: '📌 O que é',
-            content:
-                'A Cifra de César é um algoritmo de criptografia simétrica extremamente simples, baseado em substituição.\n\nEla funciona deslocando cada letra do alfabeto por um número fixo de posições.\n\nExemplo (deslocamento de 3):\nA → D\nB → E\nC → F\n...',
+            title: l10n.whatIsCaesarTitle,
+            content: l10n.whatIsCaesarContent,
           ),
           const Divider(),
           _buildSection(
             context,
-            title: '🏛️ Origem Histórica',
-            content:
-                'A cifra leva o nome de Júlio César, que a utilizava para proteger comunicações militares durante o período da República Romana (por volta de 50 a.C.).\n\nEle usava um deslocamento fixo de 3 letras para enviar mensagens aos seus generais.',
+            title: l10n.originCaesarTitle,
+            content: l10n.originCaesarContent,
           ),
           const Divider(),
           _buildSection(
             context,
-            title: '⚙️ Como funciona (conceitualmente)',
-            content:
-                '• Define-se um número inteiro chamado chave (shift)\n• Para cada letra:\n  - Localiza sua posição no alfabeto\n  - Soma o valor do deslocamento\n  - Aplica módulo 26 (para "dar a volta" no alfabeto)',
+            title: l10n.howItWorksCaesarTitle,
+            content: l10n.howItWorksCaesarContent,
           ),
           _buildCodeBlock(
             context,
@@ -51,30 +50,26 @@ class _CeasarCypherAboutItState extends State<CeasarCypherAboutIt> {
           const Divider(),
           _buildSection(
             context,
-            title: '🧠 Características Técnicas',
-            content:
-                '• Tipo: Criptografia simétrica\n• Complexidade: Muito baixa\n• Segurança: Praticamente inexistente\n• Espaço de chaves: Apenas 25 possibilidades',
+            title: l10n.characteristicsCaesarTitle,
+            content: l10n.characteristicsCaesarContent,
           ),
           const Divider(),
           _buildSection(
             context,
-            title: '⚔️ Uso ao Longo da História',
-            content:
-                '• Comunicação militar na Roma Antiga\n• Base conceitual para criptografia clássica\n• Muito usada em ensino introdutório de segurança',
+            title: l10n.usageHistoryCaesarTitle,
+            content: l10n.usageHistoryCaesarContent,
           ),
           const Divider(),
           _buildSection(
             context,
-            title: '🚨 Limitações',
-            content:
-                '• Vulnerável a análise de frequência\n• Pode ser quebrada por força bruta em segundos\n• Não oferece confidencialidade real hoje',
+            title: l10n.limitationsCaesarTitle,
+            content: l10n.limitationsCaesarContent,
           ),
           const Divider(),
           _buildSection(
             context,
-            title: '📱 Uso Atual',
-            content:
-                '• Ensino de criptografia\n• Jogos e puzzles\n• Demonstração de conceitos básicos',
+            title: l10n.currentUsageCaesarTitle,
+            content: l10n.currentUsageCaesarContent,
           ),
         ],
       ),

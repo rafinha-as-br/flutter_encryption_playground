@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../../../caesar/presentation/pages/ceasar_tab.dart';
 import '../../../diffie_hellman/presentation/pages/diffie_hellman_tab.dart';
 import '../../../hash/presentation/pages/hash_tab.dart';
+import '../../../../app/locale_controller.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -33,15 +36,29 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Encryption Playground'),
+        title: Text(l10n.appName),
+        actions: [
+          ElevatedButton(
+            onPressed: (){
+              context.read<LocaleController>().toggleLocale();
+            },
+            child: Row(
+              children: [
+                const Icon(Icons.language),
+                Text(l10n.localeName == 'pt'? ' - PT' : ' - EN')
+              ],
+            )
+          )
+        ],
         bottom: TabBar(
           controller: _tabController,
-          tabs: const [
-            Tab(text: 'Caesar', icon: Icon(Icons.security)),
-            Tab(text: 'Diffie-Hellman', icon: Icon(Icons.vpn_key)),
-            Tab(text: 'Hash', icon: Icon(Icons.fingerprint)),
+          tabs: [
+            Tab(text: l10n.caesar, icon: const Icon(Icons.security)),
+            Tab(text: l10n.diffieHellman, icon: const Icon(Icons.vpn_key)),
+            Tab(text: l10n.hash, icon: const Icon(Icons.fingerprint)),
           ],
         ),
       ),

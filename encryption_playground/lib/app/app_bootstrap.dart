@@ -3,6 +3,7 @@ import 'package:encryption_playground/features/hash/presentation/hash_controller
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../features/diffie_hellman/presentation/diffie_hellman_controller.dart';
+import 'locale_controller.dart';
 import 'app.dart';
 
 class AppBootstrap extends StatelessWidget {
@@ -14,7 +15,8 @@ class AppBootstrap extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => CeasarController()),
         ChangeNotifierProvider(create: (context) => DiffieHellmanController()),
-        ChangeNotifierProvider(create: (context) => HashController())
+        ChangeNotifierProvider(create: (context) => HashController()),
+        ChangeNotifierProvider(create: (context) => LocaleController()),
       ],
       child: const App(),
     );

@@ -2,6 +2,7 @@ import 'package:encryption_playground/features/diffie_hellman/presentation/pages
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../l10n/app_localizations.dart';
 import '../diffie_hellman_controller.dart';
 
 class DiffieHellmanTryOut extends StatefulWidget {
@@ -76,10 +77,11 @@ class _DiffieHellmanTryOutState extends State<DiffieHellmanTryOut> {
   Widget build(BuildContext context) {
     final controller = context.watch<DiffieHellmanController>();
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Diffie Hellman try out'),
+        title: Text(l10n.diffieHellmanTryOut),
         actions: [
           IconButton(
               onPressed: (){
@@ -100,13 +102,13 @@ class _DiffieHellmanTryOutState extends State<DiffieHellmanTryOut> {
                 children: [
                   Expanded(
                     child: _userSection(
-                      "User A",
+                      l10n.userA,
                       [
                         _field(
                           userAPrivateKeyController,
                           null,
                           enabled: false,
-                          hint: "Private Key (a)",
+                          hint: "${l10n.privateKey} (a)",
                           icon: Icons.vpn_key_outlined,
                           theme: theme,
                         ),
@@ -114,7 +116,7 @@ class _DiffieHellmanTryOutState extends State<DiffieHellmanTryOut> {
                           userAPublicKeyController,
                           null,
                           enabled: false,
-                          hint: "Public Key (A)",
+                          hint: "${l10n.publicKey} (A)",
                           icon: Icons.public,
                           theme: theme,
                         ),
@@ -122,7 +124,7 @@ class _DiffieHellmanTryOutState extends State<DiffieHellmanTryOut> {
                           sharedSecretAController,
                           null,
                           enabled: false,
-                          hint: "Shared Secret",
+                          hint: l10n.sharedSecret,
                           icon: Icons.lock_outline,
                           theme: theme,
                           isSecret: true,
@@ -134,13 +136,13 @@ class _DiffieHellmanTryOutState extends State<DiffieHellmanTryOut> {
                   const SizedBox(width: 16),
                   Expanded(
                     child: _userSection(
-                      "User B",
+                      l10n.userB,
                       [
                         _field(
                           userBPrivateKeyController,
                           null,
                           enabled: false,
-                          hint: "Private Key (b)",
+                          hint: "${l10n.privateKey} (b)",
                           icon: Icons.vpn_key_outlined,
                           theme: theme,
                         ),
@@ -148,7 +150,7 @@ class _DiffieHellmanTryOutState extends State<DiffieHellmanTryOut> {
                           userBPublicKeyController,
                           null,
                           enabled: false,
-                          hint: "Public Key (B)",
+                          hint: "${l10n.publicKey} (B)",
                           icon: Icons.public,
                           theme: theme,
                         ),
@@ -156,7 +158,7 @@ class _DiffieHellmanTryOutState extends State<DiffieHellmanTryOut> {
                           sharedSecretBController,
                           null,
                           enabled: false,
-                          hint: "Shared Secret",
+                          hint: l10n.sharedSecret,
                           icon: Icons.lock_outline,
                           theme: theme,
                           isSecret: true,
@@ -168,8 +170,8 @@ class _DiffieHellmanTryOutState extends State<DiffieHellmanTryOut> {
                 ],
               ),
               const SizedBox(height: 32),
-              const Text(
-                "Global Parameters",
+              Text(
+                l10n.globalParameters,
                 textAlign: TextAlign.center,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
@@ -179,7 +181,7 @@ class _DiffieHellmanTryOutState extends State<DiffieHellmanTryOut> {
                   _field(
                     gController,
                     (value) => controller.g = int.tryParse(value),
-                    hint: "G (Base / Generator)",
+                    hint: l10n.generator,
                     icon: Icons.settings_input_component,
                     theme: theme,
                     isPrimary: true,
@@ -188,7 +190,7 @@ class _DiffieHellmanTryOutState extends State<DiffieHellmanTryOut> {
                   _field(
                     pController,
                     (value) => controller.p = int.tryParse(value),
-                    hint: "P (Modulus / Prime)",
+                    hint: l10n.modulus,
                     icon: Icons.numbers,
                     theme: theme,
                     isPrimary: true,
