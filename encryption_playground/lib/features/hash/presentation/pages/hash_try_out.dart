@@ -44,53 +44,55 @@ class _HashTryOutState extends State<HashTryOut> {
             )
           ],
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            spacing: 15,
-            children: [
-              _buildCard(
-                  title: l10n.inputA,
-                  textController: _textAController,
-                  dartController: _dartAController,
-                  sha1Controller: _sha1AController,
-                  sha256Controller: _sha256AController,
-                  onChanged: (value){
-                    if(value.isNotEmpty){
-                      _textBController.text = value;
-
-                      _dartAController.text = controller.generateDartHascode(value);
-                      _dartBController.text = controller.generateDartHascode(value);
-
-                      _sha1AController.text = controller.generateSha1Hascode(value);
-                      _sha1BController.text = controller.generateSha1Hascode(value);
-
-                      _sha256AController.text = controller.generateSha256Hascode(value);
-                      _sha256BController.text = controller.generateSha256Hascode(value);
-
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              spacing: 15,
+              children: [
+                _buildCard(
+                    title: l10n.inputA,
+                    textController: _textAController,
+                    dartController: _dartAController,
+                    sha1Controller: _sha1AController,
+                    sha256Controller: _sha256AController,
+                    onChanged: (value){
+                      if(value.isNotEmpty){
+                        _textBController.text = value;
+          
+                        _dartAController.text = controller.generateDartHascode(value);
+                        _dartBController.text = controller.generateDartHascode(value);
+          
+                        _sha1AController.text = controller.generateSha1Hascode(value);
+                        _sha1BController.text = controller.generateSha1Hascode(value);
+          
+                        _sha256AController.text = controller.generateSha256Hascode(value);
+                        _sha256BController.text = controller.generateSha256Hascode(value);
+          
+                      }
+          
                     }
-
-                  }
-              ),
-
-              _buildCard(
-                  title: l10n.inputB,
-                  textController: _textBController,
-                  dartController: _dartBController,
-                  sha1Controller: _sha1BController,
-                  sha256Controller: _sha256BController,
-                  onChanged: (value){
-                    if(value.isNotEmpty){
-                      _dartBController.text = controller.generateDartHascode(value);
-                      _sha1BController.text = controller.generateSha1Hascode(value);
-                      _sha256BController.text = controller.generateSha256Hascode(value);
+                ),
+          
+                _buildCard(
+                    title: l10n.inputB,
+                    textController: _textBController,
+                    dartController: _dartBController,
+                    sha1Controller: _sha1BController,
+                    sha256Controller: _sha256BController,
+                    onChanged: (value){
+                      if(value.isNotEmpty){
+                        _dartBController.text = controller.generateDartHascode(value);
+                        _sha1BController.text = controller.generateSha1Hascode(value);
+                        _sha256BController.text = controller.generateSha256Hascode(value);
+                      }
+          
+          
                     }
-
-
-                  }
-              )
-
-            ],
+                )
+          
+              ],
+            ),
           ),
         ),
       );
@@ -108,7 +110,7 @@ class _HashTryOutState extends State<HashTryOut> {
     final l10n = AppLocalizations.of(context)!;
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey),
+        border: Border.all(color: Theme.of(context).colorScheme.outline.withAlpha(50)),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Padding(
@@ -325,4 +327,3 @@ enum HashType {
   sha256,
   input
 }
-

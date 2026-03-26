@@ -5,6 +5,7 @@ import '../../../caesar/presentation/pages/ceasar_tab.dart';
 import '../../../diffie_hellman/presentation/pages/diffie_hellman_tab.dart';
 import '../../../hash/presentation/pages/hash_tab.dart';
 import '../../../../app/locale_controller.dart';
+import '../../../../app/theme_controller.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -41,6 +42,16 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
       appBar: AppBar(
         title: Text(l10n.appName),
         actions: [
+          IconButton(
+            onPressed: () {
+              context.read<ThemeController>().toggleTheme();
+            },
+            icon: Icon(
+              context.watch<ThemeController>().isDarkMode
+                  ? Icons.light_mode
+                  : Icons.dark_mode,
+            ),
+          ),
           ElevatedButton(
             onPressed: (){
               context.read<LocaleController>().toggleLocale();
