@@ -3,6 +3,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import '../l10n/app_localizations.dart';
 import 'locale_controller.dart';
+import 'theme_controller.dart';
+import 'theme/app_theme.dart';
 import 'app_routes.dart';
 
 class App extends StatelessWidget {
@@ -11,6 +13,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = context.watch<LocaleController>().value;
+    final themeMode = context.watch<ThemeController>().value;
 
     return MaterialApp(
       title: 'Encryption Playground',
@@ -25,10 +28,9 @@ class App extends StatelessWidget {
         Locale('en'),
         Locale('pt'),
       ],
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: themeMode,
       initialRoute: AppRoutes.home,
       routes: AppRoutes.routes,
     );
