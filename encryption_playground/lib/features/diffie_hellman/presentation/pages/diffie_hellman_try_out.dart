@@ -1,3 +1,4 @@
+import 'package:encryption_playground/features/diffie_hellman/presentation/pages/diffie_hellman_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -77,6 +78,17 @@ class _DiffieHellmanTryOutState extends State<DiffieHellmanTryOut> {
     final theme = Theme.of(context);
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Diffie Hellman try out'),
+        actions: [
+          IconButton(
+              onPressed: (){
+                DiffieHellmanNavigationService.instance.navigatorKey.currentState!.pushNamed('about');
+              },
+              icon: const Icon(Icons.info_outline)
+          )
+        ],
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
