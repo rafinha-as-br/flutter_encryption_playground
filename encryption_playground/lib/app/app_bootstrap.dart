@@ -1,4 +1,5 @@
 import 'package:encryption_playground/features/caesar/presentation/ceasar_controller.dart';
+import 'package:encryption_playground/features/hash/presentation/hash_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../features/diffie_hellman/presentation/diffie_hellman_controller.dart';
@@ -13,7 +14,7 @@ class AppBootstrap extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => CeasarController()),
         ChangeNotifierProvider(create: (context) => DiffieHellmanController()),
-        // Add other providers here
+        ChangeNotifierProvider(create: (context) => HashController())
       ],
       child: const App(),
     );
