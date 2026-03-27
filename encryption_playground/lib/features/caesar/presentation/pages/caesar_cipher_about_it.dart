@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import '../../../../l10n/app_localizations.dart';
-import 'ceasar_tab.dart';
+import 'caesar_tab.dart';
 
-class CeasarCypherAboutIt extends StatefulWidget {
-  const CeasarCypherAboutIt({super.key});
+class CaesarCipherAboutIt extends StatefulWidget {
+  const CaesarCipherAboutIt({super.key});
 
   @override
-  State<CeasarCypherAboutIt> createState() => _CeasarCypherAboutItState();
+  State<CaesarCipherAboutIt> createState() => _CaesarCipherAboutItState();
 }
 
-class _CeasarCypherAboutItState extends State<CeasarCypherAboutIt> {
+class _CaesarCipherAboutItState extends State<CaesarCipherAboutIt> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;

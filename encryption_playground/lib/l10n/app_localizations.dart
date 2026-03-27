@@ -583,6 +583,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Hash ≠ reversible encryption\n\n• Encryption → can be reversed with a key\n• Hash → cannot be reversed (ideally)'**
   String get importantObservationHashContent;
+
+  /// No description provided for @dartHashCodeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Dart hashCode'**
+  String get dartHashCodeTitle;
+
+  /// No description provided for @dartHashCodeDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Dart\'s hashCode is a numeric identifier used internally for structures like Map and Set. It is NOT cryptographically secure and may vary between executions. It serves only for quick comparison.'**
+  String get dartHashCodeDescription;
+
+  /// No description provided for @sha1HashCodeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'SHA-1'**
+  String get sha1HashCodeTitle;
+
+  /// No description provided for @sha1HashCodeDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'SHA-1 is a cryptographic hash algorithm that generates a 160-bit value. Today it is considered insecure for security use as it has known collisions. It is useful here only for educational purposes.'**
+  String get sha1HashCodeDescription;
+
+  /// No description provided for @sha256HashCodeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'SHA-256'**
+  String get sha256HashCodeTitle;
+
+  /// No description provided for @sha256HashCodeDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'SHA-256 is a cryptographic hash algorithm from the SHA-2 family that generates a 256-bit value. It is widely used in security, blockchain, and secure data storage.'**
+  String get sha256HashCodeDescription;
+
+  /// No description provided for @inputTextTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Text Input'**
+  String get inputTextTitle;
+
+  /// No description provided for @inputTextDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter data to generate hashcodes, try changing the text and see the result'**
+  String get inputTextDescription;
+
+  /// No description provided for @reset.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
+  String get reset;
+
+  /// No description provided for @invalidInput.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid input'**
+  String get invalidInput;
+
+  /// No description provided for @lettersOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter letters only'**
+  String get lettersOnly;
+
+  /// No description provided for @numbersOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter numbers only'**
+  String get numbersOnly;
+
+  /// No description provided for @localeNameDisplay.
+  ///
+  /// In en, this message translates to:
+  /// **'EN'**
+  String get localeNameDisplay;
 }
 
 class _AppLocalizationsDelegate

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'ceasar_try_out.dart';
-import 'ceasar_cypher_about_it.dart';
+import '../../../../app/app_routes.dart';
+import 'caesar_try_out.dart';
+import 'caesar_cipher_about_it.dart';
 
 class CaesarNavigationService {
   CaesarNavigationService._internal();
@@ -17,18 +18,18 @@ class CaesarTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Navigator(
       key: CaesarNavigationService.instance.navigatorKey,
-      initialRoute: 'try_out',
+      initialRoute: AppRoutes.tryOut,
       onGenerateRoute: (settings) {
         Widget page;
         switch (settings.name) {
-          case 'try_out':
-            page = const CeasarTryOutScreen();
+          case AppRoutes.tryOut:
+            page = const CaesarTryOutScreen();
             break;
-          case 'about':
-            page = const CeasarCypherAboutIt();
+          case AppRoutes.about:
+            page = const CaesarCipherAboutIt();
             break;
           default:
-            page = const CeasarTryOutScreen();
+            page = const CaesarTryOutScreen();
         }
         return MaterialPageRoute(builder: (_) => page, settings: settings);
       },

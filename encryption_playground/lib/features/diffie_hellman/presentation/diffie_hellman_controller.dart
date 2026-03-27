@@ -1,9 +1,26 @@
 
 import 'dart:math';
 
+import 'package:encryption_playground/features/diffie_hellman/domain/generate_public_key_usecase.dart';
+import 'package:encryption_playground/features/diffie_hellman/domain/mod_exp_usecase.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../domain/generate_private_key_usecase.dart';
+
 class DiffieHellmanController extends ChangeNotifier {
+
+  final TextEditingController userAPrivateKeyController = TextEditingController();
+  final TextEditingController userBPrivateKeyController = TextEditingController();
+
+  final TextEditingController userAPublicKeyController = TextEditingController();
+  final TextEditingController userBPublicKeyController = TextEditingController();
+
+  final TextEditingController sharedSecretAController = TextEditingController();
+  final TextEditingController sharedSecretBController = TextEditingController();
+
+  final TextEditingController gController = TextEditingController();
+  final TextEditingController pController = TextEditingController();
+
   int? _p;
   int? _g;
 
@@ -26,7 +43,6 @@ class DiffieHellmanController extends ChangeNotifier {
     calculate();
   }
 
-  final Random _random = Random.secure();
 
   void calculate() {
     if (_p == null || _g == null || _p! <= 2) {
@@ -36,14 +52,39 @@ class DiffieHellmanController extends ChangeNotifier {
     }
 
     userAPrivateKey = _generatePrivateKey();
+    _updateTextIfChanged(userAPrivateKeyController, userAPrivateKey);
     userBPrivateKey = _generatePrivateKey();
+    _updateTextIfChanged(userBPrivateKeyController, userBPrivateKey);
+
 
     userAPublicKey = _generatePublicKey(userAPrivateKey!);
+    _updateTextIfChanged(userAPublicKeyController, userAPublicKey);
+
     userBPublicKey = _generatePublicKey(userBPrivateKey!);
+    _updateTextIfChanged(userBPublicKeyController, userBPublicKey);
 
     sharedSecretA = _generateSharedSecret(userAPrivateKey!, userBPublicKey!);
-    sharedSecretB = _generateSharedSecret(userBPrivateKey!, userAPublicKey!);
+    _updateTextIfChanged(sharedSecretAController, sharedSecretA);
 
+    sharedSecretB = _generateSharedSecret(userBPrivateKey!, userAPublicKey!);
+    _updateTextIfChanged(sharedSecretBController, sharedSecretB);
+
+
+    notifyListeners();
+  }
+
+  void _updateTextIfChanged(TextEditingController textController, int? value) {
+    final newText = value?.toString() ?? "";
+    if (textController.text != newText) {
+      textController.text = newText;
+    }
+  }
+
+
+  void reset() {
+    _p = null;
+    _g = null;
+    _resetKeys();
     notifyListeners();
   }
 
@@ -57,29 +98,28 @@ class DiffieHellmanController extends ChangeNotifier {
   }
 
   int _generatePrivateKey() {
-    return _random.nextInt(_p! - 2) + 1;
+    return DiffieHellmanPrivateKeyUseCase.generatePrivateKey(_p!);
   }
 
   int _generatePublicKey(int privateKey) {
-    return _modExp(_g!, privateKey, _p!);
+    return DiffieHellmanPublicKeyUseCase.generatePublicKey(privateKey, _g!, _p!);
   }
 
   int _generateSharedSecret(int privateKey, int receivedPublicKey) {
-    return _modExp(receivedPublicKey, privateKey, _p!);
+    return DiffieHellmanModExpUseCase.modExp(receivedPublicKey, privateKey, _p!);
   }
 
-  int _modExp(int base, int exp, int mod) {
-    int result = 1;
-    base %= mod;
+  @override
+  void dispose() {
+    super.dispose();
+    userAPrivateKeyController.dispose();
+    userBPrivateKeyController.dispose();
+    userAPublicKeyController.dispose();
+    userBPublicKeyController.dispose();
+    sharedSecretAController.dispose();
+    sharedSecretBController.dispose();
+    gController.dispose();
+    pController.dispose();
 
-    while (exp > 0) {
-      if (exp % 2 == 1) {
-        result = (result * base) % mod;
-      }
-      base = (base * base) % mod;
-      exp ~/= 2;
-    }
-
-    return result;
   }
-}
+}

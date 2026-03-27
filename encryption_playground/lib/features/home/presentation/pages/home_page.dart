@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../../l10n/app_localizations.dart';
-import '../../../caesar/presentation/pages/ceasar_tab.dart';
+import '../../../caesar/presentation/pages/caesar_tab.dart';
 import '../../../diffie_hellman/presentation/pages/diffie_hellman_tab.dart';
 import '../../../hash/presentation/pages/hash_tab.dart';
 import '../../../../app/locale_controller.dart';
@@ -52,6 +52,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                   : Icons.dark_mode,
             ),
           ),
+          SizedBox(width: 7,),
           ElevatedButton(
             onPressed: (){
               context.read<LocaleController>().toggleLocale();
@@ -59,10 +60,11 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             child: Row(
               children: [
                 const Icon(Icons.language),
-                Text(l10n.localeName == 'pt'? ' - PT' : ' - EN')
+                Text(' - ${l10n.localeName}')
               ],
             )
-          )
+          ),
+          SizedBox(width: 7,)
         ],
         bottom: TabBar(
           controller: _tabController,
