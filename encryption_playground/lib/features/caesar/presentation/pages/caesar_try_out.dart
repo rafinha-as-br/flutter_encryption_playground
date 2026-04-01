@@ -86,6 +86,7 @@ class _CaesarTryOutScreenState extends State<CaesarTryOutScreen> {
                 children: [
                   const Spacer(),
                   Expanded(
+                    flex: 3,
                     child: TextField(
                       controller: _keyController,
                       keyboardType: TextInputType.number,
@@ -115,6 +116,7 @@ class _CaesarTryOutScreenState extends State<CaesarTryOutScreen> {
                       ),
                     ),
                   ),
+                  const SizedBox(width: 16),
                   IconButton(
                       onPressed: () {
                         controller.isEncrypting = !controller.isEncrypting;
@@ -136,7 +138,7 @@ class _CaesarTryOutScreenState extends State<CaesarTryOutScreen> {
                       : l10n.decryptedText,
                 ),
                 enabled: false,
-              )
+              ),
             ],
           ),
         ),
