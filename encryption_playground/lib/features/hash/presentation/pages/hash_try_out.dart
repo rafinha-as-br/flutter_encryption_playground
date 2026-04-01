@@ -45,6 +45,9 @@ class _HashTryOutState extends State<HashTryOut> {
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+
+
+            /* todo: Change the column to Row when it's desktop/web version */
             child: Column(
               spacing: 15,
               children: [
