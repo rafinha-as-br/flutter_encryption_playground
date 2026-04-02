@@ -1,6 +1,3 @@
-
-import 'dart:math';
-
 import 'package:encryption_playground/features/diffie_hellman/domain/generate_public_key_usecase.dart';
 import 'package:encryption_playground/features/diffie_hellman/domain/mod_exp_usecase.dart';
 import 'package:flutter/cupertino.dart';

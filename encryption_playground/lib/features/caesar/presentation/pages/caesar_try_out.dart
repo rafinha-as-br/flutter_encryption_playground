@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import '../../../../app/app_routes.dart';
-import '../../../../l10n/app_localizations.dart';
+import '../../../../shared/widgets/responsive_layout_builder.dart';
 import '../caesar_controller.dart';
-import 'caesar_tab.dart';
+
+import 'caesar_try_out_mobile.dart';
+import 'caesar_try_out_tablet.dart';
+import 'caesar_try_out_desktop.dart';
 
 class CaesarTryOutScreen extends StatefulWidget {
   const CaesarTryOutScreen({super.key});
@@ -35,114 +36,66 @@ class _CaesarTryOutScreenState extends State<CaesarTryOutScreen> {
     super.dispose();
   }
 
+  void _onTextChanged(String value) {
+    setState(() {});
+    final controller = Provider.of<CaesarController>(context, listen: false);
+    if (controller.key == null) return;
+    if (controller.isEncrypting) {
+      _resultController.text = controller.encrypt(value);
+    } else {
+      _resultController.text = controller.decrypt(value);
+    }
+  }
+
+  void _onKeyChanged(String value) {
+    setState(() {});
+    final controller = Provider.of<CaesarController>(context, listen: false);
+    controller.key = int.tryParse(value);
+    if (controller.key != null) {
+      if (controller.isEncrypting) {
+        _resultController.text = controller.encrypt(_textController.text);
+      } else {
+        _resultController.text = controller.decrypt(_textController.text);
+      }
+    }
+  }
+
+  void _onSwapPressed() {
+    final controller = Provider.of<CaesarController>(context, listen: false);
+    controller.isEncrypting = !controller.isEncrypting;
+    setState(() {
+      _textController.text = '';
+      _resultController.text = '';
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-    return Consumer<CaesarController>(builder: (context, controller, child) {
-      return Scaffold(
-        appBar: AppBar(
-          title: Text(l10n.caesarTryOut),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.info_outline),
-              onPressed: () {
-                CaesarNavigationService.instance.navigatorKey.currentState
-                    ?.pushNamed(AppRoutes.about);
-              },
-            ),
-          ],
-        ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 12),
-          child: Column(
-            children: [
-              TextField(
-                controller: _textController,
-                inputFormatters: [
-                  FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z\s]')),
-                ],
-                onChanged: (value) {
-                  setState(() {});
-                  if (controller.key == null) return;
-                  if (controller.isEncrypting) {
-                    _resultController.text = controller.encrypt(value);
-                  } else {
-                    _resultController.text = controller.decrypt(value);
-                  }
-                },
-                decoration: InputDecoration(
-                  hintText: controller.isEncrypting
-                      ? l10n.enterTextToEncrypt
-                      : l10n.enterTextToDecrypt,
-                  errorText: _textController.text.isNotEmpty &&
-                          !RegExp(r'^[a-zA-Z\s]*$').hasMatch(_textController.text)
-                      ? l10n.lettersOnly
-                      : null,
-                ),
-              ),
-              const SizedBox(height: 12),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Spacer(),
-                  Expanded(
-                    flex: 3,
-                    child: TextField(
-                      controller: _keyController,
-                      keyboardType: TextInputType.number,
-                      textAlign: TextAlign.center,
-                      inputFormatters: [
-                        FilteringTextInputFormatter.digitsOnly,
-                      ],
-                      onChanged: (value) {
-                        setState(() {});
-                        controller.key = int.tryParse(value);
-                        if (controller.key != null) {
-                          if (controller.isEncrypting) {
-                            _resultController.text =
-                                controller.encrypt(_textController.text);
-                          } else {
-                            _resultController.text =
-                                controller.decrypt(_textController.text);
-                          }
-                        }
-                      },
-                      decoration: InputDecoration(
-                        hintText: l10n.enterKey,
-                        errorText: _keyController.text.isNotEmpty &&
-                                int.tryParse(_keyController.text) == null
-                            ? l10n.numbersOnly
-                            : null,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 16),
-                  IconButton(
-                      onPressed: () {
-                        controller.isEncrypting = !controller.isEncrypting;
-                        setState(() {
-                          _textController.text = '';
-                          _resultController.text = '';
-                        });
-                      },
-                      icon: const Icon(Icons.swap_vert)),
-                  const Spacer(),
-                ],
-              ),
-              const SizedBox(height: 12),
-              TextField(
-                controller: _resultController,
-                decoration: InputDecoration(
-                  hintText: controller.isEncrypting
-                      ? l10n.encryptedText
-                      : l10n.decryptedText,
-                ),
-                enabled: false,
-              ),
-            ],
-          ),
-        ),
-      );
-    });
+    return ResponsiveLayoutBuilder(
+      mobile: CaesarTryOutMobile(
+        textController: _textController,
+        keyController: _keyController,
+        resultController: _resultController,
+        onTextChanged: _onTextChanged,
+        onKeyChanged: _onKeyChanged,
+        onSwapPressed: _onSwapPressed,
+      ),
+      tablet: CaesarTryOutTablet(
+        textController: _textController,
+        keyController: _keyController,
+        resultController: _resultController,
+        onTextChanged: _onTextChanged,
+        onKeyChanged: _onKeyChanged,
+        onSwapPressed: _onSwapPressed,
+      ),
+      desktop: CaesarTryOutDesktop(
+        textController: _textController,
+        keyController: _keyController,
+        resultController: _resultController,
+        onTextChanged: _onTextChanged,
+        onKeyChanged: _onKeyChanged,
+        onSwapPressed: _onSwapPressed,
+      ),
+    );
   }
 }
