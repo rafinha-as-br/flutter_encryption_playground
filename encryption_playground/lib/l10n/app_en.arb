@@ -82,5 +82,20 @@
   "limitationsHashTitle": "🚨 Limitations",
   "limitationsHashContent": "• Collisions are possible (depending on the algorithm)\n• Old algorithms (MD5, SHA-1) are considered insecure",
   "importantObservationHashTitle": "⚠️ Important Observation (architectural)",
-  "importantObservationHashContent": "Hash ≠ reversible encryption\n\n• Encryption → can be reversed with a key\n• Hash → cannot be reversed (ideally)"
+  "importantObservationHashContent": "Hash ≠ reversible encryption\n\n• Encryption → can be reversed with a key\n• Hash → cannot be reversed (ideally)",
+  "dartHashCodeTitle": "Dart hashCode",
+  "dartHashCodeDescription": "Dart's hashCode is a numeric identifier used internally for structures like Map and Set. It is NOT cryptographically secure and may vary between executions. It serves only for quick comparison.",
+  "sha1HashCodeTitle": "SHA-1",
+  "sha1HashCodeDescription": "SHA-1 is a cryptographic hash algorithm that generates a 160-bit value. Today it is considered insecure for security use as it has known collisions. It is useful here only for educational purposes.",
+  "sha256HashCodeTitle": "SHA-256",
+  "sha256HashCodeDescription": "SHA-256 is a cryptographic hash algorithm from the SHA-2 family that generates a 256-bit value. It is widely used in security, blockchain, and secure data storage.",
+  "inputTextTitle": "Text Input",
+  "inputTextDescription": "Enter data to generate hashcodes, try changing the text and see the result",
+  "reset": "Reset",
+  "invalidInput": "Invalid input",
+  "lettersOnly": "Please enter letters only",
+  "numbersOnly": "Please enter numbers only",
+  "theme": "Theme",
+  "about": "About",
+  "localeNameDisplay": "EN"
 }

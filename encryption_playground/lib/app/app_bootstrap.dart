@@ -1,4 +1,4 @@
-import 'package:encryption_playground/features/caesar/presentation/ceasar_controller.dart';
+import 'package:encryption_playground/features/caesar/presentation/caesar_controller.dart';
 import 'package:encryption_playground/features/hash/presentation/hash_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,7 +14,7 @@ class AppBootstrap extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => CeasarController()),
+        ChangeNotifierProvider(create: (context) => CaesarController()),
         ChangeNotifierProvider(create: (context) => DiffieHellmanController()),
         ChangeNotifierProvider(create: (context) => HashController()),
         ChangeNotifierProvider(create: (context) => LocaleController()),

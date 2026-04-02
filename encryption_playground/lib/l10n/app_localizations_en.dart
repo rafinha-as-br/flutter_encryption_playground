@@ -278,4 +278,53 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get importantObservationHashContent =>
       'Hash ≠ reversible encryption\n\n• Encryption → can be reversed with a key\n• Hash → cannot be reversed (ideally)';
+
+  @override
+  String get dartHashCodeTitle => 'Dart hashCode';
+
+  @override
+  String get dartHashCodeDescription =>
+      'Dart\'s hashCode is a numeric identifier used internally for structures like Map and Set. It is NOT cryptographically secure and may vary between executions. It serves only for quick comparison.';
+
+  @override
+  String get sha1HashCodeTitle => 'SHA-1';
+
+  @override
+  String get sha1HashCodeDescription =>
+      'SHA-1 is a cryptographic hash algorithm that generates a 160-bit value. Today it is considered insecure for security use as it has known collisions. It is useful here only for educational purposes.';
+
+  @override
+  String get sha256HashCodeTitle => 'SHA-256';
+
+  @override
+  String get sha256HashCodeDescription =>
+      'SHA-256 is a cryptographic hash algorithm from the SHA-2 family that generates a 256-bit value. It is widely used in security, blockchain, and secure data storage.';
+
+  @override
+  String get inputTextTitle => 'Text Input';
+
+  @override
+  String get inputTextDescription =>
+      'Enter data to generate hashcodes, try changing the text and see the result';
+
+  @override
+  String get reset => 'Reset';
+
+  @override
+  String get invalidInput => 'Invalid input';
+
+  @override
+  String get lettersOnly => 'Please enter letters only';
+
+  @override
+  String get numbersOnly => 'Please enter numbers only';
+
+  @override
+  String get theme => 'Theme';
+
+  @override
+  String get about => 'About';
+
+  @override
+  String get localeNameDisplay => 'EN';
 }

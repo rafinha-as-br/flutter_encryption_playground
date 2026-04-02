@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../domain/do_uncrypt_usecase.dart';
 
-class CeasarController extends ChangeNotifier{
+class CaesarController extends ChangeNotifier{
 
   bool isEncrypting = true;
   int? key;

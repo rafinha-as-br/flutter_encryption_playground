@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import '../l10n/app_localizations.dart';
+import '../shared/theme/app_theme.dart';
 import 'locale_controller.dart';
 import 'theme_controller.dart';
-import 'theme/app_theme.dart';
 import 'app_routes.dart';
 
 class App extends StatelessWidget {

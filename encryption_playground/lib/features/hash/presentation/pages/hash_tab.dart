@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../app/app_routes.dart';
 import 'hash_about_it.dart';
 import 'hash_try_out.dart';
 
@@ -20,14 +21,14 @@ class HashTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Navigator(
       key: HashNavigationService.instance.navigatorKey,
-      initialRoute: 'try_out',
+      initialRoute: AppRoutes.tryOut,
       onGenerateRoute: (settings){
         Widget page;
         switch(settings.name) {
-          case 'try_out':
+          case AppRoutes.tryOut:
             page = const HashTryOut();
             break;
-          case 'about':
+          case AppRoutes.about:
           page = const HashAboutIt();
           break;
           default:
