@@ -1,11 +1,9 @@
-import 'package:encryption_playground/features/hash/presentation/hash_controller.dart';
-import 'package:encryption_playground/features/hash/presentation/pages/hash_tab.dart';
-import 'package:encryption_playground/features/hash/presentation/widgets/hash_card.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../../../../app/app_routes.dart';
-import '../../../../l10n/app_localizations.dart';
+import '../../../../shared/widgets/responsive_layout_builder.dart';
+import 'hash_try_out_mobile.dart';
+import 'hash_try_out_tablet.dart';
+import 'hash_try_out_desktop.dart';
 
 class HashTryOut extends StatefulWidget {
   const HashTryOut({super.key});
@@ -28,70 +26,51 @@ class _HashTryOutState extends State<HashTryOut> {
   final TextEditingController _sha256BController = TextEditingController();
 
   @override
+  void dispose() {
+    _textAController.dispose();
+    _textBController.dispose();
+    _dartAController.dispose();
+    _dartBController.dispose();
+    _sha1AController.dispose();
+    _sha1BController.dispose();
+    _sha256AController.dispose();
+    _sha256BController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-    return Consumer<HashController>(builder: (context, controller, child) {
-      return Scaffold(
-        appBar: AppBar(
-          title: Text(l10n.hashCodeTryOut),
-          actions: [
-            IconButton(
-                onPressed: () {
-                HashNavigationService.instance.navigatorKey.currentState!.pushNamed(AppRoutes.about);
-                },
-                icon: const Icon(Icons.info_outline))
-          ],
-        ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-
-
-            /* todo: Change the column to Row when it's desktop/web version */
-            child: Column(
-              spacing: 15,
-              children: [
-                HashCard(
-                    title: l10n.inputA,
-                    textController: _textAController,
-                    dartController: _dartAController,
-                    sha1Controller: _sha1AController,
-                    sha256Controller: _sha256AController,
-                    onChanged: (value) {
-                      if (value.isNotEmpty) {
-                        _textBController.text = value;
-
-                        _dartAController.text = controller.generateDartHascode(value);
-                        _dartBController.text = controller.generateDartHascode(value);
-
-                        _sha1AController.text = controller.generateSha1Hascode(value);
-                        _sha1BController.text = controller.generateSha1Hascode(value);
-
-                        _sha256AController.text = controller.generateSha256Hascode(value);
-                        _sha256BController.text = controller.generateSha256Hascode(value);
-                      }
-                    }),
-                HashCard(
-                    title: l10n.inputB,
-                    textController: _textBController,
-                    dartController: _dartBController,
-                    sha1Controller: _sha1BController,
-                    sha256Controller: _sha256BController,
-                    onChanged: (value) {
-                      if (value.isNotEmpty) {
-                        _dartBController.text = controller.generateDartHascode(value);
-                        _sha1BController.text = controller.generateSha1Hascode(value);
-                        _sha256BController.text = controller.generateSha256Hascode(value);
-                      }
-                    }),
-                SizedBox(
-                  height: 20,
-                )
-              ],
-            ),
-          ),
-        ),
-      );
-    });
+    return ResponsiveLayoutBuilder(
+      mobile: HashTryOutMobile(
+        textAController: _textAController,
+        textBController: _textBController,
+        dartAController: _dartAController,
+        dartBController: _dartBController,
+        sha1AController: _sha1AController,
+        sha1BController: _sha1BController,
+        sha256AController: _sha256AController,
+        sha256BController: _sha256BController,
+      ),
+      tablet: HashTryOutTablet(
+        textAController: _textAController,
+        textBController: _textBController,
+        dartAController: _dartAController,
+        dartBController: _dartBController,
+        sha1AController: _sha1AController,
+        sha1BController: _sha1BController,
+        sha256AController: _sha256AController,
+        sha256BController: _sha256BController,
+      ),
+      desktop: HashTryOutDesktop(
+        textAController: _textAController,
+        textBController: _textBController,
+        dartAController: _dartAController,
+        dartBController: _dartBController,
+        sha1AController: _sha1AController,
+        sha1BController: _sha1BController,
+        sha256AController: _sha256AController,
+        sha256BController: _sha256BController,
+      ),
+    );
   }
 }
