@@ -321,5 +321,11 @@ class AppLocalizationsPt extends AppLocalizations {
   String get numbersOnly => 'Por favor, digite apenas números';
 
   @override
+  String get theme => 'Tema';
+
+  @override
+  String get about => 'Sobre';
+
+  @override
   String get localeNameDisplay => 'PT';
 }

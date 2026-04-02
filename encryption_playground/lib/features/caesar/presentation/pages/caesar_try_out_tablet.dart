@@ -32,15 +32,20 @@ class CaesarTryOutTablet extends StatelessWidget {
     return Consumer<CaesarController>(builder: (context, controller, child) {
       return Scaffold(
         appBar: AppBar(
-          title: Text(l10n.caesarTryOut),
+          title: Text(
+            l10n.caesarTryOut,
+            style: const TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+          ),
           actions: [
-            IconButton(
-              icon: const Icon(Icons.info_outline),
+            OutlinedButton.icon(
               onPressed: () {
                 CaesarNavigationService.instance.navigatorKey.currentState
                     ?.pushNamed(AppRoutes.about);
               },
+              icon: const Icon(Icons.info_outline),
+              label: Text(l10n.about),
             ),
+            const SizedBox(width: 24),
           ],
         ),
         body: Center(

@@ -95,5 +95,7 @@
   "invalidInput": "Entrada inválida",
   "lettersOnly": "Por favor, digite apenas letras",
   "numbersOnly": "Por favor, digite apenas números",
+  "theme": "Tema",
+  "about": "Sobre",
   "localeNameDisplay": "PT"
 }

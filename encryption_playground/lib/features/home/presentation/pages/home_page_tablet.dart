@@ -23,9 +23,12 @@ class HomePageTablet extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: Text(l10n.appName),
+        title: Text(
+          l10n.appName,
+          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        ),
         actions: [
-          IconButton(
+          OutlinedButton.icon(
             onPressed: () {
               context.read<ThemeController>().toggleTheme();
             },
@@ -34,8 +37,9 @@ class HomePageTablet extends StatelessWidget {
                   ? Icons.light_mode
                   : Icons.dark_mode,
             ),
+            label: Text(l10n.theme),
           ),
-          const SizedBox(width: 7),
+          const SizedBox(width: 12),
           ElevatedButton(
             onPressed: () {
               context.read<LocaleController>().toggleLocale();
@@ -43,16 +47,17 @@ class HomePageTablet extends StatelessWidget {
             child: Row(
               children: [
                 const Icon(Icons.language),
-                Text(' - ${l10n.localeName}')
+                Text(' - ${l10n.localeNameDisplay}')
               ],
             ),
           ),
-          const SizedBox(width: 7),
+          const SizedBox(width: 24),
         ],
         bottom: TabBar(
           controller: tabController,
           isScrollable: true,
           tabAlignment: TabAlignment.center,
+          labelPadding: const EdgeInsets.symmetric(horizontal: 24),
           tabs: [
             Tab(text: l10n.caesar, icon: const Icon(Icons.security)),
             Tab(text: l10n.diffieHellman, icon: const Icon(Icons.vpn_key)),

@@ -19,19 +19,26 @@ class DiffieHellmanTryOutDesktop extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(l10n.diffieHellmanTryOut),
+        title: Text(
+          l10n.diffieHellmanTryOut,
+          style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+        ),
         actions: [
           IconButton(
             onPressed: () => controller.reset(),
             icon: const Icon(Icons.refresh),
             tooltip: l10n.reset,
           ),
-          IconButton(
+          const SizedBox(width: 8),
+          OutlinedButton.icon(
             onPressed: () {
-              DiffieHellmanNavigationService.instance.navigatorKey.currentState?.pushNamed(AppRoutes.about);
+              DiffieHellmanNavigationService.instance.navigatorKey.currentState
+                  ?.pushNamed(AppRoutes.about);
             },
             icon: const Icon(Icons.info_outline),
-          )
+            label: Text(l10n.about),
+          ),
+          const SizedBox(width: 24),
         ],
       ),
       body: SingleChildScrollView(

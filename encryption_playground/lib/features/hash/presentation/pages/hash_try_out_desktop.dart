@@ -36,14 +36,20 @@ class HashTryOutDesktop extends StatelessWidget {
     return Consumer<HashController>(builder: (context, controller, child) {
       return Scaffold(
         appBar: AppBar(
-          title: Text(l10n.hashCodeTryOut),
+          title: Text(
+            l10n.hashCodeTryOut,
+            style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+          ),
           actions: [
-            IconButton(
-                onPressed: () {
-                  HashNavigationService.instance.navigatorKey.currentState!
-                      .pushNamed(AppRoutes.about);
-                },
-                icon: const Icon(Icons.info_outline))
+            OutlinedButton.icon(
+              onPressed: () {
+                HashNavigationService.instance.navigatorKey.currentState!
+                    .pushNamed(AppRoutes.about);
+              },
+              icon: const Icon(Icons.info_outline),
+              label: Text(l10n.about),
+            ),
+            const SizedBox(width: 24),
           ],
         ),
         body: SingleChildScrollView(

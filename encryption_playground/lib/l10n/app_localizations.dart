@@ -656,6 +656,18 @@ abstract class AppLocalizations {
   /// **'Please enter numbers only'**
   String get numbersOnly;
 
+  /// No description provided for @theme.
+  ///
+  /// In en, this message translates to:
+  /// **'Theme'**
+  String get theme;
+
+  /// No description provided for @about.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get about;
+
   /// No description provided for @localeNameDisplay.
   ///
   /// In en, this message translates to:

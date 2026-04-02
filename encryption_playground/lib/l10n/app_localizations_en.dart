@@ -320,5 +320,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get numbersOnly => 'Please enter numbers only';
 
   @override
+  String get theme => 'Theme';
+
+  @override
+  String get about => 'About';
+
+  @override
   String get localeNameDisplay => 'EN';
 }

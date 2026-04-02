@@ -95,5 +95,7 @@
   "invalidInput": "Invalid input",
   "lettersOnly": "Please enter letters only",
   "numbersOnly": "Please enter numbers only",
+  "theme": "Theme",
+  "about": "About",
   "localeNameDisplay": "EN"
 }
