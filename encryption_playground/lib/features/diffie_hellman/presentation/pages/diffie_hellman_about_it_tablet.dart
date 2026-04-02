@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../l10n/app_localizations.dart';
 
@@ -20,7 +21,7 @@ class DiffieHellmanAboutItTablet extends StatelessWidget {
             title: l10n.whatIsDiffieHellmanTitle,
             content: l10n.whatIsDiffieHellmanContent,
           ),
-          const Divider(),
+          const SizedBox(height: 24),
           _buildSection(
             context,
             title: l10n.originDiffieHellmanTitle,
@@ -119,17 +120,17 @@ class DiffieHellmanAboutItTablet extends StatelessWidget {
       padding: const EdgeInsets.all(12.0),
       margin: const EdgeInsets.symmetric(vertical: 8.0),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surfaceContainerHighest,
-        borderRadius: BorderRadius.circular(8),
+        color: Theme.of(context).colorScheme.surfaceContainerHigh,
+        borderRadius: BorderRadius.circular(2),
         border: Border.all(
-          color: Theme.of(context).colorScheme.outlineVariant,
+          color: Theme.of(context).colorScheme.outlineVariant.withAlpha(38),
         ),
       ),
       child: Text(
         code,
-        style: const TextStyle(
-          fontFamily: 'monospace',
+        style: GoogleFonts.jetBrainsMono(
           fontSize: 14,
+          color: Theme.of(context).colorScheme.primary,
         ),
       ),
     );

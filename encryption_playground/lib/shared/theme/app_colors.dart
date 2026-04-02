@@ -1,88 +1,133 @@
 import 'package:flutter/material.dart';
 
+/// Midnight Terminal Design System — Color Tokens
+///
+/// Dark palette from Stitch "Midnight Terminal" design system.
+/// Light palette is a coherent inverse derivation.
 class AppColors {
-  // DARK THEME (PRIMARY EXPERIENCE)
-  static const Color darkBackgroundPrimary = Color(0xFF0A0F14);
-  static const Color darkBackgroundSecondary = Color(0xFF0F1720);
-  static const Color darkBackgroundTertiary = Color(0xFF131C26);
+  // ──────────────────────────────────────────────
+  // DARK THEME — "The Obsidian Console"
+  // ──────────────────────────────────────────────
 
-  static const Color darkPrimaryMain = Color(0xFF00FF9C);
-  static const Color darkPrimaryDark = Color(0xFF00CC7A);
-  static const Color darkPrimaryLight = Color(0xFF66FFC2);
+  // Surface hierarchy (stacked monolithic plates)
+  static const Color darkSurface = Color(0xFF0A0E14); // The void
+  static const Color darkSurfaceDim = Color(0xFF0A0E14);
+  static const Color darkSurfaceContainerLowest = Color(0xFF000000);
+  static const Color darkSurfaceContainerLow = Color(0xFF0F141A);
+  static const Color darkSurfaceContainer = Color(0xFF151A21); // Primary content regions
+  static const Color darkSurfaceContainerHigh = Color(0xFF1B2028); // Focused interaction zones
+  static const Color darkSurfaceContainerHighest = Color(0xFF20262F);
+  static const Color darkSurfaceBright = Color(0xFF262C36); // Hover states
+  static const Color darkSurfaceVariant = Color(0xFF20262F);
 
-  static const Color darkSecondaryMain = Color(0xFF00D4FF);
-  static const Color darkSecondaryDark = Color(0xFF009FCC);
-  static const Color darkSecondaryLight = Color(0xFF66E6FF);
+  // Primary — Neon Cyan
+  static const Color darkPrimary = Color(0xFFA1FAFF);
+  static const Color darkPrimaryDim = Color(0xFF00E5EE);
+  static const Color darkPrimaryContainer = Color(0xFF00F4FE);
+  static const Color darkOnPrimary = Color(0xFF006165);
+  static const Color darkOnPrimaryContainer = Color(0xFF00575B);
 
-  static const Color darkTertiaryMain = Color(0xFF8B5CF6);
-  static const Color darkTertiaryDark = Color(0xFF6D3ED9);
-  static const Color darkTertiaryLight = Color(0xFFB69CFF);
+  // Secondary — Neon Emerald
+  static const Color darkSecondary = Color(0xFF55FE7E);
+  static const Color darkSecondaryDim = Color(0xFF42EF72);
+  static const Color darkSecondaryContainer = Color(0xFF006E2B);
+  static const Color darkOnSecondary = Color(0xFF005D23);
+  static const Color darkOnSecondaryContainer = Color(0xFFE4FFE1);
 
-  static const Color darkSuccess = Color(0xFF00FF9C);
-  static const Color darkWarning = Color(0xFFFFC857);
-  static const Color darkError = Color(0xFFFF4D6D);
-  static const Color darkInfo = Color(0xFF00D4FF);
+  // Tertiary — Lavender
+  static const Color darkTertiary = Color(0xFFCCA8FF);
+  static const Color darkTertiaryDim = Color(0xFFB48AEF);
+  static const Color darkTertiaryContainer = Color(0xFFC197FE);
+  static const Color darkOnTertiary = Color(0xFF481D7E);
+  static const Color darkOnTertiaryContainer = Color(0xFF3D0E74);
 
-  static const Color darkTextPrimary = Color(0xFFE6EDF3);
-  static const Color darkTextSecondary = Color(0xFF9FB3C8);
-  static const Color darkTextMuted = Color(0xFF5C6F82);
+  // Text / On-Surface
+  static const Color darkOnSurface = Color(0xFFF1F3FC);
+  static const Color darkOnSurfaceVariant = Color(0xFFA8ABB3);
+  static const Color darkOnBackground = Color(0xFFF1F3FC);
 
-  static const Color darkBorderPrimary = Color(0xFF1F2A36);
-  static const Color darkBorderAccent = Color(0xFF00FF9C);
+  // Error
+  static const Color darkError = Color(0xFFFF716C);
+  static const Color darkErrorDim = Color(0xFFD7383B);
+  static const Color darkErrorContainer = Color(0xFF9F0519);
+  static const Color darkOnError = Color(0xFF490006);
+  static const Color darkOnErrorContainer = Color(0xFFFFA8A3);
 
-  static const Color darkButtonPrimaryBg = Color(0xFF00FF9C);
-  static const Color darkButtonPrimaryText = Color(0xFF0A0F14);
+  // Outline / Borders
+  static const Color darkOutline = Color(0xFF72757D);
+  static const Color darkOutlineVariant = Color(0xFF44484F);
 
-  static const Color darkButtonSecondaryBg = Color(0xFF1F2A36);
-  static const Color darkButtonSecondaryText = Color(0xFFE6EDF3);
+  // Inverse
+  static const Color darkInverseSurface = Color(0xFFF8F9FF);
+  static const Color darkInverseOnSurface = Color(0xFF51555C);
+  static const Color darkInversePrimary = Color(0xFF006A6E);
 
-  static const Color darkInputBackground = Color(0xFF0F1720);
-  static const Color darkInputBorder = Color(0xFF1F2A36);
-  static const Color darkInputFocusBorder = Color(0xFF00FF9C);
+  // Surface tint
+  static const Color darkSurfaceTint = Color(0xFFA1FAFF);
 
-  static const Color darkGlowGreen = Color(0xFF00FF9C);
-  static const Color darkGlowBlue = Color(0xFF00D4FF);
-  static const Color darkMatrixGreen = Color(0xFF00FF41);
+  // ──────────────────────────────────────────────
+  // LIGHT THEME — Derived inverse
+  // ──────────────────────────────────────────────
 
-  // LIGHT THEME (ALTERNATIVE EXPERIENCE)
-  static const Color lightBackgroundPrimary = Color(0xFFF4F7FB);
-  static const Color lightBackgroundSecondary = Color(0xFFFFFFFF);
-  static const Color lightBackgroundTertiary = Color(0xFFE9EEF5);
+  // Surface hierarchy
+  static const Color lightSurface = Color(0xFFF8F9FF);
+  static const Color lightSurfaceDim = Color(0xFFE8EAF0);
+  static const Color lightSurfaceContainerLowest = Color(0xFFFFFFFF);
+  static const Color lightSurfaceContainerLow = Color(0xFFF2F3F9);
+  static const Color lightSurfaceContainer = Color(0xFFECEDF3);
+  static const Color lightSurfaceContainerHigh = Color(0xFFE6E8EE);
+  static const Color lightSurfaceContainerHighest = Color(0xFFE0E2E8);
+  static const Color lightSurfaceBright = Color(0xFFF8F9FF);
+  static const Color lightSurfaceVariant = Color(0xFFDFE2EA);
 
-  static const Color lightPrimaryMain = Color(0xFF00B86B);
-  static const Color lightPrimaryDark = Color(0xFF00965A);
-  static const Color lightPrimaryLight = Color(0xFF4DFFB0);
+  // Primary — Toned Cyan for light
+  static const Color lightPrimary = Color(0xFF006A6E);
+  static const Color lightPrimaryContainer = Color(0xFF6FF7FD);
+  static const Color lightOnPrimary = Color(0xFFFFFFFF);
+  static const Color lightOnPrimaryContainer = Color(0xFF002021);
 
-  static const Color lightSecondaryMain = Color(0xFF007BFF);
-  static const Color lightSecondaryDark = Color(0xFF005FCC);
-  static const Color lightSecondaryLight = Color(0xFF66AFFF);
+  // Secondary — Toned Emerald for light
+  static const Color lightSecondary = Color(0xFF006E2B);
+  static const Color lightSecondaryContainer = Color(0xFF7DFC99);
+  static const Color lightOnSecondary = Color(0xFFFFFFFF);
+  static const Color lightOnSecondaryContainer = Color(0xFF002108);
 
-  static const Color lightTertiaryMain = Color(0xFF7C3AED);
-  static const Color lightTertiaryDark = Color(0xFF5B21B6);
-  static const Color lightTertiaryLight = Color(0xFFA78BFA);
+  // Tertiary — Toned Lavender for light
+  static const Color lightTertiary = Color(0xFF6339A0);
+  static const Color lightTertiaryContainer = Color(0xFFE9DDFF);
+  static const Color lightOnTertiary = Color(0xFFFFFFFF);
+  static const Color lightOnTertiaryContainer = Color(0xFF1F0050);
 
-  static const Color lightSuccess = Color(0xFF00B86B);
-  static const Color lightWarning = Color(0xFFFFB020);
-  static const Color lightError = Color(0xFFE53935);
-  static const Color lightInfo = Color(0xFF007BFF);
+  // Text / On-Surface
+  static const Color lightOnSurface = Color(0xFF1A1C22);
+  static const Color lightOnSurfaceVariant = Color(0xFF44484F);
+  static const Color lightOnBackground = Color(0xFF1A1C22);
 
-  static const Color lightTextPrimary = Color(0xFF0A0F14);
-  static const Color lightTextSecondary = Color(0xFF4A5D73);
-  static const Color lightTextMuted = Color(0xFF7A8A9A);
+  // Error
+  static const Color lightError = Color(0xFFBA1A1A);
+  static const Color lightErrorContainer = Color(0xFFFFDAD6);
+  static const Color lightOnError = Color(0xFFFFFFFF);
+  static const Color lightOnErrorContainer = Color(0xFF410002);
 
-  static const Color lightBorderPrimary = Color(0xFFD6E0EB);
-  static const Color lightBorderAccent = Color(0xFF00B86B);
+  // Outline / Borders
+  static const Color lightOutline = Color(0xFF757780);
+  static const Color lightOutlineVariant = Color(0xFFC4C6D0);
 
-  static const Color lightButtonPrimaryBg = Color(0xFF00B86B);
-  static const Color lightButtonPrimaryText = Color(0xFFFFFFFF);
+  // Inverse
+  static const Color lightInverseSurface = Color(0xFF2F3038);
+  static const Color lightInverseOnSurface = Color(0xFFF1F0F7);
+  static const Color lightInversePrimary = Color(0xFF4DDBE2);
 
-  static const Color lightButtonSecondaryBg = Color(0xFFE9EEF5);
-  static const Color lightButtonSecondaryText = Color(0xFF0A0F14);
+  // Surface tint
+  static const Color lightSurfaceTint = Color(0xFF006A6E);
 
-  static const Color lightInputBackground = Color(0xFFFFFFFF);
-  static const Color lightInputBorder = Color(0xFFD6E0EB);
-  static const Color lightInputFocusBorder = Color(0xFF00B86B);
+  // ──────────────────────────────────────────────
+  // AMBIENT GLOW EFFECTS (utility, not theme slots)
+  // ──────────────────────────────────────────────
 
-  static const Color lightGlowGreen = Color(0xFF00B86B);
-  static const Color lightGlowBlue = Color(0xFF007BFF);
+  /// Cyan glow for primary elements: 0px 0px 15px rgba(0, 245, 255, 0.12)
+  static const Color cyanGlow = Color(0x1F00F5FF);
+
+  /// Emerald glow for success/secondary elements: 0px 0px 15px rgba(80, 250, 123, 0.12)
+  static const Color emeraldGlow = Color(0x1F50FA7B);
 }

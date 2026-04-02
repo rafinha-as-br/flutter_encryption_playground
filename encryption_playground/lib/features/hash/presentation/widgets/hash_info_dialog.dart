@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../../../../l10n/app_localizations.dart';
 
@@ -50,45 +51,65 @@ Future<void> showHashInfoDialog({
 }) {
   final info = getHashInfo(context, type);
   final l10n = AppLocalizations.of(context)!;
+  final theme = Theme.of(context);
+  final isDark = theme.brightness == Brightness.dark;
+
   return showDialog(
     context: context,
     builder: (dialogContext) {
-      return Dialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  const Icon(Icons.info_outline),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: Text(
-                      info.title,
-                      style: Theme.of(context).textTheme.titleLarge,
+      return BackdropFilter(
+        filter: isDark
+            ? ImageFilter.blur(sigmaX: 12, sigmaY: 12)
+            : ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+        child: Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(2),
+            side: isDark
+                ? BorderSide(
+                    color: theme.colorScheme.primary.withAlpha(51), // 20% opacity
+                    width: 0.5,
+                  )
+                : BorderSide.none,
+          ),
+          backgroundColor: isDark
+              ? theme.colorScheme.surfaceContainerHighest.withAlpha(200) // ~78% opacity for glass
+              : theme.colorScheme.surfaceContainerHigh,
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Icon(
+                      Icons.info_outline,
+                      color: theme.colorScheme.primary,
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 16),
-              Text(
-                info.description,
-                style: Theme.of(context).textTheme.bodyMedium,
-              ),
-              const SizedBox(height: 24),
-              Align(
-                alignment: Alignment.centerRight,
-                child: TextButton(
-                  onPressed: () => Navigator.of(dialogContext).pop(),
-                  child: Text(l10n.close),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Text(
+                        info.title,
+                        style: theme.textTheme.titleLarge,
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
+                const SizedBox(height: 16),
+                Text(
+                  info.description,
+                  style: theme.textTheme.bodyMedium,
+                ),
+                const SizedBox(height: 24),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: TextButton(
+                    onPressed: () => Navigator.of(dialogContext).pop(),
+                    child: Text(l10n.close),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       );

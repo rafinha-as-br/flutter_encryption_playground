@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../shared/theme/app_colors.dart';
 
 class DiffieHellmanUserContainer extends StatelessWidget {
   final String title;
@@ -13,12 +14,25 @@ class DiffieHellmanUserContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface.withAlpha(50),
-        border: Border.all(color: Theme.of(context).colorScheme.outline),
-        borderRadius: BorderRadius.circular(10),
+        color: theme.colorScheme.surfaceContainer,
+        borderRadius: BorderRadius.circular(2),
+        border: Border.all(
+          color: theme.colorScheme.outlineVariant.withAlpha(38), // ~15% ghost border
+        ),
+        boxShadow: isDark
+            ? [
+                const BoxShadow(
+                  color: AppColors.cyanGlow,
+                  blurRadius: 15,
+                  spreadRadius: 0,
+                ),
+              ]
+            : null,
       ),
       child: Column(
         children: [
@@ -49,6 +63,4 @@ class DiffieHellmanUserContainer extends StatelessWidget {
       ],
     );
   }
-
-
 }

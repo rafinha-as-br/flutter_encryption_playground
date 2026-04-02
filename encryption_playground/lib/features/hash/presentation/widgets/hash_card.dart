@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../../../shared/theme/app_colors.dart';
 import 'hash_info_dialog.dart';
 
 class HashCard extends StatelessWidget {
@@ -23,20 +25,36 @@ class HashCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+
     return Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface.withAlpha(50),
-        border: Border.all(color: Theme.of(context).colorScheme.outline),
-        borderRadius: BorderRadius.circular(10),
+        color: theme.colorScheme.surfaceContainer,
+        borderRadius: BorderRadius.circular(2),
+        border: Border.all(
+          color: theme.colorScheme.outlineVariant.withAlpha(38), // ~15% opacity ghost border
+        ),
+        boxShadow: isDark
+            ? [
+                const BoxShadow(
+                  color: AppColors.cyanGlow,
+                  blurRadius: 15,
+                  spreadRadius: 0,
+                ),
+              ]
+            : null,
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
         child: Column(
-          spacing: 9,
+          spacing: 12,
           children: [
             Text(
               title,
-              style: Theme.of(context).textTheme.titleLarge,
+              style: theme.textTheme.titleLarge?.copyWith(
+                color: theme.colorScheme.primary,
+              ),
             ),
 
             /// input text field
@@ -46,82 +64,84 @@ class HashCard extends StatelessWidget {
                   child: TextField(
                     controller: textController,
                     onChanged: onChanged,
+                    style: GoogleFonts.jetBrainsMono(
+                      fontSize: 14,
+                      color: theme.colorScheme.onSurface,
+                    ),
                     decoration: InputDecoration(
                       hintText: l10n.enterText,
                     ),
                   ),
                 ),
                 IconButton(
-                  onPressed: () => showHashInfoDialog(context: context, type: HashType.input),
-                  icon: const Icon(Icons.question_mark),
+                  onPressed: () =>
+                      showHashInfoDialog(context: context, type: HashType.input),
+                  icon: const Icon(Icons.question_mark, size: 18),
                 )
               ],
             ),
 
-            Divider(
-              color: Theme.of(context).colorScheme.outline,
-              thickness: 1.5,
-            ),
+            /// Separator via background color shift
+            const SizedBox(height: 4),
 
             /// Dart hashcode
-            Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    controller: dartController,
-                    decoration: InputDecoration(
-                      hintText: l10n.dartHashCode,
-                    ),
-                    enabled: false,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () => showHashInfoDialog(context: context, type: HashType.dart),
-                  icon: const Icon(Icons.question_mark),
-                )
-              ],
+            _buildHashOutput(
+              context: context,
+              controller: dartController,
+              hintText: l10n.dartHashCode,
+              hashType: HashType.dart,
             ),
 
             /// sha-1 hashcode
-            Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    controller: sha1Controller,
-                    decoration: InputDecoration(
-                      hintText: l10n.sha1HashCode,
-                    ),
-                    enabled: false,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () => showHashInfoDialog(context: context, type: HashType.sha1),
-                  icon: const Icon(Icons.question_mark),
-                )
-              ],
+            _buildHashOutput(
+              context: context,
+              controller: sha1Controller,
+              hintText: l10n.sha1HashCode,
+              hashType: HashType.sha1,
             ),
 
             /// sha256 hashcode
-            Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    controller: sha256Controller,
-                    decoration: InputDecoration(
-                      hintText: l10n.sha256HashCode,
-                    ),
-                    enabled: false,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () => showHashInfoDialog(context: context, type: HashType.sha256),
-                  icon: const Icon(Icons.question_mark),
-                )
-              ],
+            _buildHashOutput(
+              context: context,
+              controller: sha256Controller,
+              hintText: l10n.sha256HashCode,
+              hashType: HashType.sha256,
             ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildHashOutput({
+    required BuildContext context,
+    required TextEditingController controller,
+    required String hintText,
+    required HashType hashType,
+  }) {
+    final theme = Theme.of(context);
+    return Row(
+      children: [
+        Expanded(
+          child: TextField(
+            controller: controller,
+            style: GoogleFonts.jetBrainsMono(
+              fontSize: 13,
+              color: theme.colorScheme.onSurface.withAlpha(180),
+            ),
+            decoration: InputDecoration(
+              hintText: hintText,
+              fillColor: theme.colorScheme.surfaceContainerHigh,
+            ),
+            enabled: false,
+          ),
+        ),
+        IconButton(
+          onPressed: () =>
+              showHashInfoDialog(context: context, type: hashType),
+          icon: const Icon(Icons.question_mark, size: 18),
+        )
+      ],
     );
   }
 }

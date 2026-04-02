@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class DiffieHellmanField extends StatelessWidget {
   final TextEditingController controller;
@@ -51,8 +52,8 @@ class DiffieHellmanField extends StatelessWidget {
           keyboardType: TextInputType.number,
           onChanged: onChanged,
           inputFormatters: inputFormatters,
-          style: TextStyle(
-            fontSize: isPrimary ? null : 14.0,
+          style: GoogleFonts.jetBrainsMono(
+            fontSize: isPrimary ? 15.0 : 14.0,
             fontWeight: isPrimary || isSecret ? FontWeight.bold : FontWeight.normal,
             color: enabled
                 ? theme.colorScheme.onSurface
@@ -60,7 +61,10 @@ class DiffieHellmanField extends StatelessWidget {
           ),
           decoration: InputDecoration(
             prefixIcon: Icon(icon, color: color, size: 20),
-            filled: !enabled,
+            filled: true,
+            fillColor: enabled
+                ? theme.colorScheme.surfaceContainer
+                : theme.colorScheme.surfaceContainerHigh,
             contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
           ),
         ),
