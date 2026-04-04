@@ -30,6 +30,14 @@ class HomePageDesktop extends StatelessWidget {
         actions: [
           OutlinedButton.icon(
             onPressed: () {
+              Navigator.pushNamed(context, '/about');
+            },
+            icon: const Icon(Icons.info_outline),
+            label: const Text('About'),
+          ),
+          const SizedBox(width: 12),
+          OutlinedButton.icon(
+            onPressed: () {
               context.read<ThemeController>().toggleTheme();
             },
             icon: Icon(

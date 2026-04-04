@@ -27,6 +27,13 @@ class HomePageMobile extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
+              Navigator.pushNamed(context, '/about');
+            },
+            icon: const Icon(Icons.info_outline),
+            tooltip: 'About the Project',
+          ),
+          IconButton(
+            onPressed: () {
               context.read<ThemeController>().toggleTheme();
             },
             icon: Icon(
