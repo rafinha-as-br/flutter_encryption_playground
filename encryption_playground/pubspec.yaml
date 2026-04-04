@@ -40,6 +40,7 @@ dependencies:
   provider: ^6.1.5+1
   crypto: ^3.0.7
   google_fonts: ^8.0.2
+  url_launcher: ^6.2.5
 
 dev_dependencies:
   flutter_test:
@@ -108,13 +109,17 @@ flutter_launcher_icons:
   web:
     generate: true
     image_path: "assets/logo_small.png"
-    backgroundColor: "#ffffff"
-    themeColor: "#ffffff"
-
+    backgroundColor: "#0A0E14"
+    themeColor: "#0A0E14"
+  android_12: 
+    color: "#0A0E14"
+    image: "assets/logo_small.png"
 flutter_native_splash:
   color: "#0A0E14"
   color_dark: "#0A0E14"
-  image: "assets/logo_full.png"
+  image: "assets/logo_small.png"
+  android_12:
+    color: "#0A0E14"
   android: true
   ios: true
   web: true
