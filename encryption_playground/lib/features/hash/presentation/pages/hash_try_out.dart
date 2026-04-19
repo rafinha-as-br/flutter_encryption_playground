@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../../../shared/widgets/responsive_layout_builder.dart';
-import 'hash_try_out_mobile.dart';
-import 'hash_try_out_tablet.dart';
-import 'hash_try_out_desktop.dart';
+import 'try_out_pages/hash_try_out_mobile.dart';
+import 'try_out_pages/hash_try_out_tablet.dart';
+import 'try_out_pages/hash_try_out_desktop.dart';
 
 class HashTryOut extends StatefulWidget {
   const HashTryOut({super.key});

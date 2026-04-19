@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../app/app_routes.dart';
-import '../../../../l10n/app_localizations.dart';
-import '../widgets/diffie_hellman_global_parameters_section.dart';
-import '../widgets/diffie_hellman_user_section.dart';
-import 'diffie_hellman_tab.dart';
-import '../diffie_hellman_controller.dart';
+import '../../../../../app/app_routes.dart';
+import '../../../../../l10n/app_localizations.dart';
+import '../../widgets/diffie_hellman_global_parameters_section.dart';
+import '../../widgets/diffie_hellman_user_section.dart';
+import '../diffie_hellman_tab.dart';
+import '../../diffie_hellman_controller.dart';
 
 class DiffieHellmanTryOutMobile extends StatelessWidget {
   const DiffieHellmanTryOutMobile({super.key});
@@ -35,7 +35,7 @@ class DiffieHellmanTryOutMobile extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [

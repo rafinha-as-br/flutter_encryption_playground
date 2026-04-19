@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../app/app_routes.dart';
-import '../../../../l10n/app_localizations.dart';
-import '../hash_controller.dart';
-import '../widgets/hash_card.dart';
-import 'hash_tab.dart';
+import '../../../../../app/app_routes.dart';
+import '../../../../../l10n/app_localizations.dart';
+import '../../hash_controller.dart';
+import '../../widgets/hash_card.dart';
+import '../hash_tab.dart';
 
 class HashTryOutMobile extends StatelessWidget {
   final TextEditingController textAController;
@@ -47,7 +47,7 @@ class HashTryOutMobile extends StatelessWidget {
         ),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 23, vertical: 20),
             child: Column(
               spacing: 15,
               children: [
