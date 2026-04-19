@@ -24,9 +24,7 @@ jobs:
 
       - name: Clone Flutter
         run: |
-          if [ ! -d "flutter" ]; then
-            git clone https://github.com/flutter/flutter.git --depth 1
-          fi
+          git clone https://github.com/flutter/flutter.git --depth 1 -b 3.41.7
 
       - name: Set PATH
         run: echo "$PWD/flutter/bin" >> $GITHUB_PATH
