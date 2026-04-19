@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../app/app_routes.dart';
-import '../../../../app/app_layout_config.dart';
-import '../../../../l10n/app_localizations.dart';
-import '../hash_controller.dart';
-import '../widgets/hash_card.dart';
-import 'hash_tab.dart';
+import '../../../../../app/app_routes.dart';
+import '../../../../../app/app_layout_config.dart';
+import '../../../../../l10n/app_localizations.dart';
+import '../../hash_controller.dart';
+import '../../widgets/hash_card.dart';
+import '../hash_tab.dart';
 
 class HashTryOutDesktop extends StatelessWidget {
   final TextEditingController textAController;
@@ -38,7 +38,7 @@ class HashTryOutDesktop extends StatelessWidget {
         appBar: AppBar(
           title: Text(
             l10n.hashCodeTryOut,
-            style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
           ),
           actions: [
             OutlinedButton.icon(

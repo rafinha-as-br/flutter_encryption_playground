@@ -1,11 +1,11 @@
+import 'package:encryption_playground/features/caesar/presentation/pages/try_out_pages/caesar_try_out_tablet.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../../shared/widgets/responsive_layout_builder.dart';
 import '../caesar_controller.dart';
 
-import 'caesar_try_out_mobile.dart';
-import 'caesar_try_out_tablet.dart';
-import 'caesar_try_out_desktop.dart';
+import 'try_out_pages/caesar_try_out_mobile.dart';
+import 'try_out_pages/caesar_try_out_desktop.dart';
 
 class CaesarTryOutScreen extends StatefulWidget {
   const CaesarTryOutScreen({super.key});
