@@ -75,10 +75,15 @@ jobs:
             --environment=production \
             --token=${{ secrets.VERCEL_TOKEN }}
 
+      - name: Set Vercel project config
+        run: |
+          mkdir -p encryption_playground/build/web/.vercel
+          echo '{"orgId":"'"${{ secrets.VERCEL_ORG_ID }}"'","projectId":"'"${{ secrets.VERCEL_PROJECT_ID }}"'"}' > encryption_playground/build/web/.vercel/project.json
+
       # 🚀 Deploy (FORMA CORRETA)
       - name: Deploy to Vercel
         run: |
           cd encryption_playground/build/web
-          vercel deploy --prebuilt \
-            --prod \
-            --token=${{ secrets.VERCEL_TOKEN }}
+          vercel --prod \
+            --token=${{ secrets.VERCEL_TOKEN }} \
+            --yes
