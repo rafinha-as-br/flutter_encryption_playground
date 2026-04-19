@@ -11,35 +11,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 📥 Checkout do código
+      # 📥 Checkout
       - name: Checkout
         uses: actions/checkout@v4
 
-      # ⚡ Cache apenas dependências (seguro)
+      # ⚡ Cache dependências
       - name: Cache pub
         uses: actions/cache@v4
         with:
           path: ~/.pub-cache
           key: pub-${{ runner.os }}-${{ hashFiles('encryption_playground/pubspec.lock') }}
 
-      # 📦 Instala Flutter (versão fixa)
+      # 📦 Flutter fixo
       - name: Setup Flutter
-        run: |
-          git clone https://github.com/flutter/flutter.git --depth 1 -b 3.41.7
+        run: git clone https://github.com/flutter/flutter.git --depth 1 -b 3.41.7
 
       # 🔧 PATH
       - name: Set PATH
         run: echo "$PWD/flutter/bin" >> $GITHUB_PATH
 
-      # 🔍 Diagnóstico
+      # 🔍 Debug
       - name: Flutter Doctor
         run: flutter doctor -v
 
-      # 🌐 Web enable
+      # 🌐 Web
       - name: Enable Web
         run: flutter config --enable-web
 
-      # 📥 Baixar artefatos web
       - name: Precache Web
         run: flutter precache --web
 
@@ -53,32 +51,34 @@ jobs:
         working-directory: encryption_playground
         run: flutter build web --release
 
-      # ✅ Garantir que build existe
-      - name: Verify build output
+      # ✅ Verificação
+      - name: Verify build
         run: |
           if [ ! -f encryption_playground/build/web/index.html ]; then
-            echo "Erro: build/web não foi gerado corretamente"
+            echo "Erro: build não gerado"
             exit 1
           fi
 
-      # 📄 Copiar vercel.json para o build
-      - name: Copy Vercel config
+      # 📄 Copiar config
+      - name: Copy vercel.json
         run: cp vercel.json encryption_playground/build/web/
 
-      # 🔗 Linkar projeto Vercel (ESSENCIAL)
-      - name: Link Vercel Project
+      # 📦 Instalar CLI
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
+      # 🔗 Pull config da Vercel
+      - name: Pull Vercel config
         run: |
           cd encryption_playground/build/web
-          vercel link --yes \
-            --token=${{ secrets.VERCEL_TOKEN }} \
-            --scope=${{ secrets.VERCEL_ORG_ID }} \
-            --project=${{ secrets.VERCEL_PROJECT_ID }}
+          vercel pull --yes \
+            --environment=production \
+            --token=${{ secrets.VERCEL_TOKEN }}
 
-      # 🚀 Deploy
+      # 🚀 Deploy (FORMA CORRETA)
       - name: Deploy to Vercel
         run: |
           cd encryption_playground/build/web
-          vercel --prod \
-            --token=${{ secrets.VERCEL_TOKEN }} \
-            --scope=${{ secrets.VERCEL_ORG_ID }} \
-            --yes
+          vercel deploy --prebuilt \
+            --prod \
+            --token=${{ secrets.VERCEL_TOKEN }}
