@@ -11,40 +11,66 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 📥 Checkout
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Cache Flutter
+      # ⚡ Cache apenas dependências (NÃO o Flutter)
+      - name: Cache pub
         uses: actions/cache@v4
         with:
-          path: |
-            ~/.pub-cache
-            flutter
-          key: flutter-${{ runner.os }}-${{ hashFiles('encryption_playground/pubspec.lock') }}
+          path: ~/.pub-cache
+          key: pub-${{ runner.os }}-${{ hashFiles('encryption_playground/pubspec.lock') }}
 
-      - name: Clone Flutter
+      # 📦 Instalar Flutter (versão fixa)
+      - name: Setup Flutter
         run: |
           git clone https://github.com/flutter/flutter.git --depth 1 -b 3.41.7
 
+      # 🔧 PATH
       - name: Set PATH
         run: echo "$PWD/flutter/bin" >> $GITHUB_PATH
 
+      # 🔍 Diagnóstico (IMPORTANTE)
+      - name: Flutter Doctor
+        run: flutter doctor -v
+
+      # 🌐 Habilitar Web
       - name: Enable Web
         run: flutter config --enable-web
 
+      # 📥 Baixar artefatos web
+      - name: Precache Web
+        run: flutter precache --web
+
+      # 📦 Dependências
       - name: Install dependencies
         working-directory: encryption_playground
         run: flutter pub get
 
+      # 🏗️ Build
       - name: Build Flutter Web
         working-directory: encryption_playground
         run: flutter build web --release
 
+      # ✅ Verificação crítica
+      - name: Verify build output
+        run: |
+          if [ ! -f encryption_playground/build/web/index.html ]; then
+            echo "Build web falhou: index.html não encontrado"
+            exit 1
+          fi
+
+      # 📄 Copiar config da Vercel
       - name: Copy Vercel config
         run: cp vercel.json encryption_playground/build/web/
 
+      # 🚀 Instalar CLI
       - name: Install Vercel CLI
         run: npm install -g vercel
 
+      # 🚀 Deploy
       - name: Deploy to Vercel
-        run: vercel encryption_playground/build/web --prod --token=${{ secrets.VERCEL_TOKEN }} --confirm
+        run: |
+          cd encryption_playground/build/web
+          vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --yes
