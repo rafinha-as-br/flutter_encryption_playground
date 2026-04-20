@@ -1,4 +1,4 @@
-# flutter_encryption_playground
+# Encryption Playground
 
 # Overview
 
@@ -54,7 +54,7 @@ The project leverages modern Flutter development patterns and libraries:
 - **Architecture**: Follows **Feature-First** and **Clean Architecture** patterns, separating the codebase into Domain and Presentation layers.
 - **Domain Logic**: Use of **Use Cases** to encapsulate business rules and encryption algorithms, promoting testability and reusability.
 - **Internationalization (i18n)**: Utilizes `flutter_localizations` and ARB files for multi-language support.
-- **Theme Management**: centralized `ThemeData` configuration consuming custom [AppColors](file:///c:/Users/rafin/Desktop/projects/flutter_encryption_playground/encryption_playground/lib/app/theme/app_colors.dart#3-89) tokens for consistent styling across brightness modes.
+- **Theme Management**: centralized `ThemeData` configuration consuming custom [AppColors](lib/app/theme/app_colors.dart) tokens for consistent styling across brightness modes.
 - **Navigation**: Structured using **Navigator 1.0** with feature-scoped **Navigation Services** to decouple UI from routing logic.
 - **Dependency Injection**: Basic dependency management via Provider and bootstrap injectors.
 - **Input Handling**: Robust handling of hardware and software keyboards with form validation and real-time text processing.
@@ -74,16 +74,16 @@ lib/
 
 # How to Run
 
-You can acess the vercel website: https://flutter-encryption-playground.vercel.app/.
+You can acess the vercel website: [https://flutter-encryption-playground.vercel.app/](https://flutter-encryption-playground.vercel.app/).
 Or you can clone into your remote and test on a mobile emulator. 
 
 # Screenshots
 
-![image.png](attachment:23f77a73-78b4-4a42-936f-2894090ca8ab:image.png)
+![image.png](/docs/images/image%201.png)
 
-![image.png](attachment:dfe8caaf-0b13-4c31-81df-3c8a828a1eed:image.png)
+![image.png](/docs/images/image%202.png)
 
-![image.png](attachment:9a3f51ca-6663-4880-b0cf-261c295b1217:image.png)
+![image.png](/docs/images/image%203.png)    
 
 # Future Improvements
 
