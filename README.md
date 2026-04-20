@@ -1,6 +1,4 @@
-# Encryption Playground
-
-# Overview
+# Encryption Playground - Overview
 
 Encryption Playground is an educational Flutter application designed to demonstrate fundamental cryptographic concepts through interactive experiences. It provides users with a hands-on laboratory to experiment with historical and modern encryption algorithms.
 
