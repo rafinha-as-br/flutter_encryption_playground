@@ -1,1 +1,77 @@
+# ========================
+# OS / Sistema
+# ========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ========================
+# Logs
+# ========================
+*.log
+
+# ========================
+# IDEs
+# ========================
+.idea/
+*.iml
+*.ipr
+*.iws
+
+.vscode/
+
+# ========================
+# Flutter / Dart
+# ========================
+.dart_tool/
+.packages
+.flutter-plugins-dependencies
+.pub/
+.pub-cache/
+
+# Build outputs
+build/
+**/build/
+
+# Coverage
+coverage/
+lcov.info
+
+# Docs
+**/doc/api/
+
+# iOS
+**/ios/Flutter/.last_build_id
+
+# Android build outputs
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# ========================
+# Security / Env
+# ========================
+.env
+.env.*
+
+# ========================
+# Obfuscation / Symbols
+# ========================
+app.*.symbols
+app.*.map.json
+
+# ========================
+# Misc
+# ========================
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# ========================
+# Personal
+# ========================
 contexts/
