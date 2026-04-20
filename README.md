@@ -79,11 +79,11 @@ Or you can clone into your remote and test on a mobile emulator.
 
 # Screenshots
 
+![image.png](/docs/images/image.png)
+
 ![image.png](/docs/images/image%201.png)
 
-![image.png](/docs/images/image%202.png)
-
-![image.png](/docs/images/image%203.png)    
+![image.png](/docs/images/image%202.png)    
 
 # Future Improvements
 
