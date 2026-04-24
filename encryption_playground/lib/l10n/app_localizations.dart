@@ -673,6 +673,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'EN'**
   String get localeNameDisplay;
+
+  /// No description provided for @randomlyGenerated.
+  ///
+  /// In en, this message translates to:
+  /// **'Randomly generated number'**
+  String get randomlyGenerated;
 }
 
 class _AppLocalizationsDelegate

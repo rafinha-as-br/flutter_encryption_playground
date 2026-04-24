@@ -97,5 +97,6 @@
   "numbersOnly": "Por favor, digite apenas números",
   "theme": "Tema",
   "about": "Sobre",
-  "localeNameDisplay": "PT"
+  "localeNameDisplay": "PT",
+  "randomlyGenerated": "Número gerado aleatoriamente"
 }

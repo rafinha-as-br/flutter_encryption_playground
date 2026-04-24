@@ -39,13 +39,13 @@ class DiffieHellmanTryOutMobile extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              /// users section
-              DiffieHellmanUserSection(),
+              /// global parameters
+              const DiffieHellmanGlobalParametersSection(),
 
               const SizedBox(height: 32),
 
-              /// global parameters
-              DiffieHellmanGlobalParametersSection(),
+              /// users section
+              const DiffieHellmanUserSection(),
 
             ],
           ),

@@ -327,4 +327,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get localeNameDisplay => 'EN';
+
+  @override
+  String get randomlyGenerated => 'Randomly generated number';
 }

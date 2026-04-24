@@ -51,11 +51,6 @@ class DiffieHellmanTryOutTablet extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
                 child: Column(
                   children: [
-                    /// users section
-                    const DiffieHellmanUserSection(),
-
-                    const SizedBox(height: 32),
-
                     /// global parameters centered and constrained
                     Center(
                       child: ConstrainedBox(
@@ -63,6 +58,11 @@ class DiffieHellmanTryOutTablet extends StatelessWidget {
                         child: const DiffieHellmanGlobalParametersSection(),
                       ),
                     ),
+
+                    const SizedBox(height: 32),
+
+                    /// users section
+                    const DiffieHellmanUserSection(),
                   ],
                 ),
               ),

@@ -97,5 +97,6 @@
   "numbersOnly": "Please enter numbers only",
   "theme": "Theme",
   "about": "About",
-  "localeNameDisplay": "EN"
+  "localeNameDisplay": "EN",
+  "randomlyGenerated": "Randomly generated number"
 }

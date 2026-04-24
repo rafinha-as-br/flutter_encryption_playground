@@ -11,6 +11,7 @@ class DiffieHellmanField extends StatelessWidget {
   final bool isPrimary;
   final bool isSecret;
   final List<TextInputFormatter>? inputFormatters;
+  final String? helperText;
 
   const DiffieHellmanField({
     super.key,
@@ -22,6 +23,7 @@ class DiffieHellmanField extends StatelessWidget {
     this.isPrimary = false,
     this.isSecret = false,
     this.inputFormatters,
+    this.helperText,
   });
 
   @override
@@ -62,12 +64,21 @@ class DiffieHellmanField extends StatelessWidget {
           decoration: InputDecoration(
             prefixIcon: Icon(icon, color: color, size: 20),
             filled: true,
-            fillColor: enabled
-                ? theme.colorScheme.surfaceContainer
-                : theme.colorScheme.surfaceContainerHigh,
+            fillColor: theme.colorScheme.surfaceContainerHigh,
             contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
           ),
         ),
+        if (helperText != null)
+          Padding(
+            padding: const EdgeInsets.only(left: 4, top: 4),
+            child: Text(
+              helperText!,
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
+                fontSize: 11,
+              ),
+            ),
+          ),
       ],
     );
   }
