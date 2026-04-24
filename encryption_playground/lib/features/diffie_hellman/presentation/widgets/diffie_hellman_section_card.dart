@@ -1,42 +1,34 @@
 import 'package:flutter/material.dart';
-import '../../../../shared/theme/app_colors.dart';
 
-class DiffieHellmanUserContainer extends StatelessWidget {
+class DiffieHellmanSectionCard extends StatelessWidget {
   final String title;
   final List<Widget> children;
+  final IconData icon;
 
-  const DiffieHellmanUserContainer({
+  const DiffieHellmanSectionCard({
     super.key,
     required this.title,
     required this.children,
+    this.icon = Icons.person,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
 
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: theme.colorScheme.surfaceContainer,
-        borderRadius: BorderRadius.circular(2),
+        borderRadius: BorderRadius.circular(12), // Increased from 2 for a more modern feel
         border: Border.all(
-          color: theme.colorScheme.outlineVariant.withAlpha(38), // ~15% ghost border
+          color: theme.colorScheme.outlineVariant.withAlpha(38),
         ),
-        boxShadow: isDark
-            ? [
-                const BoxShadow(
-                  color: AppColors.cyanGlow,
-                  blurRadius: 15,
-                  spreadRadius: 0,
-                ),
-              ]
-            : null,
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          _buildTitle(theme),
+          _buildHeader(theme),
           const SizedBox(height: 16),
           ...children.map((child) => Padding(
                 padding: const EdgeInsets.only(bottom: 12),
@@ -47,11 +39,11 @@ class DiffieHellmanUserContainer extends StatelessWidget {
     );
   }
 
-  Widget _buildTitle(ThemeData theme) {
+  Widget _buildHeader(ThemeData theme) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(Icons.person, size: 48, color: theme.colorScheme.primary),
+        Icon(icon, size: 40, color: theme.colorScheme.primary),
         const SizedBox(height: 8),
         Text(
           title,

@@ -328,4 +328,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get localeNameDisplay => 'PT';
+
+  @override
+  String get randomlyGenerated => 'Número gerado aleatoriamente';
 }

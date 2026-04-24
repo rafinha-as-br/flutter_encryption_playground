@@ -82,6 +82,7 @@ class DiffieHellmanController extends ChangeNotifier {
     _p = null;
     _g = null;
     _resetKeys();
+    _resetControllersTexts();
     notifyListeners();
   }
 
@@ -92,6 +93,19 @@ class DiffieHellmanController extends ChangeNotifier {
     userBPublicKey = null;
     sharedSecretA = null;
     sharedSecretB = null;
+  }
+
+  void _resetControllersTexts(){
+    userAPrivateKeyController.text = '';
+    userBPrivateKeyController.text = '';
+
+    userAPublicKeyController.text = '';
+    userBPublicKeyController.text = '';
+    sharedSecretAController.text = '';
+    sharedSecretBController.text = '';
+
+    gController.text = '';
+    pController.text = '';
   }
 
   int _generatePrivateKey() {
