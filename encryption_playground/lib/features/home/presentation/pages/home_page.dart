@@ -11,41 +11,37 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
-  late TabController _tabController;
+class _HomePageState extends State<HomePage> {
+  final GlobalKey<NavigatorState> _contentNavigatorKey = GlobalKey<NavigatorState>();
+  String _currentRoute = '/dashboard';
 
-  final List<GlobalKey<NavigatorState>> _navigatorKeys = [
-    GlobalKey<NavigatorState>(),
-    GlobalKey<NavigatorState>(),
-    GlobalKey<NavigatorState>(),
-  ];
+  void _onNavigate(String route) {
+    if (_currentRoute == route) return;
 
-  @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(length: 3, vsync: this);
-  }
+    setState(() {
+      _currentRoute = route;
+    });
 
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
+    _contentNavigatorKey.currentState?.pushReplacementNamed(route);
   }
 
   @override
   Widget build(BuildContext context) {
     return ResponsiveLayoutBuilder(
       mobile: HomePageMobile(
-        tabController: _tabController,
-        navigatorKeys: _navigatorKeys,
+        currentRoute: _currentRoute,
+        onNavigate: _onNavigate,
+        contentNavigatorKey: _contentNavigatorKey,
       ),
       tablet: HomePageTablet(
-        tabController: _tabController,
-        navigatorKeys: _navigatorKeys,
+        currentRoute: _currentRoute,
+        onNavigate: _onNavigate,
+        contentNavigatorKey: _contentNavigatorKey,
       ),
       desktop: HomePageDesktop(
-        tabController: _tabController,
-        navigatorKeys: _navigatorKeys,
+        currentRoute: _currentRoute,
+        onNavigate: _onNavigate,
+        contentNavigatorKey: _contentNavigatorKey,
       ),
     );
   }

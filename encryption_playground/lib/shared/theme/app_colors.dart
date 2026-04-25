@@ -10,8 +10,8 @@ class AppColors {
   // ──────────────────────────────────────────────
 
   // Surface hierarchy (stacked monolithic plates)
-  static const Color darkSurface = Color(0xFF0A0E14); // The void
-  static const Color darkSurfaceDim = Color(0xFF0A0E14);
+  static const Color darkSurface = Color(0xFF080F11); // The void
+  static const Color darkSurfaceDim = Color(0xFF080F11);
   static const Color darkSurfaceContainerLowest = Color(0xFF000000);
   static const Color darkSurfaceContainerLow = Color(0xFF0F141A);
   static const Color darkSurfaceContainer = Color(0xFF151A21); // Primary content regions
@@ -130,4 +130,13 @@ class AppColors {
 
   /// Emerald glow for success/secondary elements: 0px 0px 15px rgba(80, 250, 123, 0.12)
   static const Color emeraldGlow = Color(0x1F50FA7B);
+
+  // ──────────────────────────────────────────────
+  // SIDE MENU TOKENS
+  // ──────────────────────────────────────────────
+  static const Color sideMenuBackground = Color(0xFF080F11);
+  static const Color sideMenuTextInactive = Color(0xFF94A3B8);
+  static const Color sideMenuTextActive = Color(0xFF00E5FF);
+  static const Color sideMenuHoverBackground = Color(0x0DFFFFFF); // rgba(255,255,255,0.05)
+  static const Color sideMenuActiveBackground = Color(0x1A00E5FF); // rgba(0,229,255,0.1)
 }

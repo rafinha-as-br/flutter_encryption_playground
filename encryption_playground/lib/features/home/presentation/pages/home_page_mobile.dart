@@ -1,90 +1,82 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../../../../app/locale_controller.dart';
-import '../../../../app/theme_controller.dart';
-import '../../../../l10n/app_localizations.dart';
+import 'dashboard_page.dart';
+import 'cipher_suite_selection_page.dart';
+import 'symmetric_suite_selection_page.dart';
+import 'asymmetric_suite_selection_page.dart';
+import '../../../hash/presentation/pages/hash_tab.dart';
 import '../../../caesar/presentation/pages/caesar_tab.dart';
 import '../../../diffie_hellman/presentation/pages/diffie_hellman_tab.dart';
-import '../../../hash/presentation/pages/hash_tab.dart';
+import '../widgets/side_menu.dart';
 
 class HomePageMobile extends StatelessWidget {
-  final TabController tabController;
-  final List<GlobalKey<NavigatorState>> navigatorKeys;
+  final String currentRoute;
+  final ValueChanged<String> onNavigate;
+  final GlobalKey<NavigatorState> contentNavigatorKey;
 
   const HomePageMobile({
     super.key,
-    required this.tabController,
-    required this.navigatorKeys,
+    required this.currentRoute,
+    required this.onNavigate,
+    required this.contentNavigatorKey,
   });
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: Text(l10n.appName),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/about');
-            },
-            icon: const Icon(Icons.info_outline),
-            tooltip: 'About the Project',
-          ),
-          IconButton(
-            onPressed: () {
-              context.read<ThemeController>().toggleTheme();
-            },
-            icon: Icon(
-              context.watch<ThemeController>().isDarkMode
-                  ? Icons.light_mode
-                  : Icons.dark_mode,
-            ),
-          ),
-          const SizedBox(width: 7),
-          ElevatedButton(
-            onPressed: () {
-              context.read<LocaleController>().toggleLocale();
-            },
-            child: Row(
-              children: [
-                const Icon(Icons.language),
-                Text(' - ${l10n.localeName}')
-              ],
-            ),
-          ),
-          const SizedBox(width: 7),
-        ],
-        bottom: TabBar(
-          controller: tabController,
-          tabs: [
-            Tab(text: l10n.caesar, icon: const Icon(Icons.security)),
-            Tab(text: l10n.diffieHellman, icon: const Icon(Icons.vpn_key)),
-            Tab(text: l10n.hash, icon: const Icon(Icons.fingerprint)),
-          ],
+        title: const Text('Encryption Playground'),
+      ),
+      drawer: Drawer(
+        child: SideMenu(
+          currentRoute: currentRoute,
+          onNavigate: (route) {
+            Navigator.pop(context); // Close the drawer
+            onNavigate(route);
+          },
         ),
       ),
-      body: TabBarView(
-        controller: tabController,
-        physics: const NeverScrollableScrollPhysics(), // Disable swipe to avoid navigator conflicts
-        children: [
-          _buildTab(0, const CaesarTab()),
-          _buildTab(1, const DiffieHellmanTab()),
-          _buildTab(2, const HashTab()),
-        ],
+      body: Navigator(
+        key: contentNavigatorKey,
+        initialRoute: '/dashboard',
+        onGenerateRoute: _onGenerateRoute,
       ),
     );
   }
 
-  Widget _buildTab(int index, Widget rootPage) {
-    return Navigator(
-      key: navigatorKeys[index],
-      onGenerateRoute: (settings) {
-        return MaterialPageRoute(
-          builder: (context) => rootPage,
-        );
+  Route _onGenerateRoute(RouteSettings settings) {
+    WidgetBuilder builder;
+    switch (settings.name) {
+      case '/dashboard':
+        builder = (context) => DashboardPage(contentNavigatorKey: contentNavigatorKey);
+        break;
+      case '/ciphers':
+        builder = (context) => CipherSuiteSelectionPage(contentNavigatorKey: contentNavigatorKey);
+        break;
+      case '/symmetric':
+        builder = (context) => SymmetricSuiteSelectionPage(contentNavigatorKey: contentNavigatorKey);
+        break;
+      case '/asymmetric':
+        builder = (context) => AsymmetricSuiteSelectionPage(contentNavigatorKey: contentNavigatorKey);
+        break;
+      case '/hash':
+        builder = (context) => const HashTab();
+        break;
+      case '/try_out_caesar':
+        builder = (context) => const CaesarTab();
+        break;
+      case '/try_out_diffie_hellman':
+        builder = (context) => const DiffieHellmanTab();
+        break;
+      default:
+        builder = (context) => DashboardPage(contentNavigatorKey: contentNavigatorKey);
+    }
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => builder(context),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return FadeTransition(opacity: animation, child: child);
       },
+      transitionDuration: const Duration(milliseconds: 200),
     );
   }
 }
