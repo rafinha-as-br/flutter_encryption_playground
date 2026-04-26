@@ -1,3 +1,5 @@
+// lib/features/home/presentation/pages/suite_selections_pages/symmetric_suite_selection_page.dart
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -5,12 +7,41 @@ import '../../../../../../shared/theme/app_colors.dart';
 import '../../widgets/feature_card.dart';
 
 class SymmetricSuiteSelectionPage extends StatelessWidget {
-  final GlobalKey<NavigatorState> contentNavigatorKey;
-
-  const SymmetricSuiteSelectionPage({super.key, required this.contentNavigatorKey});
+  SymmetricSuiteSelectionPage({super.key});
+  final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
 
   @override
   Widget build(BuildContext context) {
+    return Navigator(
+      key: _navigatorKey,
+      initialRoute: '/suitePage',
+      onGenerateRoute: _onGenerateRoute,
+    );
+  }
+
+  Route _onGenerateRoute(RouteSettings settings) {
+    WidgetBuilder builder;
+    switch (settings.name) {
+      case '/suitePage':
+        builder = (context) => _suiteSelectionPageView();
+        break;
+
+      // future new symmetric algorithms will have their routes called here!
+
+      default:
+        builder = (context) => _suiteSelectionPageView();
+    }
+
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => builder(context),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return FadeTransition(opacity: animation, child: child);
+      },
+      transitionDuration: const Duration(milliseconds: 200),
+    );
+  }
+
+  Widget _suiteSelectionPageView() {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(32.0),
       child: Column(

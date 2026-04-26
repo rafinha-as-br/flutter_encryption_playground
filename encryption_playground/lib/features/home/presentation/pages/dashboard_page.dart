@@ -4,15 +4,15 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../../shared/theme/app_colors.dart';
 import '../widgets/feature_card.dart';
+import 'home_page.dart';
 
 /*
 * TODO: Place the texts of this page into the internacionalization files
 * */
 
 class DashboardPage extends StatelessWidget {
-  final GlobalKey<NavigatorState> contentNavigatorKey;
 
-  const DashboardPage({super.key, required this.contentNavigatorKey});
+  const DashboardPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -103,25 +103,25 @@ class DashboardPage extends StatelessWidget {
               icon: Icons.security_outlined,
               title: 'Cipher Suite',
               description: 'Explore classic and modern substitution ciphers like the Caesar cipher.',
-              onPressed: () => contentNavigatorKey.currentState?.pushReplacementNamed('/ciphers'),
+              onPressed: () => HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/ciphers'),
             ),
             FeatureCard(
               icon: Icons.sync_alt_outlined,
               title: 'Symmetric Suite',
               description: 'Test symmetric encryption algorithms where the same key encrypts and decrypts.',
-              onPressed: () => contentNavigatorKey.currentState?.pushReplacementNamed('/symmetric'),
+              onPressed: () => HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/symmetric'),
             ),
             FeatureCard(
               icon: Icons.vpn_key_outlined,
               title: 'Asymmetric Suite',
               description: 'Learn about public-key cryptography and key exchange protocols like Diffie-Hellman.',
-              onPressed: () => contentNavigatorKey.currentState?.pushReplacementNamed('/asymmetric'),
+              onPressed: () => HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/asymmetric'),
             ),
             FeatureCard(
               icon: Icons.fingerprint_outlined,
               title: 'Hash Suite',
               description: 'Generate cryptographic hashes using MD5, SHA-1, SHA-256 and more.',
-              onPressed: () => contentNavigatorKey.currentState?.pushReplacementNamed('/hash'),
+              onPressed: () => HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/hash'),
             ),
           ],
         );

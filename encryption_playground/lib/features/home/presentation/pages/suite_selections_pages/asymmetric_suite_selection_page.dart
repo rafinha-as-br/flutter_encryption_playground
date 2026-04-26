@@ -1,16 +1,60 @@
+import 'package:encryption_playground/features/diffie_hellman/presentation/pages/diffie_hellman_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../../../shared/theme/app_colors.dart';
 import '../../widgets/feature_card.dart';
 
+class AsymmetricSuitSelectionNavigationService {
+  AsymmetricSuitSelectionNavigationService._internal();
+  static final AsymmetricSuitSelectionNavigationService _instance = AsymmetricSuitSelectionNavigationService._internal();
+  static AsymmetricSuitSelectionNavigationService get instance => _instance;
+
+}
+
 class AsymmetricSuiteSelectionPage extends StatelessWidget {
-  final GlobalKey<NavigatorState> contentNavigatorKey;
+  AsymmetricSuiteSelectionPage({super.key});
+  final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
 
-  const AsymmetricSuiteSelectionPage({super.key, required this.contentNavigatorKey});
 
+  /// nested navigator builder
   @override
   Widget build(BuildContext context) {
+    return Navigator(
+      key: _navigatorKey,
+      initialRoute: '/suitePage',
+      onGenerateRoute: _onGenerateRoute,
+    );
+  }
+
+  // route generator
+  Route _onGenerateRoute(RouteSettings settings){
+    WidgetBuilder builder;
+    switch(settings.name){
+      case '/suitePage':
+        builder = (context) => _suiteSelectionPageView();
+        break;
+      case '/diffie-hellman_tab':
+        builder = (context) => DiffieHellmanTab();
+        break;
+
+      // future new asymmetric algorithms will have their routes called here!
+
+      default:
+        builder = (context) => _suiteSelectionPageView();
+    }
+
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => builder(context),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return FadeTransition(opacity: animation, child: child);
+      },
+      transitionDuration: const Duration(milliseconds: 200),
+    );
+  }
+
+  /// suite selection page view
+  Widget _suiteSelectionPageView(){
     return SingleChildScrollView(
       padding: const EdgeInsets.all(32.0),
       child: Column(
@@ -57,7 +101,7 @@ class AsymmetricSuiteSelectionPage extends StatelessWidget {
                     title: 'Diffie-Hellman',
                     description: 'A method of securely exchanging cryptographic keys over a public channel.',
                     buttonText: 'Try out',
-                    onPressed: () => contentNavigatorKey.currentState?.pushReplacementNamed('/try_out_diffie_hellman'),
+                    onPressed: () => _navigatorKey.currentState?.pushReplacementNamed('/diffie-hellman_tab'),
                   ),
                 ],
               );
@@ -67,4 +111,6 @@ class AsymmetricSuiteSelectionPage extends StatelessWidget {
       ),
     );
   }
+  /* In the future I will change this 'page view' widget to a shared widget for all suite selection pages*/
 }
+

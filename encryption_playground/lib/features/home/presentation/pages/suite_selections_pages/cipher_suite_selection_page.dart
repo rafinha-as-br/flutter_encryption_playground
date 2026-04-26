@@ -1,3 +1,4 @@
+import 'package:encryption_playground/features/caesar/presentation/pages/caesar_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -5,12 +6,45 @@ import '../../../../../../shared/theme/app_colors.dart';
 import '../../widgets/feature_card.dart';
 
 class CipherSuiteSelectionPage extends StatelessWidget {
-  final GlobalKey<NavigatorState> contentNavigatorKey;
+  CipherSuiteSelectionPage({super.key});
 
-  const CipherSuiteSelectionPage({super.key, required this.contentNavigatorKey});
+  final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
 
   @override
   Widget build(BuildContext context) {
+    return Navigator(
+      key: _navigatorKey,
+      initialRoute: '/suitePage',
+      onGenerateRoute: _onGenerateRoute,
+    );
+  }
+
+  Route _onGenerateRoute(RouteSettings settings) {
+    WidgetBuilder builder;
+    switch (settings.name) {
+      case '/suitePage':
+        builder = (context) => _suiteSelectionPageView();
+        break;
+      case '/try_out_caesar':
+        builder = (context) => const CaesarTab();
+        break;
+
+      // future new cipher algorithms will have their routes called here!
+
+      default:
+        builder = (context) => _suiteSelectionPageView();
+    }
+
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => builder(context),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return FadeTransition(opacity: animation, child: child);
+      },
+      transitionDuration: const Duration(milliseconds: 200),
+    );
+  }
+
+  Widget _suiteSelectionPageView() {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(32.0),
       child: Column(
@@ -57,9 +91,8 @@ class CipherSuiteSelectionPage extends StatelessWidget {
                     title: 'Caesar Cipher',
                     description: 'A classic substitution cipher where each letter is shifted by a fixed number of positions.',
                     buttonText: 'Try out',
-                    onPressed: () => contentNavigatorKey.currentState?.pushReplacementNamed('/try_out_caesar'),
+                    onPressed: () => _navigatorKey.currentState?.pushNamed('/try_out_caesar'),
                   ),
-                  // Future ciphers can be added here
                 ],
               );
             },
