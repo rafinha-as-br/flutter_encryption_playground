@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import '../../../../caesar/presentation/pages/caesar_tab.dart';
+import '../../../../diffie_hellman/presentation/pages/diffie_hellman_tab.dart';
+import '../../../../hash/presentation/pages/hash_tab.dart';
+import '../../widgets/side_menu.dart';
+import '../suite_selections_pages/asymmetric_suite_selection_page.dart';
+import '../suite_selections_pages/cipher_suite_selection_page.dart';
+import '../dashboard_page.dart';
+import '../suite_selections_pages/symmetric_suite_selection_page.dart';
 
-import 'dashboard_page.dart';
-import 'cipher_suite_selection_page.dart';
-import 'symmetric_suite_selection_page.dart';
-import 'asymmetric_suite_selection_page.dart';
-import '../../../hash/presentation/pages/hash_tab.dart';
-import '../../../caesar/presentation/pages/caesar_tab.dart';
-import '../../../diffie_hellman/presentation/pages/diffie_hellman_tab.dart';
-import '../widgets/side_menu.dart';
 
 class HomePageMobile extends StatelessWidget {
   final String currentRoute;

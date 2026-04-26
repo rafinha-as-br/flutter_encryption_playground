@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../../shared/theme/app_colors.dart';
-import '../widgets/feature_card.dart';
+import '../../../../../../shared/theme/app_colors.dart';
+import '../../widgets/feature_card.dart';
 
 class CipherSuiteSelectionPage extends StatelessWidget {
   final GlobalKey<NavigatorState> contentNavigatorKey;

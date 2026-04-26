@@ -23,12 +23,18 @@ class SideMenu extends StatelessWidget {
       color: AppColors.sideMenuBackground,
       child: Column(
         children: [
+
           // Logo
           Padding(
-            padding: const EdgeInsets.all(24.0),
-            child: Image.asset('assets/logo_full.png', height: 40),
+            padding: const EdgeInsets.all(16.0),
+            child: Image.asset(
+              'assets/logo_full.png',
+              width: double.infinity,
+              fit: BoxFit.contain,
+            ),
           ),
-          
+
+          // Buttons
           Expanded(
             child: ListView(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -70,7 +76,7 @@ class SideMenu extends StatelessWidget {
               ],
             ),
           ),
-          
+
           // Bottom section
           Padding(
             padding: const EdgeInsets.all(16.0),
