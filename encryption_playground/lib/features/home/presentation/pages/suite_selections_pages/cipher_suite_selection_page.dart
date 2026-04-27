@@ -5,9 +5,14 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../../../../shared/theme/app_colors.dart';
 import '../../widgets/feature_card.dart';
 
-class CipherSuiteSelectionPage extends StatelessWidget {
-  CipherSuiteSelectionPage({super.key});
+class CipherSuiteSelectionPage extends StatefulWidget {
+  const CipherSuiteSelectionPage({super.key});
 
+  @override
+  State<CipherSuiteSelectionPage> createState() => _CipherSuiteSelectionPageState();
+}
+
+class _CipherSuiteSelectionPageState extends State<CipherSuiteSelectionPage> {
   final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
 
   @override
