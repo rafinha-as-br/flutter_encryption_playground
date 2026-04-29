@@ -1,11 +1,11 @@
+import 'package:encryption_playground/features/caesar/presentation/pages/try_out_pages/caesar_try_out_desktop.dart';
+import 'package:encryption_playground/features/caesar/presentation/pages/try_out_pages/caesar_try_out_mobile.dart';
 import 'package:encryption_playground/features/caesar/presentation/pages/try_out_pages/caesar_try_out_tablet.dart';
+import 'package:encryption_playground/shared/widgets/responsive_layout_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../../shared/widgets/responsive_layout_builder.dart';
-import '../caesar_controller.dart';
 
-import 'try_out_pages/caesar_try_out_mobile.dart';
-import 'try_out_pages/caesar_try_out_desktop.dart';
+import '../caesar_controller.dart';
 
 class CaesarTryOutScreen extends StatefulWidget {
   const CaesarTryOutScreen({super.key});
@@ -25,6 +25,9 @@ class _CaesarTryOutScreenState extends State<CaesarTryOutScreen> {
     final controller = Provider.of<CaesarController>(context, listen: false);
     if (controller.key != null && _keyController.text.isEmpty) {
       _keyController.text = controller.key.toString();
+    } else if (controller.key == null) {
+      controller.key = 3;
+      _keyController.text = '3';
     }
   }
 
@@ -38,64 +41,82 @@ class _CaesarTryOutScreenState extends State<CaesarTryOutScreen> {
 
   void _onTextChanged(String value) {
     setState(() {});
-    final controller = Provider.of<CaesarController>(context, listen: false);
-    if (controller.key == null) return;
-    if (controller.isEncrypting) {
-      _resultController.text = controller.encrypt(value);
-    } else {
-      _resultController.text = controller.decrypt(value);
-    }
+    _processText();
   }
 
   void _onKeyChanged(String value) {
-    setState(() {});
     final controller = Provider.of<CaesarController>(context, listen: false);
-    controller.key = int.tryParse(value);
-    if (controller.key != null) {
-      if (controller.isEncrypting) {
-        _resultController.text = controller.encrypt(_textController.text);
-      } else {
-        _resultController.text = controller.decrypt(_textController.text);
-      }
+    int? parsed = int.tryParse(value);
+    if (parsed != null) {
+      controller.key = parsed;
+      _processText();
     }
+    setState(() {});
+  }
+
+  void _onSliderChanged(double value) {
+    _keyController.text = value.toInt().toString();
+    _onKeyChanged(_keyController.text);
   }
 
   void _onSwapPressed() {
     final controller = Provider.of<CaesarController>(context, listen: false);
     controller.isEncrypting = !controller.isEncrypting;
     setState(() {
-      _textController.text = '';
-      _resultController.text = '';
+      final temp = _textController.text;
+      _textController.text = _resultController.text;
+      _resultController.text = temp;
     });
+    _processText();
+  }
+
+  void _processText() {
+    final controller = Provider.of<CaesarController>(context, listen: false);
+    if (controller.key == null || _textController.text.isEmpty) {
+      _resultController.text = '';
+      return;
+    }
+    if (controller.isEncrypting) {
+      _resultController.text = controller.encrypt(_textController.text);
+    } else {
+      _resultController.text = controller.decrypt(_textController.text);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveLayoutBuilder(
-      mobile: CaesarTryOutMobile(
-        textController: _textController,
-        keyController: _keyController,
-        resultController: _resultController,
-        onTextChanged: _onTextChanged,
-        onKeyChanged: _onKeyChanged,
-        onSwapPressed: _onSwapPressed,
-      ),
-      tablet: CaesarTryOutTablet(
-        textController: _textController,
-        keyController: _keyController,
-        resultController: _resultController,
-        onTextChanged: _onTextChanged,
-        onKeyChanged: _onKeyChanged,
-        onSwapPressed: _onSwapPressed,
-      ),
-      desktop: CaesarTryOutDesktop(
-        textController: _textController,
-        keyController: _keyController,
-        resultController: _resultController,
-        onTextChanged: _onTextChanged,
-        onKeyChanged: _onKeyChanged,
-        onSwapPressed: _onSwapPressed,
-      ),
-    );
+    return Consumer<CaesarController>(builder: (context, controller, child) {
+
+      return ResponsiveLayoutBuilder(
+          mobile: CaesarTryOutMobile(
+              textController: _textController,
+              keyController: _keyController,
+              resultController: _resultController,
+              onTextChanged: _onTextChanged,
+              onKeyChanged: _onKeyChanged,
+              onSwapPressed: _onSwapPressed,
+              onSliderChanged: _onSliderChanged
+          ),
+          tablet: CaesarTryOutDesktop(
+              textController: _textController,
+              keyController: _keyController,
+              resultController: _resultController,
+              onTextChanged: _onTextChanged,
+              onKeyChanged: _onKeyChanged,
+              onSwapPressed: _onSwapPressed,
+              onSliderChanged: _onSliderChanged
+          ),
+          desktop: CaesarTryOutTablet(
+              textController: _textController,
+              keyController: _keyController,
+              resultController: _resultController,
+              onTextChanged: _onTextChanged,
+              onKeyChanged: _onKeyChanged,
+              onSwapPressed: _onSwapPressed,
+              onSliderChanged: _onSliderChanged
+          )
+      );
+    });
   }
+
 }
