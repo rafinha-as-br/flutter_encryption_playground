@@ -12,10 +12,15 @@ class AsymmetricSuitSelectionNavigationService {
 
 }
 
-class AsymmetricSuiteSelectionPage extends StatelessWidget {
-  AsymmetricSuiteSelectionPage({super.key});
-  final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
+class AsymmetricSuiteSelectionPage extends StatefulWidget {
+  const AsymmetricSuiteSelectionPage({super.key});
 
+  @override
+  State<AsymmetricSuiteSelectionPage> createState() => _AsymmetricSuiteSelectionPageState();
+}
+
+class _AsymmetricSuiteSelectionPageState extends State<AsymmetricSuiteSelectionPage> {
+  final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
 
   /// nested navigator builder
   @override
@@ -111,6 +116,5 @@ class AsymmetricSuiteSelectionPage extends StatelessWidget {
       ),
     );
   }
-  /* In the future I will change this 'page view' widget to a shared widget for all suite selection pages*/
 }
 
