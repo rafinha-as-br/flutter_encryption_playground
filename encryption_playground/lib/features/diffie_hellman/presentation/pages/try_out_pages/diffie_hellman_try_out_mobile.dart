@@ -20,7 +20,7 @@ class DiffieHellmanTryOutMobile extends StatelessWidget {
             DHGlobalParametersSection(),
 
             // key generation
-            DHTryOutKeyGenerationSection(),
+            DHTryOutKeyGenerationSection.mobileLayout(),
 
             // key computation
             DHTryOutKeyComputationSection()

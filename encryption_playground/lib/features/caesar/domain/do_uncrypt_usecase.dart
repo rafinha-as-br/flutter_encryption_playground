@@ -9,7 +9,7 @@ String doUncryptUseCase(int key, String text){
     int letterIndex = alphabet.indexOf(letter);
 
     if (letterIndex == -1) {
-      decryptedString += letter; // mantém caracteres não alfabéticos
+      decryptedString += letter;
       continue;
     }
 

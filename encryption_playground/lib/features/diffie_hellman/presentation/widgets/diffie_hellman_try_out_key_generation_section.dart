@@ -6,7 +6,15 @@ import '../../../../shared/theme/app_colors.dart';
 import '../diffie_hellman_controller.dart';
 
 class DHTryOutKeyGenerationSection extends StatelessWidget {
-  const DHTryOutKeyGenerationSection({super.key});
+  const DHTryOutKeyGenerationSection({
+    super.key,
+  }) : isMobileLayout = false;
+
+  const DHTryOutKeyGenerationSection.mobileLayout({
+    super.key,
+  }) : isMobileLayout = true;
+
+  final bool isMobileLayout;
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +65,53 @@ class DHTryOutKeyGenerationSection extends StatelessWidget {
   }
 
   Widget _buildUserSection(String title, TextEditingController privateController, TextEditingController publicController, Color accentColor) {
+    final privateKeyField = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Private Key ',
+          style: GoogleFonts.inter(
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            color: AppColors.darkOnSurfaceVariant,
+          ),
+        ),
+        const SizedBox(height: 8),
+        TextField(
+          controller: privateController,
+          readOnly: true,
+          decoration: InputDecoration(
+              hintText: 'Auto-generated',
+              prefixIcon: Icon(Icons.vpn_key_outlined, size: 20),
+              fillColor: Colors.black
+          ),
+        ),
+      ],
+    );
+    final publicKeyField = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Public Key - (G^ private key) mod P',
+          style: GoogleFonts.inter(
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            color: AppColors.darkOnSurfaceVariant,
+          ),
+        ),
+        const SizedBox(height: 8),
+        TextField(
+          controller: publicController,
+          readOnly: true,
+          decoration: InputDecoration(
+              hintText: 'Computed',
+              prefixIcon: Icon(Icons.public, size: 20),
+              fillColor: Colors.black
+          ),
+        ),
+      ],
+    );
+
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -81,60 +136,22 @@ class DHTryOutKeyGenerationSection extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 16),
+
+          isMobileLayout ?
+          Column(
+              children: [
+                privateKeyField,
+                const SizedBox(height: 16),
+                publicKeyField,
+              ],
+            )
+          :
           Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Private Key ',
-                      style: GoogleFonts.inter(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.darkOnSurfaceVariant,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    TextField(
-                      controller: privateController,
-                      readOnly: true,
-                      decoration: InputDecoration(
-                          hintText: 'Auto-generated',
-                          prefixIcon: Icon(Icons.vpn_key_outlined, size: 20),
-                          fillColor: Colors.black
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              Expanded(child: privateKeyField),
               const SizedBox(width: 16),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Public Key - (G^ private key) mod P',
-                      style: GoogleFonts.inter(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.darkOnSurfaceVariant,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    TextField(
-                      controller: publicController,
-                      readOnly: true,
-                      decoration: InputDecoration(
-                          hintText: 'Computed',
-                          prefixIcon: Icon(Icons.public, size: 20),
-                          fillColor: Colors.black
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              Expanded(child: publicKeyField),
             ],
           ),
         ],

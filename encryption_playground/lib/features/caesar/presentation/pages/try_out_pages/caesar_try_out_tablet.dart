@@ -15,7 +15,7 @@ import '../caesar_tab.dart';
 class CaesarTryOutTablet extends StatelessWidget {
   final TextEditingController textController;
   final TextEditingController keyController;
-  final TextEditingController resultController;
+  final String resultValue;
   final ValueChanged<String> onTextChanged;
   final ValueChanged<String> onKeyChanged;
   final VoidCallback onSwapPressed;
@@ -27,7 +27,7 @@ class CaesarTryOutTablet extends StatelessWidget {
     super.key,
     required this.textController,
     required this.keyController,
-    required this.resultController,
+    required this.resultValue,
     required this.onTextChanged,
     required this.onKeyChanged,
     required this.onSwapPressed,
@@ -197,7 +197,6 @@ class CaesarTryOutTablet extends StatelessWidget {
     final title = isInput
         ? (isEncrypting ? 'Plaintext' : 'Ciphertext')
         : (isEncrypting ? 'Ciphertext' : 'Plaintext');
-    final controller = isInput ? textController : resultController;
 
     return DefaultContainer(
         child: Column(
@@ -213,7 +212,9 @@ class CaesarTryOutTablet extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             TextField(
-              controller: controller,
+              controller: isInput ? textController : TextEditingController(
+                text: resultValue
+              ),
               maxLines: 5,
               readOnly: !isInput,
               onChanged: isInput ? onTextChanged : null,
