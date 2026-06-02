@@ -7,7 +7,11 @@ import '../domain/do_uncrypt_usecase.dart';
 class CaesarController extends ChangeNotifier{
 
   bool isEncrypting = true;
-  int? key;
+  int key = 3;
+
+  /// Plaintext or ciphertext
+  String text = '';
+  /// Encryption/decryption result
   String result = '';
 
 
@@ -21,39 +25,47 @@ class CaesarController extends ChangeNotifier{
 
   /// On text changed method
   void onTextChanged({required String newText}){
-    processText(text: newText);
+    updateText(newText);
+    _processText();
   }
+
+  /// Update controller text
+  void updateText(String newText){
+    text = newText;
+    notifyListeners();
+  }
+
 
   /// On key changed method.
   /// Parsers the new key to an integer and notifies listeners
-  void onKeyChanged({required String newKey, required String text}){
+  void onKeyChanged({required String newKey}){
     key = int.parse(newKey);
 
-    processText(text: text);
+    _processText();
   }
 
   /// On slider changed
   void onSliderChanged(double value){
     key = value.toInt();
-    processText(text: result);
+    _processText();
   }
 
   /// Swap encryption/decryption method
-  void swapEncryption({required String text}){
+  void swapEncryption(){
     isEncrypting = !isEncrypting;
-    processText(text: text);
+    _processText();
   }
 
   /// Process text method, receives a text and returns a processed text.
   /// Validating empty text or null key
-  void processText({required String text}){
+  void _processText(){
 
     /// If key or text is empty return empty string
-    if(key != null && text.isNotEmpty ){
+    if(text.isNotEmpty){
       if(isEncrypting){
-        result = encrypt(key: key!, text: text);
+        result = encrypt(key: key, text: text);
       }else{
-        result = decrypt(key: key!, text: text);
+        result = decrypt(key: key, text: text);
       }
     } else{
       result = '';

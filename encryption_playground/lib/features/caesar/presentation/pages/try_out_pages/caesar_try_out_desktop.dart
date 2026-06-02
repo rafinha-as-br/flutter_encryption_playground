@@ -1,21 +1,21 @@
+import 'package:encryption_playground/features/caesar/presentation/widgets/shift_control.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../app/app_routes.dart';
 import '../../../../../l10n/app_localizations.dart';
 import '../../../../../shared/theme/app_colors.dart';
-import '../../../../../shared/widgets/default_container.dart';
 import '../../../../../shared/widgets/shared_header.dart';
 import '../../caesar_controller.dart';
 import '../../widgets/caesar_alphabet_viz.dart';
+import '../../widgets/formula_container.dart';
+import '../../widgets/input_section.dart';
 import '../caesar_tab.dart';
 
 class CaesarTryOutDesktop extends StatelessWidget {
-  final TextEditingController textController;
-  final TextEditingController keyController;
   final String resultValue;
+  final String textValue;
   final ValueChanged<String> onTextChanged;
   final ValueChanged<String> onKeyChanged;
   final VoidCallback onSwapPressed;
@@ -24,9 +24,8 @@ class CaesarTryOutDesktop extends StatelessWidget {
 
   const CaesarTryOutDesktop({
     super.key,
-    required this.textController,
-    required this.keyController,
     required this.resultValue,
+    required this.textValue,
     required this.onTextChanged,
     required this.onKeyChanged,
     required this.onSwapPressed,
@@ -38,7 +37,7 @@ class CaesarTryOutDesktop extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
     return Consumer<CaesarController>(builder: (context, controller, child) {
       final isEncrypting = controller.isEncrypting;
-      final shiftValue = controller.key ?? 3;
+      final shiftValue = controller.key;
 
       return Scaffold(
         body: SingleChildScrollView(
@@ -65,52 +64,8 @@ class CaesarTryOutDesktop extends StatelessWidget {
                     // shift control
                     Expanded(
                       flex: 2,
-                      child: DefaultContainer(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Shift Control',
-                                style: GoogleFonts.spaceGrotesk(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w700,
-                                  color: AppColors.darkOnSurface,
-                                ),
-                              ),
-                              const SizedBox(height: 16),
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: Slider(
-                                      value: shiftValue.toDouble().clamp(-26.0, 26.0),
-                                      min: -26,
-                                      max: 26,
-                                      divisions: 52,
-                                      label: shiftValue.toString(),
-                                      activeColor: AppColors.darkPrimary,
-                                      onChanged: onSliderChanged,
-                                    ),
-                                  ),
-                                  const SizedBox(width: 16),
-                                  SizedBox(
-                                    width: 80,
-                                    child: TextField(
-                                      controller: keyController,
-                                      keyboardType: TextInputType.number,
-                                      textAlign: TextAlign.center,
-                                      inputFormatters: [
-                                        FilteringTextInputFormatter.allow(RegExp(r'^-?[0-9]*')),
-                                      ],
-                                      onChanged: onKeyChanged,
-                                      decoration: const InputDecoration(
-                                        contentPadding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          )
+                      child: ShiftControl(
+                          onKeyChanged: onKeyChanged,
                       ),
                     ),
                     const SizedBox(width: 24),
@@ -118,31 +73,7 @@ class CaesarTryOutDesktop extends StatelessWidget {
                     // formula
                     Expanded(
                         flex: 1,
-                        child: DefaultContainer(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Formula',
-                                  style: GoogleFonts.spaceGrotesk(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w700,
-                                    color: AppColors.darkOnSurface,
-                                  ),
-                                ),
-                                const SizedBox(height: 16),
-                                Text(
-                                  isEncrypting
-                                      ? 'E_n(x) = (x + n) mod 26'
-                                      : 'D_n(x) = (x - n) mod 26',
-                                  style: GoogleFonts.jetBrainsMono(
-                                    fontSize: 16,
-                                    color: AppColors.darkPrimary,
-                                  ),
-                                ),
-                              ],
-                            )
-                        )
+                        child: FormulaContainer(isEncrypting: isEncrypting)
                     ),
                   ],
                 ),
@@ -153,78 +84,50 @@ class CaesarTryOutDesktop extends StatelessWidget {
               const SizedBox(height: 32),
 
               // Inputs
-              LayoutBuilder(
-                builder: (context, constraints) {
-                  if (constraints.maxWidth > 800) {
-                    return Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+              Row(
+                children: [
+                  Expanded(
+                    child: InputSection.input(
+                      onTextChanged: onTextChanged,
+                      isEncrypting: isEncrypting,
+                      resultValue: resultValue,
+                      textValue: textValue,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Column(
                       children: [
-                        Expanded(child: _buildInputSection(isEncrypting, true)),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32),
-                          child: IconButton(
-                            onPressed: onSwapPressed,
-                            icon: const Icon(Icons.swap_horiz, size: 32, color: AppColors.darkPrimary),
-                          ),
+                        Text(
+                          'Swap',
+                          style: GoogleFonts.spaceGrotesk(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            color: AppColors.darkOnSurface,
+                          )
                         ),
-                        Expanded(child: _buildInputSection(isEncrypting, false)),
-                      ],
-                    );
-                  } else {
-                    return Column(
-                      children: [
-                        _buildInputSection(isEncrypting, true),
-                        const SizedBox(height: 16),
                         IconButton(
                           onPressed: onSwapPressed,
-                          icon: const Icon(Icons.swap_vert, size: 32, color: AppColors.darkPrimary),
-                        ),
-                        const SizedBox(height: 16),
-                        _buildInputSection(isEncrypting, false),
+                          icon: const Icon(Icons.swap_horiz, size: 32, color: AppColors.darkPrimary),
+                        )
                       ],
-                    );
-                  }
-                },
-              ),
+                    ),
+                  ),
+                  Expanded(
+                    child: InputSection.result(
+                      onTextChanged: onTextChanged,
+                      isEncrypting: isEncrypting,
+                      resultValue: resultValue,
+                      textValue: textValue,
+                    ),
+                  )
+                ],
+              )
             ],
           ),
         ),
       );
     });
-  }
-  Widget _buildInputSection(bool isEncrypting, bool isInput) {
-    final title = isInput
-        ? (isEncrypting ? 'Plaintext' : 'Ciphertext')
-        : (isEncrypting ? 'Ciphertext' : 'Plaintext');
-
-    return DefaultContainer(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              title,
-              style: GoogleFonts.spaceGrotesk(
-                fontSize: 16,
-                fontWeight: FontWeight.w700,
-                color: AppColors.darkOnSurface,
-              ),
-            ),
-            const SizedBox(height: 8),
-            TextField(
-              controller: isInput ? textController : TextEditingController(
-                text: resultValue
-              ),
-              maxLines: 5,
-              readOnly: !isInput,
-              onChanged: isInput ? onTextChanged : null,
-              decoration: InputDecoration(
-                  hintText: isInput ? 'Enter text here...' : 'Result will appear here...',
-                  fillColor: Colors.black
-              ),
-            ),
-          ],
-        )
-    );
   }
 
 }

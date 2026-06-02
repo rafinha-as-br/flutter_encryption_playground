@@ -7,31 +7,8 @@ import 'package:provider/provider.dart';
 
 import '../caesar_controller.dart';
 
-class CaesarTryOutScreen extends StatefulWidget {
+class CaesarTryOutScreen extends StatelessWidget {
   const CaesarTryOutScreen({super.key});
-
-  @override
-  State<CaesarTryOutScreen> createState() => _CaesarTryOutScreenState();
-}
-
-class _CaesarTryOutScreenState extends State<CaesarTryOutScreen> {
-  final TextEditingController _textController = TextEditingController();
-  final TextEditingController _keyController = TextEditingController();
-
-  @override
-  void dispose() {
-    _textController.dispose();
-    _keyController.dispose();
-    super.dispose();
-  }
-
-  void _onSwapPressed(){
-    final controller = Provider.of<CaesarController>(context, listen: false);
-    setState(() {
-      _textController.text = controller.result;
-      controller.swapEncryption(text: _textController.text);
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,34 +16,30 @@ class _CaesarTryOutScreenState extends State<CaesarTryOutScreen> {
 
       return ResponsiveLayoutBuilder(
           mobile: CaesarTryOutMobile(
-              textController: _textController,
-              keyController: _keyController,
               resultValue: controller.result,
-              onTextChanged: (value) => controller.processText(text: value),
-              onKeyChanged: (value) => controller.onKeyChanged(newKey: value, text: _textController.text),
-              onSwapPressed: _onSwapPressed,
+              textValue: controller.text,
+              onTextChanged: (value) => controller.onTextChanged(newText: value),
+              onKeyChanged: (value) => controller.onKeyChanged(newKey: value,),
+              onSwapPressed: () => controller.swapEncryption(),
               onSliderChanged: controller.onSliderChanged
           ),
-          tablet: CaesarTryOutDesktop(
-              textController: _textController,
-              keyController: _keyController,
+          tablet: CaesarTryOutTablet(
               resultValue: controller.result,
-              onTextChanged: (value) => controller.processText(text: value),
-              onKeyChanged: (value) => controller.onKeyChanged(newKey: value, text: _textController.text),
-              onSwapPressed: _onSwapPressed,
+              textValue: controller.text,
+              onTextChanged: (value) => controller.onTextChanged(newText: value),
+              onKeyChanged: (value) => controller.onKeyChanged(newKey: value),
+              onSwapPressed: () => controller.swapEncryption(),
               onSliderChanged: controller.onSliderChanged
           ),
-          desktop: CaesarTryOutTablet(
-              textController: _textController,
-              keyController: _keyController,
+          desktop: CaesarTryOutDesktop(
               resultValue: controller.result,
-              onTextChanged: (value) => controller.processText(text: value),
-              onKeyChanged: (value) => controller.onKeyChanged(newKey: value, text: _textController.text),
-              onSwapPressed: _onSwapPressed,
+              textValue: controller.text,
+              onTextChanged: (value) => controller.onTextChanged(newText: value),
+              onKeyChanged: (value) => controller.onKeyChanged(newKey: value),
+              onSwapPressed: () => controller.swapEncryption(),
               onSliderChanged: controller.onSliderChanged
           )
       );
     });
   }
-
 }

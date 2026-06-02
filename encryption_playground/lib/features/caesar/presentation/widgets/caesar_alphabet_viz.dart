@@ -19,7 +19,7 @@ class CaesarAlphabetViz extends StatelessWidget {
         border: Border.all(color: AppColors.darkOutlineVariant),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             'Alphabet Transformation',
