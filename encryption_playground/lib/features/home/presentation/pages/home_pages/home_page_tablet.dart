@@ -13,7 +13,7 @@ class HomePageTablet extends StatelessWidget {
         children: [
           SideMenu(),
           Expanded(
-            child: const HomePageNavigator(),
+            child: HomePageNavigator(),
           ),
         ],
       ),

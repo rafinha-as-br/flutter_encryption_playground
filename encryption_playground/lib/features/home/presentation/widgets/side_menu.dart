@@ -12,114 +12,116 @@ class SideMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    final currentRoute = HomePageNavigationService.instance.navigatorKey.currentContext?.toString();
-
-    return Drawer(
-      child: Container(
-        width: 250,
-        color: AppColors.sideMenuBackground,
-        child: Column(
-          children: [
-
-            // Logo
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Image.asset(
-                'assets/logo_full.png',
-                width: double.infinity,
-                fit: BoxFit.contain,
-              ),
-            ),
-
-            // Buttons
-            Expanded(
-              child: ListView(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                children: [
-                  _SideMenuItem(
-                    title: 'Dashboard',
-                    icon: Icons.dashboard_outlined,
-                    isSelected: currentRoute == '/dashboard',
-                    onTap: ()=> HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/dashboard'),
-                  ),
-                  const SizedBox(height: 8),
-                  _SideMenuItem(
-                    title: 'Ciphers',
-                    icon: Icons.security_outlined,
-                    isSelected: currentRoute == '/ciphers',
-                    onTap: () => HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/ciphers'),
-                  ),
-                  const SizedBox(height: 8),
-                  _SideMenuItem(
-                    title: 'Symmetric',
-                    icon: Icons.sync_alt_outlined,
-                    isSelected: currentRoute == '/symmetric',
-                    onTap: () => HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/symmetric'),
-                  ),
-                  const SizedBox(height: 8),
-                  _SideMenuItem(
-                    title: 'Asymmetric',
-                    icon: Icons.vpn_key_outlined,
-                    isSelected: currentRoute == '/asymmetric',
-                    onTap: () => HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/asymmetric'),
-                  ),
-                  const SizedBox(height: 8),
-                  _SideMenuItem(
-                    title: 'Hash',
-                    icon: Icons.fingerprint_outlined,
-                    isSelected: currentRoute == '/hash',
-                    onTap: () => HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/hash'),
-                  ),
-                ],
-              ),
-            ),
-
-            // Bottom section
-            Padding(
-              padding: const EdgeInsets.all(16.0),
+    return ValueListenableBuilder<String>(
+        valueListenable: HomePageNavigationService.instance.routeTracker.currentRoute,
+        builder: (context, currentRoute, child){
+          return Drawer(
+            child: Container(
+              width: 250,
+              color: AppColors.sideMenuBackground,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  OutlinedButton.icon(
-                    onPressed: () {
-                      context.read<ThemeController>().toggleTheme();
-                    },
-                    icon: Icon(
-                      context.watch<ThemeController>().isDarkMode
-                          ? Icons.light_mode
-                          : Icons.dark_mode,
-                    ),
-                    label: const Text('Toggle Theme'),
-                  ),
-                  const SizedBox(height: 8),
-                  OutlinedButton.icon(
-                    onPressed: () {
-                      context.read<LocaleController>().toggleLocale();
-                    },
-                    icon: const Icon(Icons.language),
-                    label: Text(
-                      context.watch<LocaleController>().value.languageCode == 'en'
-                          ? 'English'
-                          : 'Português',
+
+                  // Logo
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Image.asset(
+                      'assets/logo_full.png',
+                      width: double.infinity,
+                      fit: BoxFit.contain,
                     ),
                   ),
-                  const SizedBox(height: 16),
-                  Center(
-                    child: Text(
-                      'v1.0.0',
-                      style: GoogleFonts.spaceGrotesk(
-                        color: AppColors.sideMenuTextInactive,
-                        fontSize: 12,
-                      ),
+
+                  // Buttons
+                  Expanded(
+                    child: ListView(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      children: [
+                        _SideMenuItem(
+                          title: 'Dashboard',
+                          icon: Icons.dashboard_outlined,
+                          isSelected: currentRoute == '/dashboard',
+                          onTap: ()=> HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/dashboard'),
+                        ),
+                        const SizedBox(height: 8),
+                        _SideMenuItem(
+                          title: 'Ciphers',
+                          icon: Icons.security_outlined,
+                          isSelected: currentRoute == '/ciphers',
+                          onTap: () => HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/ciphers'),
+                        ),
+                        const SizedBox(height: 8),
+                        _SideMenuItem(
+                          title: 'Symmetric',
+                          icon: Icons.sync_alt_outlined,
+                          isSelected: currentRoute == '/symmetric',
+                          onTap: () => HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/symmetric'),
+                        ),
+                        const SizedBox(height: 8),
+                        _SideMenuItem(
+                          title: 'Asymmetric',
+                          icon: Icons.vpn_key_outlined,
+                          isSelected: currentRoute == '/asymmetric',
+                          onTap: () => HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/asymmetric'),
+                        ),
+                        const SizedBox(height: 8),
+                        _SideMenuItem(
+                          title: 'Hash',
+                          icon: Icons.fingerprint_outlined,
+                          isSelected: currentRoute == '/hash',
+                          onTap: () => HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/hash'),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  // Bottom section
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        OutlinedButton.icon(
+                          onPressed: () {
+                            context.read<ThemeController>().toggleTheme();
+                          },
+                          icon: Icon(
+                            context.watch<ThemeController>().isDarkMode
+                                ? Icons.light_mode
+                                : Icons.dark_mode,
+                          ),
+                          label: const Text('Toggle Theme'),
+                        ),
+                        const SizedBox(height: 8),
+                        OutlinedButton.icon(
+                          onPressed: () {
+                            context.read<LocaleController>().toggleLocale();
+                          },
+                          icon: const Icon(Icons.language),
+                          label: Text(
+                            context.watch<LocaleController>().value.languageCode == 'en'
+                                ? 'English'
+                                : 'Português',
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        Center(
+                          child: Text(
+                            'v1.0.0',
+                            style: GoogleFonts.spaceGrotesk(
+                              color: AppColors.sideMenuTextInactive,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
             ),
-          ],
-        ),
-      ),
+          );
+        }
     );
   }
 }
@@ -167,7 +169,7 @@ class _SideMenuItemState extends State<_SideMenuItem> {
             borderRadius: BorderRadius.circular(2),
             border: Border(
               left: BorderSide(
-                color: widget.isSelected ? AppColors.sideMenuTextActive : Colors.transparent,
+                color: widget.isSelected ? AppColors.sideMenuTextActive : AppColors.sideMenuTextInactive,
                 width: 2,
               ),
             ),

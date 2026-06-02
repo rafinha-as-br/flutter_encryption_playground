@@ -14,7 +14,7 @@ class HomePageDesktop extends StatelessWidget {
         children: [
           const SideMenu(),
           Expanded(
-            child: const HomePageNavigator(),
+            child: HomePageNavigator(),
           ),
         ],
       ),

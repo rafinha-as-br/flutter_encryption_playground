@@ -11,10 +11,13 @@ import 'home_pages/home_page_desktop.dart';
 
 class HomePageNavigationService {
   HomePageNavigationService._internal();
-  static final HomePageNavigationService _instance = HomePageNavigationService._internal();
-  static HomePageNavigationService get instance => _instance;
 
-  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+  static final instance =
+  HomePageNavigationService._internal();
+
+  final navigatorKey = GlobalKey<NavigatorState>();
+
+  final routeTracker = RouteTracker();
 }
 
 class HomePage extends StatelessWidget {
@@ -31,12 +34,16 @@ class HomePage extends StatelessWidget {
 }
 
 class HomePageNavigator extends StatelessWidget {
-  const HomePageNavigator({super.key});
+  HomePageNavigator({super.key});
+  final routeTracker = RouteTracker();
 
   @override
   Widget build(BuildContext context) {
     return Navigator(
       key: HomePageNavigationService.instance.navigatorKey,
+      observers: [
+        HomePageNavigationService.instance.routeTracker,
+      ],
       initialRoute: '/dashboard',
       onGenerateRoute: _onGenerateRoute,
     );
@@ -47,6 +54,8 @@ class HomePageNavigator extends StatelessWidget {
     switch (settings.name) {
       case '/dashboard':
         builder = (context) => DashboardPage();
+        HomePageNavigationService.instance.routeTracker.currentRoute.value = '/dashboard';
+
         break;
       case '/ciphers':
         builder = (context) => CipherSuiteSelectionPage();
@@ -65,6 +74,7 @@ class HomePageNavigator extends StatelessWidget {
     }
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => builder(context),
+      settings: settings,
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         return FadeTransition(opacity: animation, child: child);
       },
@@ -73,5 +83,24 @@ class HomePageNavigator extends StatelessWidget {
   }
 
 }
+
+class RouteTracker extends NavigatorObserver {
+  final ValueNotifier<String> currentRoute =
+  ValueNotifier('/dashboard');
+
+  @override
+  void didPush(Route route, Route? previousRoute) {
+    currentRoute.value = route.settings.name ?? '';
+  }
+
+  @override
+  void didReplace({
+    Route<dynamic>? newRoute,
+    Route<dynamic>? oldRoute,
+  }) {
+    currentRoute.value = newRoute?.settings.name ?? '';
+  }
+}
+
 
 
