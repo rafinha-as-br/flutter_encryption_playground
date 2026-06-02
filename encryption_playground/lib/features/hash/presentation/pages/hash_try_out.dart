@@ -44,6 +44,8 @@ class _HashTryOutState extends State<HashTryOut> {
 
   void _onTextAChanged(String value) {
     final controller = context.read<HashController>();
+    _textBController.text = value;
+    _onTextBChanged(value);
     if (value.isEmpty) {
       _dartAController.clear();
       _sha1AController.clear();
@@ -149,6 +151,11 @@ class _HashTryOutState extends State<HashTryOut> {
             maxLines: 4,
             onChanged: isA ? _onTextAChanged : _onTextBChanged,
             decoration: const InputDecoration(
+              border: OutlineInputBorder(),
+              contentPadding: EdgeInsets.all(12),
+              isDense: true,
+              fillColor: Colors.black,
+              filled: true,
               hintText: 'Enter text here...',
             ),
           ),

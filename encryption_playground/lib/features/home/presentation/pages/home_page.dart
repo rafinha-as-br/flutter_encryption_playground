@@ -1,3 +1,4 @@
+import 'package:encryption_playground/features/hash/presentation/pages/hash_try_out.dart';
 import 'package:encryption_playground/features/home/presentation/pages/suite_selections_pages/asymmetric_suite_selection_page.dart';
 import 'package:encryption_playground/features/home/presentation/pages/suite_selections_pages/cipher_suite_selection_page.dart';
 import 'package:encryption_playground/features/home/presentation/pages/suite_selections_pages/symmetric_suite_selection_page.dart';
@@ -55,6 +56,9 @@ class HomePageNavigator extends StatelessWidget {
         break;
       case '/asymmetric':
         builder = (context) => AsymmetricSuiteSelectionPage();
+        break;
+      case '/hash' :
+        builder = (context) => HashTryOut();
         break;
       default:
         builder = (context) => DashboardPage();
