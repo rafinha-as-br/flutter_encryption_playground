@@ -10,6 +10,7 @@ import '../../../../shared/responsive/responsive_breakpoints.dart';
 import '../widgets/side_menu.dart';
 import 'dashboard_page.dart';
 
+/// Responsible for the nested navigation on the [HomePage] page.
 class HomePageNavigationService {
   HomePageNavigationService._internal();
 
@@ -20,6 +21,8 @@ class HomePageNavigationService {
   final routeTracker = RouteTracker();
 }
 
+/// Default home page for the app, responsible for home navigation and
+/// side menu setup.
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 

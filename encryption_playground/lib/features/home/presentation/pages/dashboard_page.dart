@@ -8,7 +8,7 @@ import '../widgets/feature_card.dart';
 import 'home_page.dart';
 
 
-
+/// Shows all the suite selection options.
 class DashboardPage extends StatelessWidget {
 
   const DashboardPage({super.key});

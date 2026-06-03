@@ -5,15 +5,7 @@ import '../../../../../../shared/theme/app_colors.dart';
 import '../../../../../l10n/app_localizations.dart';
 import '../../widgets/feature_card.dart';
 
-/*
-/// Service responsible for the nested navigation on the [AsymmetricSuiteSelectionPage] page.
-class AsymmetricSuitSelectionNavigationService {
-  AsymmetricSuitSelectionNavigationService._internal();
-  static final AsymmetricSuitSelectionNavigationService _instance = AsymmetricSuitSelectionNavigationService._internal();
-  static AsymmetricSuitSelectionNavigationService get instance => _instance;
-
-}*/
-
+/// Page responsible for selection of the asymmetric suite.
 class AsymmetricSuiteSelectionPage extends StatefulWidget {
   const AsymmetricSuiteSelectionPage({super.key});
 

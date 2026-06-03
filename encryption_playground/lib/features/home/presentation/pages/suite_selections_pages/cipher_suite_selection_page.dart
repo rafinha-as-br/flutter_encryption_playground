@@ -6,6 +6,7 @@ import '../../../../../../shared/theme/app_colors.dart';
 import '../../../../../l10n/app_localizations.dart';
 import '../../widgets/feature_card.dart';
 
+/// Page responsible for selection of the cipher suite.
 class CipherSuiteSelectionPage extends StatefulWidget {
   const CipherSuiteSelectionPage({super.key});
 

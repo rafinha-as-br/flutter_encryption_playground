@@ -1,4 +1,3 @@
-// lib/features/home/presentation/pages/suite_selections_pages/symmetric_suite_selection_page.dart
 
 import 'package:flutter/material.dart';
 import '../../../../../l10n/app_localizations.dart';
@@ -7,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../../../../shared/theme/app_colors.dart';
 import '../../widgets/feature_card.dart';
 
+/// Page responsible for selection of the symmetric suite.
 class SymmetricSuiteSelectionPage extends StatelessWidget {
   SymmetricSuiteSelectionPage({super.key});
   final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
