@@ -1,0 +1,121 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import '../../../../../app/locale_controller.dart';
+import '../../../../../app/theme_controller.dart';
+import '../../../../../shared/theme/app_colors.dart';
+import '../pages/home_page.dart';
+import 'side_menu_item.dart';
+
+class SideMenuExpanded extends StatelessWidget {
+  const SideMenuExpanded({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder<String>(
+      valueListenable: HomePageNavigationService.instance.routeTracker.currentRoute,
+      builder: (context, currentRoute, child) {
+        return Column(
+          children: [
+            // Logo
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Image.asset(
+                'assets/logo_full.png',
+                width: double.infinity,
+                fit: BoxFit.contain,
+              ),
+            ),
+
+            // Buttons
+            Expanded(
+              child: ListView(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                children: [
+                  SideMenuItem(
+                    title: 'Dashboard',
+                    icon: Icons.dashboard_outlined,
+                    isSelected: currentRoute == '/dashboard',
+                    onTap: () => HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/dashboard'),
+                  ),
+                  const SizedBox(height: 8),
+                  SideMenuItem(
+                    title: 'Ciphers',
+                    icon: Icons.security_outlined,
+                    isSelected: currentRoute == '/ciphers',
+                    onTap: () => HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/ciphers'),
+                  ),
+                  const SizedBox(height: 8),
+                  SideMenuItem(
+                    title: 'Symmetric',
+                    icon: Icons.sync_alt_outlined,
+                    isSelected: currentRoute == '/symmetric',
+                    onTap: () => HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/symmetric'),
+                  ),
+                  const SizedBox(height: 8),
+                  SideMenuItem(
+                    title: 'Asymmetric',
+                    icon: Icons.vpn_key_outlined,
+                    isSelected: currentRoute == '/asymmetric',
+                    onTap: () => HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/asymmetric'),
+                  ),
+                  const SizedBox(height: 8),
+                  SideMenuItem(
+                    title: 'Hash',
+                    icon: Icons.fingerprint_outlined,
+                    isSelected: currentRoute == '/hash',
+                    onTap: () => HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/hash'),
+                  ),
+                ],
+              ),
+            ),
+
+            // Bottom section
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  OutlinedButton.icon(
+                    onPressed: () {
+                      context.read<ThemeController>().toggleTheme();
+                    },
+                    icon: Icon(
+                      context.watch<ThemeController>().isDarkMode
+                          ? Icons.light_mode
+                          : Icons.dark_mode,
+                    ),
+                    label: const Text('Toggle Theme'),
+                  ),
+                  const SizedBox(height: 8),
+                  OutlinedButton.icon(
+                    onPressed: () {
+                      context.read<LocaleController>().toggleLocale();
+                    },
+                    icon: const Icon(Icons.language),
+                    label: Text(
+                      context.watch<LocaleController>().value.languageCode == 'en'
+                          ? 'English'
+                          : 'Português',
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Center(
+                    child: Text(
+                      'v1.0.0',
+                      style: GoogleFonts.spaceGrotesk(
+                        color: AppColors.sideMenuTextInactive,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+}

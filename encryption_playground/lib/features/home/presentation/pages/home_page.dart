@@ -3,17 +3,15 @@ import 'package:encryption_playground/features/home/presentation/pages/suite_sel
 import 'package:encryption_playground/features/home/presentation/pages/suite_selections_pages/cipher_suite_selection_page.dart';
 import 'package:encryption_playground/features/home/presentation/pages/suite_selections_pages/symmetric_suite_selection_page.dart';
 import 'package:flutter/material.dart';
-import '../../../../shared/widgets/responsive_layout_builder.dart';
+
+import '../../../../shared/responsive/responsive_breakpoints.dart';
+import '../widgets/side_menu.dart';
 import 'dashboard_page.dart';
-import 'home_pages/home_page_mobile.dart';
-import 'home_pages/home_page_tablet.dart';
-import 'home_pages/home_page_desktop.dart';
 
 class HomePageNavigationService {
   HomePageNavigationService._internal();
 
-  static final instance =
-  HomePageNavigationService._internal();
+  static final instance = HomePageNavigationService._internal();
 
   final navigatorKey = GlobalKey<NavigatorState>();
 
@@ -25,10 +23,34 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveLayoutBuilder(
-      mobile: const HomePageMobile(),
-      tablet: const HomePageTablet(),
-      desktop: const HomePageDesktop(),
+    final state = ResponsiveLayout.current(context);
+    final isMobile = state == ResponsiveLayoutState.mobile;
+
+    if (isMobile) {
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text('Encryption Playground'),
+          leading: Builder(
+            builder: (context) => IconButton(
+              icon: const Icon(Icons.menu),
+              onPressed: () => Scaffold.of(context).openDrawer(),
+            ),
+          ),
+        ),
+        drawer: const SideMenu(),
+        body: HomePageNavigator(),
+      );
+    }
+
+    return Scaffold(
+      body: Row(
+        children: [
+          const SideMenu(),
+          Expanded(
+            child: HomePageNavigator(),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -55,19 +77,18 @@ class HomePageNavigator extends StatelessWidget {
       case '/dashboard':
         builder = (context) => DashboardPage();
         HomePageNavigationService.instance.routeTracker.currentRoute.value = '/dashboard';
-
         break;
       case '/ciphers':
-        builder = (context) => CipherSuiteSelectionPage();
+        builder = (context) => const CipherSuiteSelectionPage();
         break;
       case '/symmetric':
         builder = (context) => SymmetricSuiteSelectionPage();
         break;
       case '/asymmetric':
-        builder = (context) => AsymmetricSuiteSelectionPage();
+        builder = (context) => const AsymmetricSuiteSelectionPage();
         break;
-      case '/hash' :
-        builder = (context) => HashTryOut();
+      case '/hash':
+        builder = (context) => const HashTryOut();
         break;
       default:
         builder = (context) => DashboardPage();
@@ -81,12 +102,10 @@ class HomePageNavigator extends StatelessWidget {
       transitionDuration: const Duration(milliseconds: 200),
     );
   }
-
 }
 
 class RouteTracker extends NavigatorObserver {
-  final ValueNotifier<String> currentRoute =
-  ValueNotifier('/dashboard');
+  final ValueNotifier<String> currentRoute = ValueNotifier('/dashboard');
 
   @override
   void didPush(Route route, Route? previousRoute) {
@@ -101,6 +120,3 @@ class RouteTracker extends NavigatorObserver {
     currentRoute.value = newRoute?.settings.name ?? '';
   }
 }
-
-
-
