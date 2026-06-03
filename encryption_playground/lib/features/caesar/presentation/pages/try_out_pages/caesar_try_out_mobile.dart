@@ -39,7 +39,7 @@ class CaesarTryOutMobile extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
     return Consumer<CaesarController>(builder: (context, controller, child) {
       final isEncrypting = controller.isEncrypting;
-      final shiftValue = controller.key ?? 3;
+      final shiftValue = controller.key;
 
       return Scaffold(
         body: SingleChildScrollView(

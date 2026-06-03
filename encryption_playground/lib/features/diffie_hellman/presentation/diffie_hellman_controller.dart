@@ -46,6 +46,7 @@ class DiffieHellmanController extends ChangeNotifier {
   void calculate() {
     if (_p == null || _g == null || _p! <= 2) {
       _resetKeys();
+      _clearGeneratedControllersTexts();
       notifyListeners();
       return;
     }
@@ -98,16 +99,18 @@ class DiffieHellmanController extends ChangeNotifier {
   }
 
   void _resetControllersTexts(){
+    _clearGeneratedControllersTexts();
+    gController.text = '';
+    pController.text = '';
+  }
+
+  void _clearGeneratedControllersTexts() {
     userAPrivateKeyController.text = '';
     userBPrivateKeyController.text = '';
-
     userAPublicKeyController.text = '';
     userBPublicKeyController.text = '';
     sharedSecretAController.text = '';
     sharedSecretBController.text = '';
-
-    gController.text = '';
-    pController.text = '';
   }
 
   int _generatePrivateKey() {

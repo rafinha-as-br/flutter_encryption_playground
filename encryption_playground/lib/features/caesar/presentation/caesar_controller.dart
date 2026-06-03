@@ -41,7 +41,7 @@ class CaesarController extends ChangeNotifier{
   /// On key changed method.
   /// Parsers the new key to an integer and notifies listeners
   void onKeyChanged({required String newKey}){
-    key = int.parse(newKey);
+    key = int.tryParse(newKey) ?? key;
 
     _processText();
   }
