@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../home_page.dart';
 import '../../widgets/side_menu.dart';
 
+/// Tablet layout for the [HomePage].
 class HomePageTablet extends StatelessWidget {
   const HomePageTablet({super.key,});
 

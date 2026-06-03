@@ -3,12 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../../shared/theme/app_colors.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../widgets/feature_card.dart';
 import 'home_page.dart';
 
-/*
-* TODO: Place the texts of this page into the internacionalization files
-* */
+
 
 class DashboardPage extends StatelessWidget {
 
@@ -30,7 +29,7 @@ class DashboardPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Welcome to Encryption Playground',
+                        AppLocalizations.of(context)!.welcomeTitle,
                         style: GoogleFonts.spaceGrotesk(
                           fontSize: 28,
                           fontWeight: FontWeight.w700,
@@ -39,7 +38,7 @@ class DashboardPage extends StatelessWidget {
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        'Explore cryptographic algorithms, see how they work under the hood, and test them out interactively.',
+                        AppLocalizations.of(context)!.welcomeDescription,
                         style: GoogleFonts.inter(
                           fontSize: 16,
                           color: AppColors.darkOnSurfaceVariant,
@@ -52,7 +51,7 @@ class DashboardPage extends StatelessWidget {
                           Navigator.of(context, rootNavigator: true).pushNamed('/about');
                         },
                         icon: const Icon(Icons.info_outline),
-                        label: const Text('Learn more about the project'),
+                        label: Text(AppLocalizations.of(context)!.learnMoreAboutProject),
                       ),
                     ],
                 ),
@@ -64,7 +63,7 @@ class DashboardPage extends StatelessWidget {
           const SizedBox(height: 48),
 
           Text(
-            'Explore Features',
+            AppLocalizations.of(context)!.exploreFeatures,
             style: GoogleFonts.spaceGrotesk(
               fontSize: 24,
               fontWeight: FontWeight.w700,
@@ -101,26 +100,26 @@ class DashboardPage extends StatelessWidget {
           children: [
             FeatureCard(
               icon: Icons.security_outlined,
-              title: 'Cipher Suite',
-              description: 'Explore classic and modern substitution ciphers like the Caesar cipher.',
+              title: AppLocalizations.of(context)!.cipherSuite,
+              description: AppLocalizations.of(context)!.cipherSuiteDescription,
               onPressed: () => HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/ciphers'),
             ),
             FeatureCard(
               icon: Icons.sync_alt_outlined,
-              title: 'Symmetric Suite',
-              description: 'Test symmetric encryption algorithms where the same key encrypts and decrypts.',
+              title: AppLocalizations.of(context)!.symmetricSuite,
+              description: AppLocalizations.of(context)!.symmetricSuiteDescription,
               onPressed: () => HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/symmetric'),
             ),
             FeatureCard(
               icon: Icons.vpn_key_outlined,
-              title: 'Asymmetric Suite',
-              description: 'Learn about public-key cryptography and key exchange protocols like Diffie-Hellman.',
+              title: AppLocalizations.of(context)!.asymmetricSuite,
+              description: AppLocalizations.of(context)!.asymmetricSuiteDescription,
               onPressed: () => HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/asymmetric'),
             ),
             FeatureCard(
               icon: Icons.fingerprint_outlined,
-              title: 'Hash Suite',
-              description: 'Generate cryptographic hashes using MD5, SHA-1, SHA-256 and more.',
+              title: AppLocalizations.of(context)!.hashSuite,
+              description: AppLocalizations.of(context)!.hashSuiteDescription,
               onPressed: () => HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/hash'),
             ),
           ],

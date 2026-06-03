@@ -1,10 +1,13 @@
+import 'package:encryption_playground/features/diffie_hellman/presentation/pages/diffie_hellman_try_out.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../../../../shared/theme/app_colors.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../diffie_hellman_controller.dart';
 
+/// Responsible for displaying the Global Parameters for the [DiffieHellmanTryOut] page.
 class DHGlobalParametersSection extends StatelessWidget {
   const DHGlobalParametersSection({super.key});
 
@@ -23,7 +26,7 @@ class DHGlobalParametersSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '1. Global Parameters',
+            AppLocalizations.of(context)!.globalParametersTitle,
             style: GoogleFonts.spaceGrotesk(
               fontSize: 20,
               fontWeight: FontWeight.w700,
@@ -33,8 +36,8 @@ class DHGlobalParametersSection extends StatelessWidget {
           const SizedBox(height: 16),
           _buildParameterInput(
             controller.pController,
-            'Prime Modulus (P)',
-            'A large prime number (e.g. 23)',
+            AppLocalizations.of(context)!.primeModulus,
+            AppLocalizations.of(context)!.primeModulusHint,
                 (val) => controller.p = int.tryParse(val),
           ),
 
@@ -42,8 +45,8 @@ class DHGlobalParametersSection extends StatelessWidget {
 
           _buildParameterInput(
             controller.gController,
-            'Generator (G)',
-            'A primitive root modulo P (e.g. 5)',
+            AppLocalizations.of(context)!.generatorLabel,
+            AppLocalizations.of(context)!.generatorHint,
                 (val) => controller.g = int.tryParse(val),
           )
         ],

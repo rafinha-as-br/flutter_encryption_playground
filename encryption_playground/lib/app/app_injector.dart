@@ -1,3 +1,5 @@
 class AppInjector {
-  static Future<void>  init() async {}
+  static Future<void> init() async {
+
+  }
 }

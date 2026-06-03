@@ -7,8 +7,11 @@ import 'package:provider/provider.dart';
 
 import '../caesar_controller.dart';
 
-class CaesarTryOutScreen extends StatelessWidget {
-  const CaesarTryOutScreen({super.key});
+/// Responsible for displaying the main page for the Caesar Cypher feature
+///
+/// This widget holds the [ResponsiveLayoutBuilder] for the [CaesarTryOut] page.
+class CaesarTryOut extends StatelessWidget {
+  const CaesarTryOut({super.key});
 
   @override
   Widget build(BuildContext context) {

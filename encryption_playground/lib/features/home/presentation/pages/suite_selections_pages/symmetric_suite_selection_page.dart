@@ -1,6 +1,7 @@
 // lib/features/home/presentation/pages/suite_selections_pages/symmetric_suite_selection_page.dart
 
 import 'package:flutter/material.dart';
+import '../../../../../l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../../../shared/theme/app_colors.dart';
@@ -23,13 +24,13 @@ class SymmetricSuiteSelectionPage extends StatelessWidget {
     WidgetBuilder builder;
     switch (settings.name) {
       case '/suitePage':
-        builder = (context) => _suiteSelectionPageView();
+        builder = (context) => _suiteSelectionPageView(context);
         break;
 
       // future new symmetric algorithms will have their routes called here!
 
       default:
-        builder = (context) => _suiteSelectionPageView();
+        builder = (context) => _suiteSelectionPageView(context);
     }
 
     return PageRouteBuilder(
@@ -41,14 +42,14 @@ class SymmetricSuiteSelectionPage extends StatelessWidget {
     );
   }
 
-  Widget _suiteSelectionPageView() {
+  Widget _suiteSelectionPageView(BuildContext context) {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(32.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Symmetric Suite',
+            AppLocalizations.of(context)!.symmetricSuite,
             style: GoogleFonts.spaceGrotesk(
               fontSize: 32,
               fontWeight: FontWeight.w700,
@@ -57,7 +58,7 @@ class SymmetricSuiteSelectionPage extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            'Algorithms that use the same cryptographic keys for both encryption of plaintext and decryption of ciphertext.',
+            AppLocalizations.of(context)!.symmetricSuiteSubtitle,
             style: GoogleFonts.inter(
               fontSize: 16,
               color: AppColors.darkOnSurfaceVariant,
@@ -85,9 +86,9 @@ class SymmetricSuiteSelectionPage extends StatelessWidget {
                 children: [
                   FeatureCard(
                     icon: Icons.lock_outline,
-                    title: 'AES (Coming Soon)',
-                    description: 'Advanced Encryption Standard is a symmetric block cipher chosen by the U.S. government to protect classified information.',
-                    buttonText: 'Coming Soon',
+                    title: AppLocalizations.of(context)!.aesComingSoonTitle,
+                    description: AppLocalizations.of(context)!.aesComingSoonDescription,
+                    buttonText: AppLocalizations.of(context)!.comingSoon,
                     onPressed: () {},
                   ),
                 ],

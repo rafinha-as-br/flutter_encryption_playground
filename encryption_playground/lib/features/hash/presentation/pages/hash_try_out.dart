@@ -8,7 +8,9 @@ import '../../../../app/app_routes.dart';
 import '../hash_controller.dart';
 import '../widgets/hash_diff_text.dart';
 import 'hash_tab.dart'; // For HashNavigationService
+import '../../../../l10n/app_localizations.dart';
 
+/// Responsible for displaying the main page for the Hash feature
 class HashTryOut extends StatefulWidget {
   const HashTryOut({super.key});
 
@@ -81,11 +83,11 @@ class _HashTryOutState extends State<HashTryOut> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             SharedHeader(
-              title: 'Hash Functions',
-              description: 'A hash function maps data of arbitrary size to fixed-size values. Try altering a single letter and notice how the entire output changes.',
+              title: AppLocalizations.of(context)!.hashFunctionsTitle,
+              description: AppLocalizations.of(context)!.hashFunctionsDescription,
               onAboutPressed: () {
-                HashNavigationService.instance.navigatorKey.currentState
-                    ?.pushNamed(AppRoutes.about);
+
+                HashNavigationService.instance.navigatorKey.currentState?.pushNamed(AppRoutes.about);
               },
             ),
             const SizedBox(height: 32),
@@ -96,18 +98,18 @@ class _HashTryOutState extends State<HashTryOut> {
                   return Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Expanded(child: _buildInputColumn('Input A', _textAController, _dartAController, _sha1AController, _sha256AController, isA: true)),
+                      Expanded(child: _buildInputColumn(context, AppLocalizations.of(context)!.inputA, _textAController, _dartAController, _sha1AController, _sha256AController, isA: true)),
                       const SizedBox(width: 32),
-                      Expanded(child: _buildInputColumn('Input B (Compare)', _textBController, _dartBController, _sha1BController, _sha256BController, isA: false)),
+                      Expanded(child: _buildInputColumn(context, AppLocalizations.of(context)!.inputBCompare, _textBController, _dartBController, _sha1BController, _sha256BController, isA: false)),
                     ],
                   );
                 } else {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      _buildInputColumn('Input A', _textAController, _dartAController, _sha1AController, _sha256AController, isA: true),
+                      _buildInputColumn(context, AppLocalizations.of(context)!.inputA, _textAController, _dartAController, _sha1AController, _sha256AController, isA: true),
                       const SizedBox(height: 32),
-                      _buildInputColumn('Input B (Compare)', _textBController, _dartBController, _sha1BController, _sha256BController, isA: false),
+                      _buildInputColumn(context, AppLocalizations.of(context)!.inputBCompare, _textBController, _dartBController, _sha1BController, _sha256BController, isA: false),
                     ],
                   );
                 }
@@ -120,6 +122,7 @@ class _HashTryOutState extends State<HashTryOut> {
   }
 
   Widget _buildInputColumn(
+    BuildContext context,
     String title,
     TextEditingController input,
     TextEditingController dartOut,
@@ -150,27 +153,27 @@ class _HashTryOutState extends State<HashTryOut> {
             controller: input,
             maxLines: 4,
             onChanged: isA ? _onTextAChanged : _onTextBChanged,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               border: OutlineInputBorder(),
               contentPadding: EdgeInsets.all(12),
               isDense: true,
               fillColor: Colors.black,
               filled: true,
-              hintText: 'Enter text here...',
+              hintText: AppLocalizations.of(context)!.enterTextHere,
             ),
           ),
           const SizedBox(height: 24),
-          _buildResultItem('Dart Hash', dartOut, isA ? null : _dartAController),
+          _buildResultItem(context, AppLocalizations.of(context)!.dartHashCode, dartOut, isA ? null : _dartAController),
           const SizedBox(height: 16),
-          _buildResultItem('SHA-1', sha1Out, isA ? null : _sha1AController),
+          _buildResultItem(context, AppLocalizations.of(context)!.sha1HashCode, sha1Out, isA ? null : _sha1AController),
           const SizedBox(height: 16),
-          _buildResultItem('SHA-256', sha256Out, isA ? null : _sha256AController),
+          _buildResultItem(context, AppLocalizations.of(context)!.sha256HashCode, sha256Out, isA ? null : _sha256AController),
         ],
       ),
     );
   }
 
-  Widget _buildResultItem(String label, TextEditingController controller, TextEditingController? compareTo) {
+  Widget _buildResultItem(BuildContext context, String label, TextEditingController controller, TextEditingController? compareTo) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -193,7 +196,7 @@ class _HashTryOutState extends State<HashTryOut> {
           child: compareTo != null
               ? HashDiffText(text1: controller.text, text2: compareTo.text)
               : Text(
-                  controller.text.isEmpty ? 'Waiting for input...' : controller.text,
+                  controller.text.isEmpty ? AppLocalizations.of(context)!.waitingForInput : controller.text,
                   style: GoogleFonts.jetBrainsMono(
                     color: controller.text.isEmpty ? AppColors.darkOnSurfaceVariant : AppColors.darkPrimary,
                     fontSize: 14,

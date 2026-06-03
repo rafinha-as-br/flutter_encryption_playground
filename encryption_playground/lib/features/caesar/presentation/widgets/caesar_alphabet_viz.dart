@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../shared/theme/app_colors.dart';
 
+/// Widget responsible for displaying the Caesar Alphabet Visualization
 class CaesarAlphabetViz extends StatelessWidget {
   final int shift;
   const CaesarAlphabetViz({super.key, required this.shift});

@@ -1,9 +1,11 @@
 
 import 'package:encryption_playground/features/caesar/domain/do_encrypt_usecase.dart';
+import 'package:encryption_playground/features/caesar/presentation/pages/caesar_try_out.dart';
 import 'package:flutter/material.dart';
 
 import '../domain/do_uncrypt_usecase.dart';
 
+/// Controller responsible for controlling the [CaesarTryOut] state
 class CaesarController extends ChangeNotifier{
 
   bool isEncrypting = true;

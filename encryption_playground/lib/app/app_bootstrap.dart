@@ -7,6 +7,7 @@ import 'locale_controller.dart';
 import 'theme_controller.dart';
 import 'app.dart';
 
+/// Main app bootstrap, holds the main providers for the app
 class AppBootstrap extends StatelessWidget {
   const AppBootstrap({super.key});
 

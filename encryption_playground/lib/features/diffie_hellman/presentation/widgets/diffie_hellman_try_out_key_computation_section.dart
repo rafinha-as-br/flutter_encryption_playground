@@ -1,10 +1,13 @@
+import 'package:encryption_playground/features/diffie_hellman/presentation/pages/diffie_hellman_try_out.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../l10n/app_localizations.dart';
 import '../../../../shared/theme/app_colors.dart';
 import '../diffie_hellman_controller.dart';
 
+/// Responsible for displaying the Key Computation section for the [DiffieHellmanTryOut] page.
 class DHTryOutKeyComputationSection extends StatelessWidget {
   const DHTryOutKeyComputationSection({super.key});
 
@@ -23,7 +26,7 @@ class DHTryOutKeyComputationSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '3. Key Computation',
+            AppLocalizations.of(context)!.keyComputationTitle,
             style: GoogleFonts.spaceGrotesk(
               fontSize: 20,
               fontWeight: FontWeight.w700,
@@ -34,19 +37,21 @@ class DHTryOutKeyComputationSection extends StatelessWidget {
 
           // User A Computation
           _buildComputationVisual(
-            'User A computes shared key:',
+            AppLocalizations.of(context)!.userAComputesSharedKey,
             's = (B^a) mod P',
             controller.sharedSecretAController,
             AppColors.darkPrimary,
+            '${AppLocalizations.of(context)!.sharedSecret} (s)',
           ),
           const SizedBox(height: 24),
 
           // User B Computation
           _buildComputationVisual(
-            'User B computes shared key:',
+            AppLocalizations.of(context)!.userBComputesSharedKey,
             's = (A^b) mod P',
             controller.sharedSecretBController,
             AppColors.darkSecondary,
+            '${AppLocalizations.of(context)!.sharedSecret} (s)',
           ),
 
           const SizedBox(height: 48),
@@ -62,7 +67,7 @@ class DHTryOutKeyComputationSection extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 16),
               ),
               icon: const Icon(Icons.refresh),
-              label: const Text('Reset Parameters', style: TextStyle(fontWeight: FontWeight.bold)),
+              label: Text(AppLocalizations.of(context)!.resetParameters, style: const TextStyle(fontWeight: FontWeight.bold)),
             ),
           ),
         ],
@@ -70,7 +75,7 @@ class DHTryOutKeyComputationSection extends StatelessWidget {
     );
   }
 
-  Widget _buildComputationVisual(String label, String formula, TextEditingController secretController, Color accentColor) {
+  Widget _buildComputationVisual(String label, String formula, TextEditingController secretController, Color accentColor, String hintText) {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -102,7 +107,7 @@ class DHTryOutKeyComputationSection extends StatelessWidget {
             readOnly: true,
             style: TextStyle(color: accentColor, fontWeight: FontWeight.bold),
             decoration: InputDecoration(
-                hintText: 'Shared Secret (s)',
+                hintText: hintText,
                 prefixIcon: Icon(Icons.lock_outline, color: accentColor, size: 20),
                 fillColor: Colors.black
             ),

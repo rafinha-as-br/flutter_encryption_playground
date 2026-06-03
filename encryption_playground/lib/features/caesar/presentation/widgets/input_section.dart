@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../../shared/theme/app_colors.dart';
 import '../../../../shared/widgets/default_container.dart';
 
+/// Widget responsible for displaying any input section
 class InputSection extends StatefulWidget {
   const InputSection.input({
     super.key,

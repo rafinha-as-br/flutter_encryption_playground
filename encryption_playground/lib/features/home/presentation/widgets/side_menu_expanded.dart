@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
 import '../../../../../app/locale_controller.dart';
 import '../../../../../app/theme_controller.dart';
 import '../../../../../shared/theme/app_colors.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../pages/home_page.dart';
 import 'side_menu_item.dart';
 
@@ -34,35 +34,35 @@ class SideMenuExpanded extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 children: [
                   SideMenuItem(
-                    title: 'Dashboard',
+                    title: AppLocalizations.of(context)!.dashboard,
                     icon: Icons.dashboard_outlined,
                     isSelected: currentRoute == '/dashboard',
                     onTap: () => HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/dashboard'),
                   ),
                   const SizedBox(height: 8),
                   SideMenuItem(
-                    title: 'Ciphers',
+                    title: AppLocalizations.of(context)!.cipherSuite,
                     icon: Icons.security_outlined,
                     isSelected: currentRoute == '/ciphers',
                     onTap: () => HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/ciphers'),
                   ),
                   const SizedBox(height: 8),
                   SideMenuItem(
-                    title: 'Symmetric',
+                    title: AppLocalizations.of(context)!.symmetricSuite,
                     icon: Icons.sync_alt_outlined,
                     isSelected: currentRoute == '/symmetric',
                     onTap: () => HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/symmetric'),
                   ),
                   const SizedBox(height: 8),
                   SideMenuItem(
-                    title: 'Asymmetric',
+                    title: AppLocalizations.of(context)!.asymmetricSuite,
                     icon: Icons.vpn_key_outlined,
                     isSelected: currentRoute == '/asymmetric',
                     onTap: () => HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/asymmetric'),
                   ),
                   const SizedBox(height: 8),
                   SideMenuItem(
-                    title: 'Hash',
+                    title: AppLocalizations.of(context)!.hashSuite,
                     icon: Icons.fingerprint_outlined,
                     isSelected: currentRoute == '/hash',
                     onTap: () => HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/hash'),
@@ -86,7 +86,7 @@ class SideMenuExpanded extends StatelessWidget {
                           ? Icons.light_mode
                           : Icons.dark_mode,
                     ),
-                    label: const Text('Toggle Theme'),
+                    label: Text(AppLocalizations.of(context)!.theme),
                   ),
                   const SizedBox(height: 8),
                   OutlinedButton.icon(

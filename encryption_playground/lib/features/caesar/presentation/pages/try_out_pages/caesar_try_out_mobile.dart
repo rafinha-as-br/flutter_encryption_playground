@@ -1,3 +1,4 @@
+import 'package:encryption_playground/features/caesar/presentation/pages/caesar_try_out.dart';
 import 'package:encryption_playground/features/caesar/presentation/widgets/shift_control.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -14,6 +15,7 @@ import '../../widgets/formula_container.dart';
 import '../../widgets/input_section.dart';
 import '../caesar_tab.dart';
 
+/// Mobile layout for the [CaesarTryOut] page
 class CaesarTryOutMobile extends StatelessWidget {
   final String resultValue;
   final String textValue;
@@ -46,8 +48,8 @@ class CaesarTryOutMobile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               SharedHeader(
-                title: 'Caesar Cipher',
-                description: 'A classic substitution cipher where each letter in the plaintext is shifted a certain number of places down the alphabet.',
+                title: l10n.caesar,
+                description: l10n.caesarCipherDescription,
                 onAboutPressed: () {
                   CaesarNavigationService.instance.navigatorKey.currentState
                       ?.pushNamed(AppRoutes.about);
@@ -87,7 +89,7 @@ class CaesarTryOutMobile extends StatelessWidget {
                   Column(
                     children: [
                       Text(
-                          'Swap',
+                          l10n.swap,
                           style: GoogleFonts.spaceGrotesk(
                             fontSize: 16,
                             fontWeight: FontWeight.w700,

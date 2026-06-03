@@ -1,10 +1,11 @@
+import 'package:encryption_playground/features/diffie_hellman/presentation/pages/diffie_hellman_try_out.dart';
 import 'package:encryption_playground/features/diffie_hellman/presentation/widgets/diffie_hellman_try_out_header_section.dart';
 import 'package:flutter/material.dart';
 import '../../widgets/diffie_hellman_global_parameters_section.dart';
 import '../../widgets/diffie_hellman_try_out_key_computation_section.dart';
 import '../../widgets/diffie_hellman_try_out_key_generation_section.dart';
 
-
+/// Desktop layout for the [DiffieHellmanTryOut] page
 class DiffieHellmanTryOutDesktop extends StatelessWidget {
   const DiffieHellmanTryOutDesktop({super.key});
 

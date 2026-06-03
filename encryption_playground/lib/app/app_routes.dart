@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../features/home/presentation/pages/about_page.dart';
 import '../features/home/presentation/pages/home_page.dart';
 
+/// Responsible for the main routes of the application.
 class AppRoutes {
   static const String home = '/';
   static const String about = '/about';

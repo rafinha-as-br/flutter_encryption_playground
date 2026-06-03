@@ -1,16 +1,18 @@
 import 'package:encryption_playground/features/diffie_hellman/presentation/pages/diffie_hellman_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../../../../../../shared/theme/app_colors.dart';
+import '../../../../../l10n/app_localizations.dart';
 import '../../widgets/feature_card.dart';
 
+/*
+/// Service responsible for the nested navigation on the [AsymmetricSuiteSelectionPage] page.
 class AsymmetricSuitSelectionNavigationService {
   AsymmetricSuitSelectionNavigationService._internal();
   static final AsymmetricSuitSelectionNavigationService _instance = AsymmetricSuitSelectionNavigationService._internal();
   static AsymmetricSuitSelectionNavigationService get instance => _instance;
 
-}
+}*/
 
 class AsymmetricSuiteSelectionPage extends StatefulWidget {
   const AsymmetricSuiteSelectionPage({super.key});
@@ -66,7 +68,7 @@ class _AsymmetricSuiteSelectionPageState extends State<AsymmetricSuiteSelectionP
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Asymmetric Suite',
+            AppLocalizations.of(context)!.asymmetricSuite,
             style: GoogleFonts.spaceGrotesk(
               fontSize: 32,
               fontWeight: FontWeight.w700,
@@ -75,7 +77,7 @@ class _AsymmetricSuiteSelectionPageState extends State<AsymmetricSuiteSelectionP
           ),
           const SizedBox(height: 16),
           Text(
-            'Algorithms that require two separate keys, one of which is secret (or private) and one of which is public.',
+            AppLocalizations.of(context)!.asymmetricSuiteSubtitle,
             style: GoogleFonts.inter(
               fontSize: 16,
               color: AppColors.darkOnSurfaceVariant,
@@ -103,9 +105,9 @@ class _AsymmetricSuiteSelectionPageState extends State<AsymmetricSuiteSelectionP
                 children: [
                   FeatureCard(
                     icon: Icons.vpn_key_outlined,
-                    title: 'Diffie-Hellman',
-                    description: 'A method of securely exchanging cryptographic keys over a public channel.',
-                    buttonText: 'Try out',
+                    title: AppLocalizations.of(context)!.diffieHellman,
+                    description: AppLocalizations.of(context)!.diffieHellmanDescription,
+                    buttonText: AppLocalizations.of(context)!.tryOut,
                     onPressed: () => _navigatorKey.currentState?.pushReplacementNamed('/diffie-hellman_tab'),
                   ),
                 ],

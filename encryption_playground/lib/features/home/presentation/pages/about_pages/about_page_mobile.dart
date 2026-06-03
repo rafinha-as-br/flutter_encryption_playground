@@ -1,8 +1,10 @@
+import 'package:encryption_playground/features/home/presentation/pages/about_page.dart';
 import 'package:encryption_playground/shared/widgets/default_container.dart';
 import 'package:flutter/material.dart';
+import '../../../../../l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
+/// Mobile layout for the [AboutPage] page.
 class AboutPageMobile extends StatefulWidget {
   const AboutPageMobile({super.key});
 
@@ -15,7 +17,7 @@ class _AboutPageMobileState extends State<AboutPageMobile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('About the Project'),
+        title: Text(AppLocalizations.of(context)!.aboutProjectTitle),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -36,18 +38,17 @@ class _AboutPageMobileState extends State<AboutPageMobile> {
                   child: Column(
                     children: [
                       Text(
-                        'Sobre o projeto',
+                        AppLocalizations.of(context)!.aboutProjectTitle,
                         style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                           fontWeight: FontWeight.bold,
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
                       const SizedBox(height: 16),
-                      const Text(
-                        'Este projeto foi desenvolvido durante a disciplina de Segurança da Informação, durante o primeiro semestre do ano de 2026, '
-                        'com o intuito de demonstrar o funcionamento dos algoritmos de cripografia',
+                      Text(
+                        AppLocalizations.of(context)!.aboutProjectText,
                         textAlign: TextAlign.start,
-                        style: TextStyle(fontSize: 16),
+                        style: const TextStyle(fontSize: 16),
                       ),
                     ],
                   )
@@ -63,7 +64,7 @@ class _AboutPageMobileState extends State<AboutPageMobile> {
                   child: Column(
                     children: [
                       Text(
-                        'Contato',
+                        AppLocalizations.of(context)!.contact,
                         style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
@@ -109,7 +110,7 @@ class _AboutPageMobileState extends State<AboutPageMobile> {
                   children: [
 
                     Text(
-                      'Sobre o aplicativo',
+                      AppLocalizations.of(context)!.aboutApp,
                       style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
@@ -119,9 +120,9 @@ class _AboutPageMobileState extends State<AboutPageMobile> {
                     /// project versions & license
                     Column(
                       children: [
-                        _buildInfoRow(context, 'Version', '1.0.0'),
-                        _buildInfoRow(context, 'Developer', 'Rafael Antunes Souza'),
-                        _buildInfoRow(context, 'License', 'MIT'),
+                        _buildInfoRow(context, AppLocalizations.of(context)!.version, '1.0.0'),
+                        _buildInfoRow(context, AppLocalizations.of(context)!.developer, 'Rafael Antunes Souza'),
+                        _buildInfoRow(context, AppLocalizations.of(context)!.license, 'MIT'),
                       ],
                     ),
                   ],

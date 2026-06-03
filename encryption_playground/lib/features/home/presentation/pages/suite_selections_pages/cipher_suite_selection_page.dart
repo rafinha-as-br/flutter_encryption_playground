@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../../../shared/theme/app_colors.dart';
+import '../../../../../l10n/app_localizations.dart';
 import '../../widgets/feature_card.dart';
 
 class CipherSuiteSelectionPage extends StatefulWidget {
@@ -56,7 +57,7 @@ class _CipherSuiteSelectionPageState extends State<CipherSuiteSelectionPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Cipher Suite',
+            AppLocalizations.of(context)!.cipherSuite,
             style: GoogleFonts.spaceGrotesk(
               fontSize: 32,
               fontWeight: FontWeight.w700,
@@ -65,7 +66,7 @@ class _CipherSuiteSelectionPageState extends State<CipherSuiteSelectionPage> {
           ),
           const SizedBox(height: 16),
           Text(
-            'Substitution and transposition ciphers, classical encryption methods.',
+            AppLocalizations.of(context)!.cipherSuiteSubtitle,
             style: GoogleFonts.inter(
               fontSize: 16,
               color: AppColors.darkOnSurfaceVariant,
@@ -93,9 +94,9 @@ class _CipherSuiteSelectionPageState extends State<CipherSuiteSelectionPage> {
                 children: [
                   FeatureCard(
                     icon: Icons.sort_by_alpha,
-                    title: 'Caesar Cipher',
-                    description: 'A classic substitution cipher where each letter is shifted by a fixed number of positions.',
-                    buttonText: 'Try out',
+                    title: AppLocalizations.of(context)!.caesar,
+                    description: AppLocalizations.of(context)!.caesarCipherDescription,
+                    buttonText: AppLocalizations.of(context)!.tryOut,
                     onPressed: () => _navigatorKey.currentState?.pushNamed('/try_out_caesar'),
                   ),
                 ],

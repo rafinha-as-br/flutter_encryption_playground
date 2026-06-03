@@ -1,9 +1,11 @@
-import 'package:encryption_playground/features/hash/presentation/pages/hash_try_out.dart';
+import 'package:encryption_playground/features/hash/presentation/pages/hash_tab.dart';
 import 'package:encryption_playground/features/home/presentation/pages/suite_selections_pages/asymmetric_suite_selection_page.dart';
 import 'package:encryption_playground/features/home/presentation/pages/suite_selections_pages/cipher_suite_selection_page.dart';
 import 'package:encryption_playground/features/home/presentation/pages/suite_selections_pages/symmetric_suite_selection_page.dart';
 import 'package:flutter/material.dart';
 
+
+import '../../../../l10n/app_localizations.dart';
 import '../../../../shared/responsive/responsive_breakpoints.dart';
 import '../widgets/side_menu.dart';
 import 'dashboard_page.dart';
@@ -29,7 +31,7 @@ class HomePage extends StatelessWidget {
     if (isMobile) {
       return Scaffold(
         appBar: AppBar(
-          title: const Text('Encryption Playground'),
+          title: Text(AppLocalizations.of(context)!.appName),
           leading: Builder(
             builder: (context) => IconButton(
               icon: const Icon(Icons.menu),
@@ -76,7 +78,6 @@ class HomePageNavigator extends StatelessWidget {
     switch (settings.name) {
       case '/dashboard':
         builder = (context) => DashboardPage();
-        HomePageNavigationService.instance.routeTracker.currentRoute.value = '/dashboard';
         break;
       case '/ciphers':
         builder = (context) => const CipherSuiteSelectionPage();
@@ -88,7 +89,7 @@ class HomePageNavigator extends StatelessWidget {
         builder = (context) => const AsymmetricSuiteSelectionPage();
         break;
       case '/hash':
-        builder = (context) => const HashTryOut();
+        builder = (context) => const HashTab();
         break;
       default:
         builder = (context) => DashboardPage();
@@ -109,7 +110,9 @@ class RouteTracker extends NavigatorObserver {
 
   @override
   void didPush(Route route, Route? previousRoute) {
-    currentRoute.value = route.settings.name ?? '';
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      currentRoute.value = route.settings.name ?? '';
+    });
   }
 
   @override
@@ -117,6 +120,8 @@ class RouteTracker extends NavigatorObserver {
     Route<dynamic>? newRoute,
     Route<dynamic>? oldRoute,
   }) {
-    currentRoute.value = newRoute?.settings.name ?? '';
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      currentRoute.value = newRoute?.settings.name ?? '';
+    });
   }
 }

@@ -1,20 +1,19 @@
+import 'package:encryption_playground/features/caesar/presentation/pages/caesar_try_out.dart';
 import 'package:encryption_playground/features/caesar/presentation/widgets/formula_container.dart';
 import 'package:encryption_playground/features/caesar/presentation/widgets/input_section.dart';
 import 'package:encryption_playground/features/caesar/presentation/widgets/shift_control.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import '../../../../../app/app_layout_config.dart';
 import '../../../../../app/app_routes.dart';
 import '../../../../../l10n/app_localizations.dart';
 import '../../../../../shared/theme/app_colors.dart';
-import '../../../../../shared/widgets/default_container.dart';
 import '../../../../../shared/widgets/shared_header.dart';
 import '../../caesar_controller.dart';
 import '../../widgets/caesar_alphabet_viz.dart';
 import '../caesar_tab.dart';
 
+/// Tablet layout for the [CaesarTryOut] page
 class CaesarTryOutTablet extends StatelessWidget {
   final String resultValue;
   final String textValue;
@@ -22,8 +21,6 @@ class CaesarTryOutTablet extends StatelessWidget {
   final ValueChanged<String> onKeyChanged;
   final VoidCallback onSwapPressed;
   final ValueChanged<double> onSliderChanged;
-
-
 
   const CaesarTryOutTablet({
     super.key,
@@ -40,7 +37,7 @@ class CaesarTryOutTablet extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
     return Consumer<CaesarController>(builder: (context, controller, child) {
       final isEncrypting = controller.isEncrypting;
-      final shiftValue = controller.key ?? 3;
+      final shiftValue = controller.key;
 
       return Scaffold(
         body: SingleChildScrollView(
@@ -49,8 +46,8 @@ class CaesarTryOutTablet extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               SharedHeader(
-                title: 'Caesar Cipher',
-                description: 'A classic substitution cipher where each letter in the plaintext is shifted a certain number of places down the alphabet.',
+                title: l10n.caesar,
+                description: l10n.caesarCipherDescription,
                 onAboutPressed: () {
                   CaesarNavigationService.instance.navigatorKey.currentState
                       ?.pushNamed(AppRoutes.about);
@@ -101,7 +98,7 @@ class CaesarTryOutTablet extends StatelessWidget {
                   Column(
                     children: [
                       Text(
-                          'Swap',
+                          l10n.swap,
                           style: GoogleFonts.spaceGrotesk(
                             fontSize: 16,
                             fontWeight: FontWeight.w700,

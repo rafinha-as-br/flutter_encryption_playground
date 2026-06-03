@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../../shared/theme/app_colors.dart';
 import '../../../../shared/widgets/default_container.dart';
 
+/// Widget responsible for displaying the shift control for the feature
 class ShiftControl extends StatefulWidget {
   const ShiftControl({super.key, required this.onKeyChanged,});
 

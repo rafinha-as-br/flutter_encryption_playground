@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../../shared/theme/app_colors.dart';
 import '../../../../shared/widgets/default_container.dart';
 
+/// Widget responsible for displaying the formula container
 class FormulaContainer extends StatelessWidget {
   const FormulaContainer({super.key, required this.isEncrypting});
   final bool isEncrypting;

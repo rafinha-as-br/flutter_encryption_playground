@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../../../../l10n/app_localizations.dart';
 
+/// Enum representing the different types of hashes.
 enum HashType {
   dart,
   sha1,
@@ -9,6 +10,7 @@ enum HashType {
   input
 }
 
+/// Class representing information about a hash type.
 class HashInfo {
   final String title;
   final String description;

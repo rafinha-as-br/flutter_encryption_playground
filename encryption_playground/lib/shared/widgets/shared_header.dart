@@ -1,3 +1,4 @@
+import 'package:encryption_playground/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -50,7 +51,7 @@ class SharedHeader extends StatelessWidget {
                 OutlinedButton.icon(
                   onPressed: onAboutPressed,
                   icon: const Icon(Icons.info_outline),
-                  label: const Text('About it'),
+                  label: Text(AppLocalizations.of(context)!.about),
                 ),
               ],
             ),

@@ -4,6 +4,7 @@ import '../../../../app/app_routes.dart';
 import 'diffie_hellman_about_it.dart';
 import 'diffie_hellman_try_out.dart';
 
+/// Service responsible for the nested navigation on the Diffie Hellman cipher.
 class DiffieHellmanNavigationService {
   DiffieHellmanNavigationService._internal();
   static final DiffieHellmanNavigationService _instance = DiffieHellmanNavigationService._internal();
@@ -12,10 +13,9 @@ class DiffieHellmanNavigationService {
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 }
 
+/// Responsible on building the nested Navigator for Diffie Hellman feature
 class DiffieHellmanTab extends StatelessWidget {
   const DiffieHellmanTab({super.key});
-
-
 
   @override
   Widget build(BuildContext context) {

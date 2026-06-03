@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../shared/theme/app_colors.dart';
+import '../../../../l10n/app_localizations.dart';
 
+/// Widget for displaying the difference between two texts.
 class HashDiffText extends StatelessWidget {
   final String text1;
   final String text2;
@@ -19,7 +21,7 @@ class HashDiffText extends StatelessWidget {
   Widget build(BuildContext context) {
     if (!isHighlighting || text1.isEmpty || text2.isEmpty || text1 == text2) {
       return Text(
-        text1.isEmpty ? 'Waiting for input...' : text1,
+        text1.isEmpty ? AppLocalizations.of(context)!.waitingForInput : text1,
         style: GoogleFonts.jetBrainsMono(
           color: text1.isEmpty ? AppColors.darkOnSurfaceVariant : AppColors.darkPrimary,
           fontSize: 14,

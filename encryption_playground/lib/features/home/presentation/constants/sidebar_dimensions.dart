@@ -1,3 +1,4 @@
+/// Responsible for managing the sidebar dimensions.
 class SidebarDimensions {
   static const double expanded = 260.0;
   static const double compact = 72.0;

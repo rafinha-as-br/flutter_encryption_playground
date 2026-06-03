@@ -1,11 +1,10 @@
+import 'package:encryption_playground/features/home/presentation/pages/about_page.dart';
 import 'package:encryption_playground/shared/widgets/default_container.dart';
 import 'package:flutter/material.dart';
+import '../../../../../l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-/*
-* TODO: Place the texts of this page into the internacionalization files
-* */
-
+/// Desktop layout for the [AboutPage] page.
 class AboutPageDesktop extends StatefulWidget {
   const AboutPageDesktop({super.key});
 
@@ -18,7 +17,7 @@ class _AboutPageDesktopState extends State<AboutPageDesktop> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('About the Project'),
+        title: Text(AppLocalizations.of(context)!.aboutProjectTitle),
       ),
       body: Padding(
         padding: const EdgeInsets.all(12.0),
@@ -50,7 +49,7 @@ class _AboutPageDesktopState extends State<AboutPageDesktop> {
                             children: [
 
                               Text(
-                                'Sobre o projeto',
+                                AppLocalizations.of(context)!.aboutProjectTitle,
                                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -58,11 +57,10 @@ class _AboutPageDesktopState extends State<AboutPageDesktop> {
 
                               const SizedBox(height: 16),
 
-                              const Text(
-                                'Este projeto foi desenvolvido durante a disciplina de Segurança da Informação, durante o primeiro semestre do ano de 2026, '
-                                    'com o intuito de demonstrar o funcionamento dos algoritmos de cripografia',
+                              Text(
+                                AppLocalizations.of(context)!.aboutProjectText,
                                 textAlign: TextAlign.start,
-                                style: TextStyle(fontSize: 16,),
+                                style: const TextStyle(fontSize: 16,),
                               )
                             ],
                             )
@@ -94,7 +92,7 @@ class _AboutPageDesktopState extends State<AboutPageDesktop> {
                               child: Column(
                             children: [
                               Text(
-                                'Sobre o aplicativo',
+                                AppLocalizations.of(context)!.aboutApp,
                                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -104,9 +102,9 @@ class _AboutPageDesktopState extends State<AboutPageDesktop> {
 
                               Column(
                                 children: [
-                                  _buildInfoRow(context, 'Version', '1.0.0'),
-                                  _buildInfoRow(context, 'Developer', 'Rafael Antunes Souza'),
-                                  _buildInfoRow(context, 'License', 'MIT'),
+                                  _buildInfoRow(context, AppLocalizations.of(context)!.version, '1.0.0'),
+                                  _buildInfoRow(context, AppLocalizations.of(context)!.developer, 'Rafael Antunes Souza'),
+                                  _buildInfoRow(context, AppLocalizations.of(context)!.license, 'MIT'),
                                 ],
                               ),
                             ],
@@ -121,7 +119,7 @@ class _AboutPageDesktopState extends State<AboutPageDesktop> {
                             children: [
 
                               Text(
-                                'Contato',
+                                AppLocalizations.of(context)!.contact,
                                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                                   fontWeight: FontWeight.bold,
                                 ),
