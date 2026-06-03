@@ -5,6 +5,9 @@ import '../../../../shared/widgets/responsive_layout_builder.dart';
 import 'about_it_pages/caesar_cipher_about_it_tablet.dart';
 import 'about_it_pages/caesar_cipher_about_it_desktop.dart';
 
+/// Responsible for showing the details about the Caesar Cipher.
+///
+/// This widget holds the [ResponsiveLayoutBuilder] for the [CaesarCipherAboutIt] page.
 class CaesarCipherAboutIt extends StatelessWidget {
   const CaesarCipherAboutIt({super.key});
 

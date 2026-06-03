@@ -1,46 +1,87 @@
+import 'package:encryption_playground/features/diffie_hellman/presentation/pages/diffie_hellman_try_out.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../diffie_hellman_controller.dart';
-import 'diffie_hellman_input.dart';
-import 'diffie_hellman_section_card.dart';
 
-class DiffieHellmanGlobalParametersSection extends StatefulWidget {
-  const DiffieHellmanGlobalParametersSection({super.key});
-
-  @override
-  State<DiffieHellmanGlobalParametersSection> createState() => _DiffieHellmanGlobalParametersSectionState();
-}
-
-class _DiffieHellmanGlobalParametersSectionState extends State<DiffieHellmanGlobalParametersSection> {
+/// Responsible for displaying the Global Parameters for the [DiffieHellmanTryOut] page.
+class DHGlobalParametersSection extends StatelessWidget {
+  const DHGlobalParametersSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     final controller = context.watch<DiffieHellmanController>();
+    final colorScheme = Theme.of(context).colorScheme;
 
-    return DiffieHellmanSectionCard(
-      title: l10n.globalParameters,
-      icon: Icons.settings,
+    return Container(
+      padding: const EdgeInsets.all(24),
+      decoration: BoxDecoration(
+        color: colorScheme.surfaceContainer,
+        borderRadius: BorderRadius.circular(2),
+        border: Border.all(color: colorScheme.outlineVariant),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            AppLocalizations.of(context)!.globalParametersTitle,
+            style: GoogleFonts.spaceGrotesk(
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
+              color: colorScheme.onSurface,
+            ),
+          ),
+          const SizedBox(height: 16),
+          _buildParameterInput(
+            context,
+            controller.pController,
+            AppLocalizations.of(context)!.primeModulus,
+            AppLocalizations.of(context)!.primeModulusHint,
+                (val) => controller.p = int.tryParse(val),
+          ),
+
+          const SizedBox(height: 16),
+
+          _buildParameterInput(
+            context,
+            controller.gController,
+            AppLocalizations.of(context)!.generatorLabel,
+            AppLocalizations.of(context)!.generatorHint,
+                (val) => controller.g = int.tryParse(val),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _buildParameterInput(BuildContext context, TextEditingController textController, String label, String hint, ValueChanged<String> onChanged) {
+    final colorScheme = Theme.of(context).colorScheme;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        DiffieHellmanField(
-          controller: controller.gController,
-          onChanged: (value) => controller.g = int.tryParse(value),
-          hint: l10n.generator,
-          icon: Icons.settings_input_component,
-          isPrimary: true,
-          inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+        Text(
+          label,
+          style: GoogleFonts.inter(
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            color: colorScheme.onSurfaceVariant,
+          ),
         ),
-        DiffieHellmanField(
-          controller: controller.pController,
-          onChanged: (value) => controller.p = int.tryParse(value),
-          hint: l10n.modulus,
-          icon: Icons.numbers,
-          isPrimary: true,
+        const SizedBox(height: 8),
+        TextField(
+          controller: textController,
+          keyboardType: TextInputType.number,
           inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+          onChanged: onChanged,
+          decoration: InputDecoration(
+              hintText: hint,
+              fillColor: Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white
+          ),
         ),
       ],
     );
   }
 }
+

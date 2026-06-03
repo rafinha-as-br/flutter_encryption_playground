@@ -1,9 +1,11 @@
+import 'package:encryption_playground/features/caesar/presentation/pages/caesar_cipher_about_it.dart';
 import 'package:encryption_playground/shared/widgets/about_pages_widgets.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../l10n/app_localizations.dart';
 import '../caesar_tab.dart';
 
+/// Mobile layout for the [CaesarCipherAboutIt] page
 class CaesarCipherAboutItMobile extends StatelessWidget {
   const CaesarCipherAboutItMobile({super.key});
 

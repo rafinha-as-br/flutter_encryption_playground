@@ -1,5 +1,5 @@
-/*receives a message and the key for doing the encryption, returns an encrypted message */
 
+/// Receives a message and the key for doing the encryption, returns an encrypted message
 String doEncryptUseCase(int key, String text){
   final String alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
