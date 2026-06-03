@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../shared/theme/app_colors.dart';
-
 /// Widget responsible for displaying the Caesar Alphabet Visualization
 class CaesarAlphabetViz extends StatelessWidget {
   final int shift;
@@ -11,13 +9,14 @@ class CaesarAlphabetViz extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    final colorScheme = Theme.of(context).colorScheme;
     
     return Container(
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: AppColors.darkSurfaceContainer,
+        color: colorScheme.surfaceContainer,
         borderRadius: BorderRadius.circular(2),
-        border: Border.all(color: AppColors.darkOutlineVariant),
+        border: Border.all(color: colorScheme.outlineVariant),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -27,7 +26,7 @@ class CaesarAlphabetViz extends StatelessWidget {
             style: GoogleFonts.spaceGrotesk(
               fontSize: 18,
               fontWeight: FontWeight.w700,
-              color: AppColors.darkOnSurface,
+              color: colorScheme.onSurface,
             ),
           ),
           const SizedBox(height: 16),
@@ -48,33 +47,33 @@ class CaesarAlphabetViz extends StatelessWidget {
                         height: 32,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
-                          color: AppColors.darkSurfaceContainerHigh,
+                          color: colorScheme.surfaceContainerHigh,
                           borderRadius: BorderRadius.circular(2),
                         ),
                         child: Text(
                           originalChar,
                           style: GoogleFonts.jetBrainsMono(
-                            color: AppColors.darkOnSurfaceVariant,
+                            color: colorScheme.onSurfaceVariant,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
                       ),
                       const SizedBox(height: 8),
-                      const Icon(Icons.arrow_downward, size: 16, color: AppColors.darkPrimary),
+                      Icon(Icons.arrow_downward, size: 16, color: colorScheme.primary),
                       const SizedBox(height: 8),
                       Container(
                         width: 32,
                         height: 32,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
-                          color: AppColors.darkPrimary.withAlpha(25),
-                          border: Border.all(color: AppColors.darkPrimary),
+                          color: colorScheme.primary.withAlpha(25),
+                          border: Border.all(color: colorScheme.primary),
                           borderRadius: BorderRadius.circular(2),
                         ),
                         child: Text(
                           shiftedChar,
                           style: GoogleFonts.jetBrainsMono(
-                            color: AppColors.darkPrimary,
+                            color: colorScheme.primary,
                             fontWeight: FontWeight.w700,
                           ),
                         ),

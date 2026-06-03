@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../shared/theme/app_colors.dart';
 import '../../../../shared/widgets/default_container.dart';
 
 /// Widget responsible for displaying any input section
@@ -67,6 +66,7 @@ class _InputSectionState extends State<InputSection> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final title = widget.isInput
         ? (widget.isEncrypting ? 'Plaintext' : 'Ciphertext')
         : (widget.isEncrypting ? 'Ciphertext' : 'Plaintext');
@@ -80,7 +80,7 @@ class _InputSectionState extends State<InputSection> {
               style: GoogleFonts.spaceGrotesk(
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
-                color: AppColors.darkOnSurface,
+                color: colorScheme.onSurface,
               ),
             ),
             const SizedBox(height: 8),
@@ -91,7 +91,7 @@ class _InputSectionState extends State<InputSection> {
               onChanged: widget.isInput ? widget.onTextChanged : null,
               decoration: InputDecoration(
                   hintText: widget.isInput ? 'Enter text here...' : 'Result will appear here...',
-                  fillColor: Colors.black
+                  fillColor: Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white
               ),
             ),
           ],

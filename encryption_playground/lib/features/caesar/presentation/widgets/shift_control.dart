@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../shared/theme/app_colors.dart';
 import '../../../../shared/widgets/default_container.dart';
 
 /// Widget responsible for displaying the shift control for the feature
@@ -44,6 +43,7 @@ class _ShiftControlState extends State<ShiftControl> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return DefaultContainer(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,7 +53,7 @@ class _ShiftControlState extends State<ShiftControl> {
               style: GoogleFonts.spaceGrotesk(
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
-                color: AppColors.darkOnSurface,
+                color: colorScheme.onSurface,
               ),
             ),
             const SizedBox(height: 16),
@@ -66,7 +66,7 @@ class _ShiftControlState extends State<ShiftControl> {
                     max: 26,
                     divisions: 52,
                     label: shiftValue.toString(),
-                    activeColor: AppColors.darkPrimary,
+                    activeColor: colorScheme.primary,
                     onChanged: _onSliderChanged,
                   ),
                 ),

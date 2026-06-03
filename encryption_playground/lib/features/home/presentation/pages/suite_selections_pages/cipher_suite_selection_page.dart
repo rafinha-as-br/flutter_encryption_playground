@@ -2,7 +2,6 @@ import 'package:encryption_playground/features/caesar/presentation/pages/caesar_
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../../../shared/theme/app_colors.dart';
 import '../../../../../l10n/app_localizations.dart';
 import '../../widgets/feature_card.dart';
 
@@ -52,6 +51,7 @@ class _CipherSuiteSelectionPageState extends State<CipherSuiteSelectionPage> {
   }
 
   Widget _suiteSelectionPageView() {
+    final colorScheme = Theme.of(context).colorScheme;
     return SingleChildScrollView(
       padding: const EdgeInsets.all(32.0),
       child: Column(
@@ -62,7 +62,7 @@ class _CipherSuiteSelectionPageState extends State<CipherSuiteSelectionPage> {
             style: GoogleFonts.spaceGrotesk(
               fontSize: 32,
               fontWeight: FontWeight.w700,
-              color: AppColors.darkOnSurface,
+              color: colorScheme.onSurface,
             ),
           ),
           const SizedBox(height: 16),
@@ -70,7 +70,7 @@ class _CipherSuiteSelectionPageState extends State<CipherSuiteSelectionPage> {
             AppLocalizations.of(context)!.cipherSuiteSubtitle,
             style: GoogleFonts.inter(
               fontSize: 16,
-              color: AppColors.darkOnSurfaceVariant,
+              color: colorScheme.onSurfaceVariant,
             ),
           ),
           const SizedBox(height: 48),

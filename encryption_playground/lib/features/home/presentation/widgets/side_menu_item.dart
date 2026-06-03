@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../../shared/theme/app_colors.dart';
 
 class SideMenuItem extends StatefulWidget {
   final String title;
@@ -27,12 +26,14 @@ class _SideMenuItemState extends State<SideMenuItem> {
 
   @override
   Widget build(BuildContext context) {
-    final color = widget.isSelected
-        ? AppColors.sideMenuTextActive
-        : AppColors.sideMenuTextInactive;
+    final colorScheme = Theme.of(context).colorScheme;
+    final activeColor = colorScheme.primary;
+    final inactiveColor = colorScheme.onSurfaceVariant;
+
+    final color = widget.isSelected ? activeColor : inactiveColor;
     final bgColor = widget.isSelected
-        ? AppColors.sideMenuActiveBackground
-        : (_isHovered ? AppColors.sideMenuHoverBackground : Colors.transparent);
+        ? colorScheme.primary.withAlpha(26)
+        : (_isHovered ? colorScheme.onSurface.withAlpha(13) : Colors.transparent);
 
     final item = MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),
@@ -48,7 +49,7 @@ class _SideMenuItemState extends State<SideMenuItem> {
             borderRadius: BorderRadius.circular(2),
             border: Border(
               left: BorderSide(
-                color: widget.isSelected ? AppColors.sideMenuTextActive : AppColors.sideMenuTextInactive,
+                color: widget.isSelected ? activeColor : inactiveColor,
                 width: 2,
               ),
             ),
@@ -92,3 +93,4 @@ class _SideMenuItemState extends State<SideMenuItem> {
     return item;
   }
 }
+

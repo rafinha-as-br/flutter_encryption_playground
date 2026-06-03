@@ -479,7 +479,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get hashFunctionsTitle => 'Funções Hash';
 
   @override
-  String get hashFunctionsDescription => 'Uma função hash mapeia dados de tamanho arbitrário para valores de tamanho fixo. Tente alterar uma única letra e observe como toda a saída muda.';
+  String get hashFunctionsDescription =>
+      'Uma função hash mapeia dados de tamanho arbitrário para valores de tamanho fixo. Tente alterar uma única letra e observe como toda a saída muda.';
 
   @override
   String get waitingForInput => 'Aguardando entrada...';

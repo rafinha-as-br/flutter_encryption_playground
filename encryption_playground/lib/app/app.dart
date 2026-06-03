@@ -34,6 +34,7 @@ class App extends StatelessWidget {
       themeMode: themeMode,
       initialRoute: AppRoutes.home,
       routes: AppRoutes.routes,
+      debugShowCheckedModeBanner: false,
     );
   }
 }

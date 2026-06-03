@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../l10n/app_localizations.dart';
-import '../../../../shared/theme/app_colors.dart';
 import '../diffie_hellman_controller.dart';
 
 /// Responsible for displaying the Key Computation section for the [DiffieHellmanTryOut] page.
@@ -14,13 +13,14 @@ class DHTryOutKeyComputationSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = context.watch<DiffieHellmanController>();
+    final colorScheme = Theme.of(context).colorScheme;
 
     return Container(
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: AppColors.darkSurfaceContainer,
+        color: colorScheme.surfaceContainer,
         borderRadius: BorderRadius.circular(2),
-        border: Border.all(color: AppColors.darkOutlineVariant),
+        border: Border.all(color: colorScheme.outlineVariant),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,27 +30,29 @@ class DHTryOutKeyComputationSection extends StatelessWidget {
             style: GoogleFonts.spaceGrotesk(
               fontSize: 20,
               fontWeight: FontWeight.w700,
-              color: AppColors.darkOnSurface,
+              color: colorScheme.onSurface,
             ),
           ),
           const SizedBox(height: 24),
 
           // User A Computation
           _buildComputationVisual(
+            context,
             AppLocalizations.of(context)!.userAComputesSharedKey,
             's = (B^a) mod P',
             controller.sharedSecretAController,
-            AppColors.darkPrimary,
+            colorScheme.primary,
             '${AppLocalizations.of(context)!.sharedSecret} (s)',
           ),
           const SizedBox(height: 24),
 
           // User B Computation
           _buildComputationVisual(
+            context,
             AppLocalizations.of(context)!.userBComputesSharedKey,
             's = (A^b) mod P',
             controller.sharedSecretBController,
-            AppColors.darkSecondary,
+            colorScheme.secondary,
             '${AppLocalizations.of(context)!.sharedSecret} (s)',
           ),
 
@@ -62,8 +64,8 @@ class DHTryOutKeyComputationSection extends StatelessWidget {
             child: ElevatedButton.icon(
               onPressed: () => controller.reset(),
               style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.darkPrimary,
-                foregroundColor: AppColors.darkSurface,
+                backgroundColor: colorScheme.primary,
+                foregroundColor: colorScheme.onPrimary,
                 padding: const EdgeInsets.symmetric(vertical: 16),
               ),
               icon: const Icon(Icons.refresh),
@@ -75,11 +77,12 @@ class DHTryOutKeyComputationSection extends StatelessWidget {
     );
   }
 
-  Widget _buildComputationVisual(String label, String formula, TextEditingController secretController, Color accentColor, String hintText) {
+  Widget _buildComputationVisual(BuildContext context, String label, String formula, TextEditingController secretController, Color accentColor, String hintText) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.darkSurfaceContainerHigh,
+        color: colorScheme.surfaceContainerHigh,
         borderRadius: BorderRadius.circular(2),
       ),
       child: Column(
@@ -89,7 +92,7 @@ class DHTryOutKeyComputationSection extends StatelessWidget {
             label,
             style: GoogleFonts.inter(
               fontSize: 14,
-              color: AppColors.darkOnSurfaceVariant,
+              color: colorScheme.onSurfaceVariant,
             ),
           ),
           const SizedBox(height: 8),
@@ -109,7 +112,7 @@ class DHTryOutKeyComputationSection extends StatelessWidget {
             decoration: InputDecoration(
                 hintText: hintText,
                 prefixIcon: Icon(Icons.lock_outline, color: accentColor, size: 20),
-                fillColor: Colors.black
+                fillColor: Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white
             ),
           ),
         ],

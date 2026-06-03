@@ -1,6 +1,8 @@
 import 'package:encryption_playground/features/home/presentation/pages/about_page.dart';
 import 'package:encryption_playground/shared/widgets/default_container.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../../../../app/theme_controller.dart';
 import '../../../../../l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -35,11 +37,18 @@ class _AboutPageDesktopState extends State<AboutPageDesktop> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
 
-                      Image.asset(
-                        'assets/logo_full.png',
-                        height: 150,
-                        fit: BoxFit.contain,
-                      ),
+                      Provider.of<ThemeController>(context).isDarkMode ?
+                        Image.asset(
+                          'assets/dark_logo_full.png',
+                          height: 150,
+                          fit: BoxFit.contain,
+                        )
+                            :
+                        Image.asset(
+                          'assets/light_logo_full.png',
+                          height: 150,
+                          fit: BoxFit.contain,
+                        ),
 
                       const SizedBox(height: 16),
 

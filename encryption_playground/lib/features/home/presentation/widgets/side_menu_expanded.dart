@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../../../../../app/locale_controller.dart';
 import '../../../../../app/theme_controller.dart';
-import '../../../../../shared/theme/app_colors.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../pages/home_page.dart';
 import 'side_menu_item.dart';
@@ -21,9 +20,16 @@ class SideMenuExpanded extends StatelessWidget {
             // Logo
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Image.asset(
-                'assets/logo_full.png',
-                width: double.infinity,
+              child: Provider.of<ThemeController>(context).isDarkMode ?
+              Image.asset(
+                'assets/dark_logo_full.png',
+                height: 150,
+                fit: BoxFit.contain,
+              )
+                  :
+              Image.asset(
+                'assets/light_logo_full.png',
+                height: 150,
                 fit: BoxFit.contain,
               ),
             ),
@@ -105,7 +111,7 @@ class SideMenuExpanded extends StatelessWidget {
                     child: Text(
                       'v1.0.0',
                       style: GoogleFonts.spaceGrotesk(
-                        color: AppColors.sideMenuTextInactive,
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
                         fontSize: 12,
                       ),
                     ),

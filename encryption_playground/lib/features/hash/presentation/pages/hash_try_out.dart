@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../shared/theme/app_colors.dart';
 import '../../../../shared/widgets/shared_header.dart';
 import '../../../../app/app_routes.dart';
 import '../hash_controller.dart';
@@ -130,12 +129,13 @@ class _HashTryOutState extends State<HashTryOut> {
     TextEditingController sha256Out, {
     required bool isA,
   }) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Container(
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: AppColors.darkSurfaceContainer,
+        color: colorScheme.surfaceContainer,
         borderRadius: BorderRadius.circular(2),
-        border: Border.all(color: AppColors.darkOutlineVariant),
+        border: Border.all(color: colorScheme.outlineVariant),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -145,7 +145,7 @@ class _HashTryOutState extends State<HashTryOut> {
             style: GoogleFonts.spaceGrotesk(
               fontSize: 20,
               fontWeight: FontWeight.w700,
-              color: AppColors.darkOnSurface,
+              color: colorScheme.onSurface,
             ),
           ),
           const SizedBox(height: 16),
@@ -157,7 +157,7 @@ class _HashTryOutState extends State<HashTryOut> {
               border: OutlineInputBorder(),
               contentPadding: EdgeInsets.all(12),
               isDense: true,
-              fillColor: Colors.black,
+              fillColor: Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white,
               filled: true,
               hintText: AppLocalizations.of(context)!.enterTextHere,
             ),
@@ -174,6 +174,7 @@ class _HashTryOutState extends State<HashTryOut> {
   }
 
   Widget _buildResultItem(BuildContext context, String label, TextEditingController controller, TextEditingController? compareTo) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -182,7 +183,7 @@ class _HashTryOutState extends State<HashTryOut> {
           style: GoogleFonts.inter(
             fontSize: 14,
             fontWeight: FontWeight.w600,
-            color: AppColors.darkOnSurfaceVariant,
+            color: colorScheme.onSurfaceVariant,
           ),
         ),
         const SizedBox(height: 8),
@@ -190,7 +191,7 @@ class _HashTryOutState extends State<HashTryOut> {
           width: double.infinity,
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: AppColors.darkSurfaceContainerHighest,
+            color: colorScheme.surfaceContainerHighest,
             borderRadius: BorderRadius.circular(2),
           ),
           child: compareTo != null
@@ -198,7 +199,7 @@ class _HashTryOutState extends State<HashTryOut> {
               : Text(
                   controller.text.isEmpty ? AppLocalizations.of(context)!.waitingForInput : controller.text,
                   style: GoogleFonts.jetBrainsMono(
-                    color: controller.text.isEmpty ? AppColors.darkOnSurfaceVariant : AppColors.darkPrimary,
+                    color: controller.text.isEmpty ? colorScheme.onSurfaceVariant : colorScheme.primary,
                     fontSize: 14,
                   ),
                 ),

@@ -20,11 +20,20 @@ class SideMenuCompact extends StatelessWidget {
             // Logo (using an icon for compact mode instead of full image)
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 8.0),
-              child: Image.asset(
-                'assets/logo_small.png', // Ideally this would be a smaller logo icon, but fallback to scaling
-                height: 32,
-                fit: BoxFit.contain,
-              ),
+              child:
+              Provider.of<ThemeController>(context).isDarkMode ?
+                Image.asset(
+                  'assets/dark_logo_small.png', // Ideally this would be a smaller logo icon, but fallback to scaling
+                  height: 32,
+                  fit: BoxFit.contain,
+                )
+              :
+                Image.asset(
+                  'assets/light_logo_small.png', // Ideally this would be a smaller logo icon, but fallback to scaling
+                  height: 32,
+                  fit: BoxFit.contain,
+                )
+
             ),
 
             // Buttons

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../shared/theme/app_colors.dart';
 import '../../../../l10n/app_localizations.dart';
 
 /// Widget for displaying the difference between two texts.
@@ -19,11 +18,12 @@ class HashDiffText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     if (!isHighlighting || text1.isEmpty || text2.isEmpty || text1 == text2) {
       return Text(
         text1.isEmpty ? AppLocalizations.of(context)!.waitingForInput : text1,
         style: GoogleFonts.jetBrainsMono(
-          color: text1.isEmpty ? AppColors.darkOnSurfaceVariant : AppColors.darkPrimary,
+          color: text1.isEmpty ? colorScheme.onSurfaceVariant : colorScheme.primary,
           fontSize: 14,
         ),
       );
@@ -41,9 +41,9 @@ class HashDiffText extends StatelessWidget {
       spans.add(TextSpan(
         text: char1,
         style: GoogleFonts.jetBrainsMono(
-          color: isMatch ? AppColors.darkPrimary : AppColors.darkError,
+          color: isMatch ? colorScheme.primary : colorScheme.error,
           fontWeight: isMatch ? FontWeight.w500 : FontWeight.w700,
-          backgroundColor: isMatch ? Colors.transparent : AppColors.darkError.withAlpha(25),
+          backgroundColor: isMatch ? Colors.transparent : colorScheme.error.withAlpha(25),
         ),
       ));
     }

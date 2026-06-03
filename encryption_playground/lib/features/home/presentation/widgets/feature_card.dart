@@ -28,19 +28,22 @@ class _FeatureCardState extends State<FeatureCard> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),
       onExit: (_) => setState(() => _isHovered = false),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
         decoration: BoxDecoration(
-          color: _isHovered ? AppColors.darkSurfaceBright : AppColors.darkSurfaceContainer,
+          color: _isHovered ? colorScheme.surfaceBright : colorScheme.surfaceContainer,
           borderRadius: BorderRadius.circular(2),
           border: Border.all(
-            color: _isHovered ? AppColors.darkPrimary.withAlpha(128) : AppColors.darkOutlineVariant,
+            color: _isHovered ? colorScheme.primary.withAlpha(128) : colorScheme.outlineVariant,
             width: 1,
           ),
-          boxShadow: _isHovered
+          boxShadow: _isHovered && isDark
               ? [
                   BoxShadow(
                     color: AppColors.cyanGlow,
@@ -58,12 +61,12 @@ class _FeatureCardState extends State<FeatureCard> {
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: AppColors.darkPrimaryContainer.withAlpha(20),
+                color: colorScheme.primaryContainer.withAlpha(20),
                 borderRadius: BorderRadius.circular(2),
               ),
               child: Icon(
                 widget.icon,
-                color: AppColors.darkPrimary,
+                color: colorScheme.primary,
                 size: 28,
               ),
             ),
@@ -73,7 +76,7 @@ class _FeatureCardState extends State<FeatureCard> {
               style: GoogleFonts.spaceGrotesk(
                 fontSize: 20,
                 fontWeight: FontWeight.w700,
-                color: AppColors.darkOnSurface,
+                color: colorScheme.onSurface,
               ),
             ),
             const SizedBox(height: 8),
@@ -81,7 +84,7 @@ class _FeatureCardState extends State<FeatureCard> {
               widget.description,
               style: GoogleFonts.inter(
                 fontSize: 14,
-                color: AppColors.darkOnSurfaceVariant,
+                color: colorScheme.onSurfaceVariant,
               ),
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
@@ -101,3 +104,4 @@ class _FeatureCardState extends State<FeatureCard> {
     );
   }
 }
+

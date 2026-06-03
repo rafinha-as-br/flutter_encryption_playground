@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../shared/theme/app_colors.dart';
 import '../../../../shared/widgets/default_container.dart';
 
 /// Widget responsible for displaying the formula container
@@ -12,6 +11,7 @@ class FormulaContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return DefaultContainer(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -21,7 +21,7 @@ class FormulaContainer extends StatelessWidget {
               style: GoogleFonts.spaceGrotesk(
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
-                color: AppColors.darkOnSurface,
+                color: colorScheme.onSurface,
               ),
             ),
             const SizedBox(height: 16),
@@ -31,7 +31,7 @@ class FormulaContainer extends StatelessWidget {
                   : 'D_n(x) = (x - n) mod 26',
               style: GoogleFonts.jetBrainsMono(
                 fontSize: 16,
-                color: AppColors.darkPrimary,
+                color: colorScheme.primary,
               ),
             ),
           ],

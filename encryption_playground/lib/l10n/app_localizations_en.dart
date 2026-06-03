@@ -476,7 +476,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get hashFunctionsTitle => 'Hash Functions';
 
   @override
-  String get hashFunctionsDescription => 'A hash function maps data of arbitrary size to fixed-size values. Try altering a single letter and notice how the entire output changes.';
+  String get hashFunctionsDescription =>
+      'A hash function maps data of arbitrary size to fixed-size values. Try altering a single letter and notice how the entire output changes.';
 
   @override
   String get waitingForInput => 'Waiting for input...';

@@ -2,8 +2,6 @@ import 'package:encryption_playground/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../shared/theme/app_colors.dart';
-
 class SharedHeader extends StatelessWidget {
   final String title;
   final String description;
@@ -18,12 +16,13 @@ class SharedHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Container(
       padding: const EdgeInsets.all(32),
       decoration: BoxDecoration(
-        color: AppColors.darkSurfaceContainer,
+        color: colorScheme.surfaceContainer,
         borderRadius: BorderRadius.circular(2),
-        border: Border.all(color: AppColors.darkOutlineVariant),
+        border: Border.all(color: colorScheme.outlineVariant),
       ),
       child: Row(
         children: [
@@ -36,7 +35,7 @@ class SharedHeader extends StatelessWidget {
                   style: GoogleFonts.spaceGrotesk(
                     fontSize: 28,
                     fontWeight: FontWeight.w700,
-                    color: AppColors.darkOnSurface,
+                    color: colorScheme.onSurface,
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -44,7 +43,7 @@ class SharedHeader extends StatelessWidget {
                   description,
                   style: GoogleFonts.inter(
                     fontSize: 16,
-                    color: AppColors.darkOnSurfaceVariant,
+                    color: colorScheme.onSurfaceVariant,
                   ),
                 ),
                 const SizedBox(height: 24),
@@ -61,3 +60,4 @@ class SharedHeader extends StatelessWidget {
     );
   }
 }
+

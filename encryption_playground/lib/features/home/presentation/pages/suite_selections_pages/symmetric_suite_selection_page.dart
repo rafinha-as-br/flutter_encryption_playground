@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../../../l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../../../shared/theme/app_colors.dart';
 import '../../widgets/feature_card.dart';
 
 /// Page responsible for selection of the symmetric suite.
@@ -43,6 +42,7 @@ class SymmetricSuiteSelectionPage extends StatelessWidget {
   }
 
   Widget _suiteSelectionPageView(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return SingleChildScrollView(
       padding: const EdgeInsets.all(32.0),
       child: Column(
@@ -53,7 +53,7 @@ class SymmetricSuiteSelectionPage extends StatelessWidget {
             style: GoogleFonts.spaceGrotesk(
               fontSize: 32,
               fontWeight: FontWeight.w700,
-              color: AppColors.darkOnSurface,
+              color: colorScheme.onSurface,
             ),
           ),
           const SizedBox(height: 16),
@@ -61,7 +61,7 @@ class SymmetricSuiteSelectionPage extends StatelessWidget {
             AppLocalizations.of(context)!.symmetricSuiteSubtitle,
             style: GoogleFonts.inter(
               fontSize: 16,
-              color: AppColors.darkOnSurfaceVariant,
+              color: colorScheme.onSurfaceVariant,
             ),
           ),
           const SizedBox(height: 48),

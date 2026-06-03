@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import '../../../../shared/theme/app_colors.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../diffie_hellman_controller.dart';
 
@@ -14,13 +13,14 @@ class DHGlobalParametersSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = context.watch<DiffieHellmanController>();
+    final colorScheme = Theme.of(context).colorScheme;
 
     return Container(
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: AppColors.darkSurfaceContainer,
+        color: colorScheme.surfaceContainer,
         borderRadius: BorderRadius.circular(2),
-        border: Border.all(color: AppColors.darkOutlineVariant),
+        border: Border.all(color: colorScheme.outlineVariant),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,11 +30,12 @@ class DHGlobalParametersSection extends StatelessWidget {
             style: GoogleFonts.spaceGrotesk(
               fontSize: 20,
               fontWeight: FontWeight.w700,
-              color: AppColors.darkOnSurface,
+              color: colorScheme.onSurface,
             ),
           ),
           const SizedBox(height: 16),
           _buildParameterInput(
+            context,
             controller.pController,
             AppLocalizations.of(context)!.primeModulus,
             AppLocalizations.of(context)!.primeModulusHint,
@@ -44,6 +45,7 @@ class DHGlobalParametersSection extends StatelessWidget {
           const SizedBox(height: 16),
 
           _buildParameterInput(
+            context,
             controller.gController,
             AppLocalizations.of(context)!.generatorLabel,
             AppLocalizations.of(context)!.generatorHint,
@@ -54,7 +56,8 @@ class DHGlobalParametersSection extends StatelessWidget {
     );
   }
 
-  Widget _buildParameterInput(TextEditingController textController, String label, String hint, ValueChanged<String> onChanged) {
+  Widget _buildParameterInput(BuildContext context, TextEditingController textController, String label, String hint, ValueChanged<String> onChanged) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -63,7 +66,7 @@ class DHGlobalParametersSection extends StatelessWidget {
           style: GoogleFonts.inter(
             fontSize: 14,
             fontWeight: FontWeight.w600,
-            color: AppColors.darkOnSurfaceVariant,
+            color: colorScheme.onSurfaceVariant,
           ),
         ),
         const SizedBox(height: 8),
@@ -74,7 +77,7 @@ class DHGlobalParametersSection extends StatelessWidget {
           onChanged: onChanged,
           decoration: InputDecoration(
               hintText: hint,
-              fillColor: Colors.black
+              fillColor: Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white
           ),
         ),
       ],

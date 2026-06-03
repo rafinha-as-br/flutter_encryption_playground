@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../shared/responsive/responsive_breakpoints.dart';
-import '../../../../../shared/theme/app_colors.dart';
 import '../constants/sidebar_dimensions.dart';
 import 'side_menu_compact.dart';
 import 'side_menu_expanded.dart';
@@ -14,11 +13,12 @@ class SideMenu extends StatelessWidget {
     final state = ResponsiveLayout.current(context);
     final isCompact = state == ResponsiveLayoutState.compact;
     final isMobile = state == ResponsiveLayoutState.mobile;
+    final sideMenuBg = Theme.of(context).colorScheme.surfaceContainerLowest;
 
     if (isMobile) {
       return Drawer(
         child: Container(
-          color: AppColors.sideMenuBackground,
+          color: sideMenuBg,
           child: const SideMenuExpanded(),
         ),
       );
@@ -28,8 +28,9 @@ class SideMenu extends StatelessWidget {
       duration: const Duration(milliseconds: 250),
       curve: Curves.easeInOut,
       width: isCompact ? SidebarDimensions.compact : SidebarDimensions.expanded,
-      color: AppColors.sideMenuBackground,
+      color: sideMenuBg,
       child: isCompact ? const SideMenuCompact() : const SideMenuExpanded(),
     );
   }
 }
+

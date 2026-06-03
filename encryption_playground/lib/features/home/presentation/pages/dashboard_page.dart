@@ -1,8 +1,6 @@
 import 'package:encryption_playground/shared/widgets/default_container.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../../../../../shared/theme/app_colors.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../widgets/feature_card.dart';
 import 'home_page.dart';
@@ -15,6 +13,7 @@ class DashboardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return SingleChildScrollView(
       padding: const EdgeInsets.all(32.0),
       child: Column(
@@ -33,7 +32,7 @@ class DashboardPage extends StatelessWidget {
                         style: GoogleFonts.spaceGrotesk(
                           fontSize: 28,
                           fontWeight: FontWeight.w700,
-                          color: AppColors.darkOnSurface,
+                          color: colorScheme.onSurface,
                         ),
                       ),
                       const SizedBox(height: 16),
@@ -41,7 +40,7 @@ class DashboardPage extends StatelessWidget {
                         AppLocalizations.of(context)!.welcomeDescription,
                         style: GoogleFonts.inter(
                           fontSize: 16,
-                          color: AppColors.darkOnSurfaceVariant,
+                          color: colorScheme.onSurfaceVariant,
                         ),
                       ),
                       const SizedBox(height: 24),
@@ -67,7 +66,7 @@ class DashboardPage extends StatelessWidget {
             style: GoogleFonts.spaceGrotesk(
               fontSize: 24,
               fontWeight: FontWeight.w700,
-              color: AppColors.darkOnSurface,
+              color: colorScheme.onSurface,
             ),
           ),
 
