@@ -1,3 +1,4 @@
+import 'package:encryption_playground/features/hash/presentation/pages/hash_try_out.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,6 +9,7 @@ import '../../hash_controller.dart';
 import '../../widgets/hash_card.dart';
 import '../hash_tab.dart';
 
+/// Desktop layout for the [HashTryOut] page
 class HashTryOutDesktop extends StatelessWidget {
   final TextEditingController textAController;
   final TextEditingController textBController;

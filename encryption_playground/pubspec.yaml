@@ -73,8 +73,10 @@ flutter:
   #   - images/a_dot_ham.jpeg
 
   assets:
-    - assets/logo_full.png
-    - assets/logo_small.png
+    - assets/dark_logo_full.png
+    - assets/light_logo_full.png
+    - assets/dark_logo_small.png
+    - assets/light_logo_small.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -105,19 +107,19 @@ flutter:
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/logo_small.png"
+  image_path: "assets/dark_logo_small.png"
   web:
     generate: true
-    image_path: "assets/logo_small.png"
+    image_path: "assets/dark_logo_small.png"
     backgroundColor: "#0A0E14"
     themeColor: "#0A0E14"
   android_12: 
     color: "#0A0E14"
-    image: "assets/logo_small.png"
+    image: "assets/dark_logo_small.png"
 flutter_native_splash:
   color: "#0A0E14"
   color_dark: "#0A0E14"
-  image: "assets/logo_small.png"
+  image: "assets/dark_logo_small.png"
   android_12:
     color: "#0A0E14"
   android: true

@@ -1,7 +1,9 @@
+import 'package:encryption_playground/features/hash/presentation/pages/hash_about_it.dart';
 import 'package:flutter/material.dart';
 import 'package:encryption_playground/shared/widgets/about_pages_widgets.dart';
 import '../../../../../../l10n/app_localizations.dart';
 
+/// Desktop layout for the [HashAboutIt] page
 class HashAboutItDesktop extends StatelessWidget {
   const HashAboutItDesktop({super.key});
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Controller responsible for toggling the theme.
 class ThemeController extends ValueNotifier<ThemeMode> {
   ThemeController() : super(ThemeMode.dark);
 

@@ -1,9 +1,11 @@
 import 'package:encryption_playground/features/diffie_hellman/domain/generate_public_key_usecase.dart';
 import 'package:encryption_playground/features/diffie_hellman/domain/mod_exp_usecase.dart';
+import 'package:encryption_playground/features/diffie_hellman/presentation/pages/diffie_hellman_try_out.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../domain/generate_private_key_usecase.dart';
 
+/// Responsible for managing the [DiffieHellmanTryOut] page state.
 class DiffieHellmanController extends ChangeNotifier {
 
   final TextEditingController userAPrivateKeyController = TextEditingController();
@@ -44,6 +46,7 @@ class DiffieHellmanController extends ChangeNotifier {
   void calculate() {
     if (_p == null || _g == null || _p! <= 2) {
       _resetKeys();
+      _clearGeneratedControllersTexts();
       notifyListeners();
       return;
     }
@@ -82,6 +85,7 @@ class DiffieHellmanController extends ChangeNotifier {
     _p = null;
     _g = null;
     _resetKeys();
+    _resetControllersTexts();
     notifyListeners();
   }
 
@@ -92,6 +96,21 @@ class DiffieHellmanController extends ChangeNotifier {
     userBPublicKey = null;
     sharedSecretA = null;
     sharedSecretB = null;
+  }
+
+  void _resetControllersTexts(){
+    _clearGeneratedControllersTexts();
+    gController.text = '';
+    pController.text = '';
+  }
+
+  void _clearGeneratedControllersTexts() {
+    userAPrivateKeyController.text = '';
+    userBPrivateKeyController.text = '';
+    userAPublicKeyController.text = '';
+    userBPublicKeyController.text = '';
+    sharedSecretAController.text = '';
+    sharedSecretBController.text = '';
   }
 
   int _generatePrivateKey() {

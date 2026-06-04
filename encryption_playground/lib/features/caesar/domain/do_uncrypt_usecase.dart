@@ -1,5 +1,5 @@
-/* receives a crypted message and the key for doing the decryption, returns an decrypted message */
 
+/// receives a crypted message and the key for doing the decryption, returns an decrypted message
 String doUncryptUseCase(int key, String text){
   final String alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
@@ -9,7 +9,7 @@ String doUncryptUseCase(int key, String text){
     int letterIndex = alphabet.indexOf(letter);
 
     if (letterIndex == -1) {
-      decryptedString += letter; // mantém caracteres não alfabéticos
+      decryptedString += letter;
       continue;
     }
 

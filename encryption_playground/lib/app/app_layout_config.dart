@@ -1,18 +1,15 @@
 /* this file is the setup for the UI layout, using constraints and enums for
 * define the UI details aspects
-*
-* By the moment, these are the widgets that should have max sizes defined:
-* - TextField
-*
-* */
+*/
 
-
+/// Type of screen layout
 enum LayoutType {
   mobile,
   tablet,
   desktop,
 }
 
+/// Configurator for layout details
 class LayoutConfig {
   static const double mobileMaxWidth = 599;
   static const double tabletMaxWidth = 1023;
