@@ -396,6 +396,49 @@ class AppLocalizationsEn extends AppLocalizations {
       'Learn about public-key cryptography and key exchange protocols like Diffie-Hellman.';
 
   @override
+  String get dashboardDescription => 'A dashboard overview';
+
+  @override
+  String get onboardingStep1Title => 'Welcome to Encryption Playground';
+
+  @override
+  String get onboardingStep1Message =>
+      'A space to learn and experiment with cryptography in a practical way. No prior knowledge is necessary.';
+
+  @override
+  String get onboardingStep2Title => 'Experiment without fear';
+
+  @override
+  String get onboardingStep2Message =>
+      'Everything happens on your device. No data is sent to servers. Test, make mistakes, and learn freely.';
+
+  @override
+  String get onboardingStep3Title => 'What you can do';
+
+  @override
+  String get onboardingStep3Message =>
+      'Encrypt and decrypt texts, explore different algorithms, adjust parameters, and compare results side by side.';
+
+  @override
+  String get onboardingStep4Title => 'Start with Caesar Cipher';
+
+  @override
+  String get onboardingStep4Message =>
+      'Caesar Cipher is the simplest algorithm and a great starting point. Choose a suite from the menu and start experimenting!';
+
+  @override
+  String get onboardingSkip => 'Skip';
+
+  @override
+  String get onboardingNext => 'Next';
+
+  @override
+  String get onboardingStartExploring => 'Start Exploring';
+
+  @override
+  String get reviewTutorial => 'Review Tutorial';
+
+  @override
   String get hashSuite => 'Hash Suite';
 
   @override

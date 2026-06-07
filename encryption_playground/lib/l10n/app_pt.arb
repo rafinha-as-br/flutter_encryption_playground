@@ -119,6 +119,58 @@
   "symmetricSuiteDescription": "Teste algoritmos de criptografia simétrica onde a mesma chave criptografa e descriptografa.",
   "asymmetricSuite": "Suíte Assimétrica",
   "asymmetricSuiteDescription": "Aprenda sobre criptografia de chave pública e protocolos de troca de chaves como Diffie-Hellman.",
+  "dashboardDescription": "Uma visão geral do painel",
+  "@dashboardDescription": {
+    "description": "A description of the dashboard page"
+  },
+  "onboardingStep1Title": "Bem-vindo ao Encryption Playground",
+  "@onboardingStep1Title": {
+    "description": "Title for the first onboarding step"
+  },
+  "onboardingStep1Message": "Um espaço para aprender e experimentar criptografia de forma prática. Nenhum conhecimento prévio é necessário.",
+  "@onboardingStep1Message": {
+    "description": "Message for the first onboarding step"
+  },
+  "onboardingStep2Title": "Experimente sem medo",
+  "@onboardingStep2Title": {
+    "description": "Title for the second onboarding step"
+  },
+  "onboardingStep2Message": "Tudo acontece no seu dispositivo. Nenhum dado é enviado para servidores. Teste, erre e aprenda livremente.",
+  "@onboardingStep2Message": {
+    "description": "Message for the second onboarding step"
+  },
+  "onboardingStep3Title": "O que você pode fazer",
+  "@onboardingStep3Title": {
+    "description": "Title for the third onboarding step"
+  },
+  "onboardingStep3Message": "Criptografe e descriptografe textos, explore diferentes algoritmos, ajuste parâmetros e compare resultados lado a lado.",
+  "@onboardingStep3Message": {
+    "description": "Message for the third onboarding step"
+  },
+  "onboardingStep4Title": "Comece pela Cifra de César",
+  "@onboardingStep4Title": {
+    "description": "Title for the fourth onboarding step"
+  },
+  "onboardingStep4Message": "A Cifra de César é o algoritmo mais simples e um ótimo ponto de partida. Escolha uma suíte no menu e comece a experimentar!",
+  "@onboardingStep4Message": {
+    "description": "Message for the fourth onboarding step"
+  },
+  "onboardingSkip": "Pular",
+  "@onboardingSkip": {
+    "description": "Skip button text in onboarding"
+  },
+  "onboardingNext": "Próximo",
+  "@onboardingNext": {
+    "description": "Next button text in onboarding"
+  },
+  "onboardingStartExploring": "Começar a Explorar",
+  "@onboardingStartExploring": {
+    "description": "Start exploring button text in onboarding"
+  },
+  "reviewTutorial": "Rever Tutorial",
+  "@reviewTutorial": {
+    "description": "Button to review the tutorial in the side menu"
+  },
   "hashSuite": "Suíte de Hash",
   "hashSuiteDescription": "Gere hashes criptográficos usando MD5, SHA-1, SHA-256 e outros.",
   "cipherSuiteSubtitle": "Cifras de substituição e transposição, métodos clássicos de criptografia.",

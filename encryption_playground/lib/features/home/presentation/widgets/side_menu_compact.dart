@@ -92,6 +92,14 @@ class SideMenuCompact extends StatelessWidget {
                 children: [
                   IconButton(
                     onPressed: () {
+                      Navigator.of(context, rootNavigator: true).pushNamed('/onboarding');
+                    },
+                    icon: const Icon(Icons.help_outline),
+                    tooltip: AppLocalizations.of(context)!.reviewTutorial,
+                  ),
+                  const SizedBox(height: 8),
+                  IconButton(
+                    onPressed: () {
                       context.read<ThemeController>().toggleTheme();
                     },
                     icon: Icon(

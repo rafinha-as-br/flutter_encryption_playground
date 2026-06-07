@@ -119,6 +119,58 @@
   "symmetricSuiteDescription": "Test symmetric encryption algorithms where the same key encrypts and decrypts.",
   "asymmetricSuite": "Asymmetric Suite",
   "asymmetricSuiteDescription": "Learn about public-key cryptography and key exchange protocols like Diffie-Hellman.",
+  "dashboardDescription": "A dashboard overview",
+  "@dashboardDescription": {
+    "description": "A description of the dashboard page"
+  },
+  "onboardingStep1Title": "Welcome to Encryption Playground",
+  "@onboardingStep1Title": {
+    "description": "Title for the first onboarding step"
+  },
+  "onboardingStep1Message": "A space to learn and experiment with cryptography in a practical way. No prior knowledge is necessary.",
+  "@onboardingStep1Message": {
+    "description": "Message for the first onboarding step"
+  },
+  "onboardingStep2Title": "Experiment without fear",
+  "@onboardingStep2Title": {
+    "description": "Title for the second onboarding step"
+  },
+  "onboardingStep2Message": "Everything happens on your device. No data is sent to servers. Test, make mistakes, and learn freely.",
+  "@onboardingStep2Message": {
+    "description": "Message for the second onboarding step"
+  },
+  "onboardingStep3Title": "What you can do",
+  "@onboardingStep3Title": {
+    "description": "Title for the third onboarding step"
+  },
+  "onboardingStep3Message": "Encrypt and decrypt texts, explore different algorithms, adjust parameters, and compare results side by side.",
+  "@onboardingStep3Message": {
+    "description": "Message for the third onboarding step"
+  },
+  "onboardingStep4Title": "Start with Caesar Cipher",
+  "@onboardingStep4Title": {
+    "description": "Title for the fourth onboarding step"
+  },
+  "onboardingStep4Message": "Caesar Cipher is the simplest algorithm and a great starting point. Choose a suite from the menu and start experimenting!",
+  "@onboardingStep4Message": {
+    "description": "Message for the fourth onboarding step"
+  },
+  "onboardingSkip": "Skip",
+  "@onboardingSkip": {
+    "description": "Skip button text in onboarding"
+  },
+  "onboardingNext": "Next",
+  "@onboardingNext": {
+    "description": "Next button text in onboarding"
+  },
+  "onboardingStartExploring": "Start Exploring",
+  "@onboardingStartExploring": {
+    "description": "Start exploring button text in onboarding"
+  },
+  "reviewTutorial": "Review Tutorial",
+  "@reviewTutorial": {
+    "description": "Button to review the tutorial in the side menu"
+  },
   "hashSuite": "Hash Suite",
   "hashSuiteDescription": "Generate cryptographic hashes using MD5, SHA-1, SHA-256 and more.",
   "cipherSuiteSubtitle": "Substitution and transposition ciphers, classical encryption methods.",
