@@ -1,4 +1,3 @@
-import 'package:encryption_playground/features/caesar/presentation/pages/caesar_try_out.dart';
 import 'package:encryption_playground/features/caesar/presentation/widgets/shift_control.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -14,9 +13,10 @@ import '../../widgets/caesar_alphabet_viz.dart';
 import '../../widgets/formula_container.dart';
 import '../../widgets/input_section.dart';
 import '../caesar_tab.dart';
+import '../../../../../shared/guide/try_out_guide_dialog.dart';
 
 /// Mobile layout for the [CaesarTryOut] page
-class CaesarTryOutMobile extends StatelessWidget {
+class CaesarTryOutMobile extends StatefulWidget {
   final String resultValue;
   final String textValue;
   final ValueChanged<String> onTextChanged;
@@ -33,6 +33,45 @@ class CaesarTryOutMobile extends StatelessWidget {
     required this.onSwapPressed,
     required this.onSliderChanged,
   });
+
+  @override
+  State<CaesarTryOutMobile> createState() => _CaesarTryOutMobileState();
+}
+
+class _CaesarTryOutMobileState extends State<CaesarTryOutMobile> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _showGuideIfNeeded();
+    });
+  }
+
+  void _showGuideIfNeeded() {
+    final l10n = AppLocalizations.of(context);
+    if (l10n == null) return;
+    maybeShowTryOutGuide(
+      context: context,
+      featureKey: 'caesar',
+      steps: [
+        GuideStep(
+          title: l10n.caesarGuideStep1Title,
+          message: l10n.caesarGuideStep1Message,
+          icon: Icons.auto_awesome,
+        ),
+        GuideStep(
+          title: l10n.caesarGuideStep2Title,
+          message: l10n.caesarGuideStep2Message,
+          icon: Icons.tune,
+        ),
+        GuideStep(
+          title: l10n.caesarGuideStep3Title,
+          message: l10n.caesarGuideStep3Message,
+          icon: Icons.keyboard,
+        ),
+      ],
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +93,29 @@ class CaesarTryOutMobile extends StatelessWidget {
                   CaesarNavigationService.instance.navigatorKey.currentState
                       ?.pushNamed(AppRoutes.about);
                 },
+                onHelpPressed: () {
+                  showTryOutGuideDialog(
+                    context: context,
+                    featureKey: 'caesar',
+                    steps: [
+                      GuideStep(
+                        title: l10n.caesarGuideStep1Title,
+                        message: l10n.caesarGuideStep1Message,
+                        icon: Icons.auto_awesome,
+                      ),
+                      GuideStep(
+                        title: l10n.caesarGuideStep2Title,
+                        message: l10n.caesarGuideStep2Message,
+                        icon: Icons.tune,
+                      ),
+                      GuideStep(
+                        title: l10n.caesarGuideStep3Title,
+                        message: l10n.caesarGuideStep3Message,
+                        icon: Icons.keyboard,
+                      ),
+                    ],
+                  );
+                },
               ),
               const SizedBox(height: 32),
 
@@ -63,7 +125,7 @@ class CaesarTryOutMobile extends StatelessWidget {
                 children: [
                   // shift control
                   ShiftControl(
-                    onKeyChanged: onKeyChanged,
+                    onKeyChanged: widget.onKeyChanged,
                   ),
                   const SizedBox(height: 24),
 
@@ -80,10 +142,10 @@ class CaesarTryOutMobile extends StatelessWidget {
               Column(
                 children: [
                   InputSection.input(
-                    onTextChanged: onTextChanged,
+                    onTextChanged: widget.onTextChanged,
                     isEncrypting: isEncrypting,
-                    resultValue: resultValue,
-                    textValue: textValue,
+                    resultValue: widget.resultValue,
+                    textValue: widget.textValue,
                   ),
                   const SizedBox(height: 16),
                   Column(
@@ -97,17 +159,18 @@ class CaesarTryOutMobile extends StatelessWidget {
                           )
                       ),
                       IconButton(
-                        onPressed: onSwapPressed,
+                        onPressed: widget.onSwapPressed,
                         icon: const Icon(Icons.swap_vert, size: 32, color: AppColors.darkPrimary),
+                        tooltip: l10n.tooltipCaesarSwap,
                       )
                     ],
                   ),
                   const SizedBox(height: 16),
                   InputSection.result(
-                      onTextChanged: onTextChanged,
+                      onTextChanged: widget.onTextChanged,
                       isEncrypting: isEncrypting,
-                      resultValue: resultValue,
-                    textValue: textValue,
+                      resultValue: widget.resultValue,
+                    textValue: widget.textValue,
                   )
                 ],
               )

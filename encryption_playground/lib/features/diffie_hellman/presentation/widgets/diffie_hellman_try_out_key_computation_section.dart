@@ -105,14 +105,17 @@ class DHTryOutKeyComputationSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-          TextField(
-            controller: secretController,
-            readOnly: true,
-            style: TextStyle(color: accentColor, fontWeight: FontWeight.bold),
-            decoration: InputDecoration(
-                hintText: hintText,
-                prefixIcon: Icon(Icons.lock_outline, color: accentColor, size: 20),
-                fillColor: Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white
+          Tooltip(
+            message: AppLocalizations.of(context)!.tooltipDhSharedSecret,
+            child: TextField(
+              controller: secretController,
+              readOnly: true,
+              style: TextStyle(color: accentColor, fontWeight: FontWeight.bold),
+              decoration: InputDecoration(
+                  hintText: hintText,
+                  prefixIcon: Icon(Icons.lock_outline, color: accentColor, size: 20),
+                  fillColor: Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white
+              ),
             ),
           ),
         ],

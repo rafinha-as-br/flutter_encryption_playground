@@ -6,12 +6,14 @@ class SharedHeader extends StatelessWidget {
   final String title;
   final String description;
   final VoidCallback onAboutPressed;
+  final VoidCallback? onHelpPressed;
 
   const SharedHeader({
     super.key,
     required this.title,
     required this.description,
     required this.onAboutPressed,
+    this.onHelpPressed,
   });
 
   @override
@@ -47,10 +49,22 @@ class SharedHeader extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 24),
-                OutlinedButton.icon(
-                  onPressed: onAboutPressed,
-                  icon: const Icon(Icons.info_outline),
-                  label: Text(AppLocalizations.of(context)!.about),
+                Row(
+                  children: [
+                    OutlinedButton.icon(
+                      onPressed: onAboutPressed,
+                      icon: const Icon(Icons.info_outline),
+                      label: Text(AppLocalizations.of(context)!.about),
+                    ),
+                    if (onHelpPressed != null) ...[
+                      const SizedBox(width: 8),
+                      IconButton(
+                        onPressed: onHelpPressed,
+                        icon: const Icon(Icons.help_outline),
+                        tooltip: AppLocalizations.of(context)!.guide,
+                      ),
+                    ],
+                  ],
                 ),
               ],
             ),

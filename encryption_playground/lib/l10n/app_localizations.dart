@@ -1045,6 +1045,198 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Enter text here...'**
   String get enterTextHere;
+
+  /// No description provided for @guide.
+  ///
+  /// In en, this message translates to:
+  /// **'Guide'**
+  String get guide;
+
+  /// No description provided for @caesarGuideStep1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'How it works'**
+  String get caesarGuideStep1Title;
+
+  /// No description provided for @caesarGuideStep1Message.
+  ///
+  /// In en, this message translates to:
+  /// **'The Caesar cipher substitutes letters by shifting them in the alphabet.'**
+  String get caesarGuideStep1Message;
+
+  /// No description provided for @caesarGuideStep2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Adjust the shift'**
+  String get caesarGuideStep2Title;
+
+  /// No description provided for @caesarGuideStep2Message.
+  ///
+  /// In en, this message translates to:
+  /// **'Use the slider to change the shift key and see the formula and alphabet visualization update.'**
+  String get caesarGuideStep2Message;
+
+  /// No description provided for @caesarGuideStep3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Try it out'**
+  String get caesarGuideStep3Title;
+
+  /// No description provided for @caesarGuideStep3Message.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter text in the input field to see the encrypted or decrypted result. Use the Swap button to switch modes.'**
+  String get caesarGuideStep3Message;
+
+  /// No description provided for @dhGuideStep1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'What is this?'**
+  String get dhGuideStep1Title;
+
+  /// No description provided for @dhGuideStep1Message.
+  ///
+  /// In en, this message translates to:
+  /// **'Diffie-Hellman allows two users to create a shared secret key without transmitting it.'**
+  String get dhGuideStep1Message;
+
+  /// No description provided for @dhGuideStep2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Set Global Parameters'**
+  String get dhGuideStep2Title;
+
+  /// No description provided for @dhGuideStep2Message.
+  ///
+  /// In en, this message translates to:
+  /// **'Set the prime (P) and generator (G) in the global parameters section.'**
+  String get dhGuideStep2Message;
+
+  /// No description provided for @dhGuideStep3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Key Generation'**
+  String get dhGuideStep3Title;
+
+  /// No description provided for @dhGuideStep3Message.
+  ///
+  /// In en, this message translates to:
+  /// **'Private keys are auto-generated and public keys are calculated with the formula.'**
+  String get dhGuideStep3Message;
+
+  /// No description provided for @dhGuideStep4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Shared Secret'**
+  String get dhGuideStep4Title;
+
+  /// No description provided for @dhGuideStep4Message.
+  ///
+  /// In en, this message translates to:
+  /// **'Both users arrive at the same shared key, even without exchanging private keys.'**
+  String get dhGuideStep4Message;
+
+  /// No description provided for @hashGuideStep1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'What are Hash Functions?'**
+  String get hashGuideStep1Title;
+
+  /// No description provided for @hashGuideStep1Message.
+  ///
+  /// In en, this message translates to:
+  /// **'Hash functions transform any input into a fixed-size value, irreversibly.'**
+  String get hashGuideStep1Message;
+
+  /// No description provided for @hashGuideStep2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Compare the hashes'**
+  String get hashGuideStep2Title;
+
+  /// No description provided for @hashGuideStep2Message.
+  ///
+  /// In en, this message translates to:
+  /// **'Type text in Input A and slightly alter it in Input B to see the avalanche effect.'**
+  String get hashGuideStep2Message;
+
+  /// No description provided for @hashGuideStep3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Different Algorithms'**
+  String get hashGuideStep3Title;
+
+  /// No description provided for @hashGuideStep3Message.
+  ///
+  /// In en, this message translates to:
+  /// **'Observe the differences between Dart hashCode, SHA-1, and SHA-256.'**
+  String get hashGuideStep3Message;
+
+  /// No description provided for @tooltipCaesarShift.
+  ///
+  /// In en, this message translates to:
+  /// **'Adjust how many positions each letter shifts in the alphabet'**
+  String get tooltipCaesarShift;
+
+  /// No description provided for @tooltipCaesarSwap.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch between encryption and decryption mode'**
+  String get tooltipCaesarSwap;
+
+  /// No description provided for @tooltipCaesarFormula.
+  ///
+  /// In en, this message translates to:
+  /// **'The mathematical formula used to encrypt/decrypt'**
+  String get tooltipCaesarFormula;
+
+  /// No description provided for @tooltipDhPrime.
+  ///
+  /// In en, this message translates to:
+  /// **'A large prime number that both parties agree on publicly'**
+  String get tooltipDhPrime;
+
+  /// No description provided for @tooltipDhGenerator.
+  ///
+  /// In en, this message translates to:
+  /// **'A primitive root modulo P, used as the base for calculations'**
+  String get tooltipDhGenerator;
+
+  /// No description provided for @tooltipDhPrivateKey.
+  ///
+  /// In en, this message translates to:
+  /// **'A secret number known only to this user'**
+  String get tooltipDhPrivateKey;
+
+  /// No description provided for @tooltipDhPublicKey.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculated from the private key — safe to share publicly'**
+  String get tooltipDhPublicKey;
+
+  /// No description provided for @tooltipDhSharedSecret.
+  ///
+  /// In en, this message translates to:
+  /// **'Both users arrive at the same key without sharing their secrets'**
+  String get tooltipDhSharedSecret;
+
+  /// No description provided for @tooltipHashDart.
+  ///
+  /// In en, this message translates to:
+  /// **'Dart\'s internal hash — not cryptographically secure'**
+  String get tooltipHashDart;
+
+  /// No description provided for @tooltipHashSha1.
+  ///
+  /// In en, this message translates to:
+  /// **'160-bit cryptographic hash — considered insecure today'**
+  String get tooltipHashSha1;
+
+  /// No description provided for @tooltipHashSha256.
+  ///
+  /// In en, this message translates to:
+  /// **'256-bit secure hash — widely used in modern security'**
+  String get tooltipHashSha256;
 }
 
 class _AppLocalizationsDelegate

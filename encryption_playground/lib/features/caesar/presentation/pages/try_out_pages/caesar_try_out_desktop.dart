@@ -13,9 +13,10 @@ import '../../widgets/caesar_alphabet_viz.dart';
 import '../../widgets/formula_container.dart';
 import '../../widgets/input_section.dart';
 import '../caesar_tab.dart';
+import '../../../../../shared/guide/try_out_guide_dialog.dart';
 
 /// Desktop layout for the [CaesarTryOut] page
-class CaesarTryOutDesktop extends StatelessWidget {
+class CaesarTryOutDesktop extends StatefulWidget {
   final String resultValue;
   final String textValue;
   final ValueChanged<String> onTextChanged;
@@ -33,6 +34,45 @@ class CaesarTryOutDesktop extends StatelessWidget {
     required this.onSwapPressed,
     required this.onSliderChanged,
   });
+
+  @override
+  State<CaesarTryOutDesktop> createState() => _CaesarTryOutDesktopState();
+}
+
+class _CaesarTryOutDesktopState extends State<CaesarTryOutDesktop> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _showGuideIfNeeded();
+    });
+  }
+
+  void _showGuideIfNeeded() {
+    final l10n = AppLocalizations.of(context);
+    if (l10n == null) return;
+    maybeShowTryOutGuide(
+      context: context,
+      featureKey: 'caesar',
+      steps: [
+        GuideStep(
+          title: l10n.caesarGuideStep1Title,
+          message: l10n.caesarGuideStep1Message,
+          icon: Icons.auto_awesome,
+        ),
+        GuideStep(
+          title: l10n.caesarGuideStep2Title,
+          message: l10n.caesarGuideStep2Message,
+          icon: Icons.tune,
+        ),
+        GuideStep(
+          title: l10n.caesarGuideStep3Title,
+          message: l10n.caesarGuideStep3Message,
+          icon: Icons.keyboard,
+        ),
+      ],
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +94,29 @@ class CaesarTryOutDesktop extends StatelessWidget {
                   CaesarNavigationService.instance.navigatorKey.currentState
                       ?.pushNamed(AppRoutes.about);
                 },
+                onHelpPressed: () {
+                  showTryOutGuideDialog(
+                    context: context,
+                    featureKey: 'caesar',
+                    steps: [
+                      GuideStep(
+                        title: l10n.caesarGuideStep1Title,
+                        message: l10n.caesarGuideStep1Message,
+                        icon: Icons.auto_awesome,
+                      ),
+                      GuideStep(
+                        title: l10n.caesarGuideStep2Title,
+                        message: l10n.caesarGuideStep2Message,
+                        icon: Icons.tune,
+                      ),
+                      GuideStep(
+                        title: l10n.caesarGuideStep3Title,
+                        message: l10n.caesarGuideStep3Message,
+                        icon: Icons.keyboard,
+                      ),
+                    ],
+                  );
+                },
               ),
               const SizedBox(height: 32),
 
@@ -67,7 +130,7 @@ class CaesarTryOutDesktop extends StatelessWidget {
                     Expanded(
                       flex: 2,
                       child: ShiftControl(
-                          onKeyChanged: onKeyChanged,
+                          onKeyChanged: widget.onKeyChanged,
                       ),
                     ),
                     const SizedBox(width: 24),
@@ -90,10 +153,10 @@ class CaesarTryOutDesktop extends StatelessWidget {
                 children: [
                   Expanded(
                     child: InputSection.input(
-                      onTextChanged: onTextChanged,
+                      onTextChanged: widget.onTextChanged,
                       isEncrypting: isEncrypting,
-                      resultValue: resultValue,
-                      textValue: textValue,
+                      resultValue: widget.resultValue,
+                      textValue: widget.textValue,
                     ),
                   ),
                   Padding(
@@ -109,18 +172,19 @@ class CaesarTryOutDesktop extends StatelessWidget {
                           )
                         ),
                         IconButton(
-                          onPressed: onSwapPressed,
+                          onPressed: widget.onSwapPressed,
                           icon: const Icon(Icons.swap_horiz, size: 32, color: AppColors.darkPrimary),
+                          tooltip: l10n.tooltipCaesarSwap,
                         )
                       ],
                     ),
                   ),
                   Expanded(
                     child: InputSection.result(
-                      onTextChanged: onTextChanged,
+                      onTextChanged: widget.onTextChanged,
                       isEncrypting: isEncrypting,
-                      resultValue: resultValue,
-                      textValue: textValue,
+                      resultValue: widget.resultValue,
+                      textValue: widget.textValue,
                     ),
                   )
                 ],

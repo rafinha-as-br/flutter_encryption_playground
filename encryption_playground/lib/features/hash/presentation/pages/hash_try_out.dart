@@ -8,6 +8,7 @@ import '../hash_controller.dart';
 import '../widgets/hash_diff_text.dart';
 import 'hash_tab.dart'; // For HashNavigationService
 import '../../../../l10n/app_localizations.dart';
+import '../../../../shared/guide/try_out_guide_dialog.dart';
 
 /// Responsible for displaying the main page for the Hash feature
 class HashTryOut extends StatefulWidget {
@@ -29,6 +30,40 @@ class _HashTryOutState extends State<HashTryOut> {
 
   final TextEditingController _sha256AController = TextEditingController();
   final TextEditingController _sha256BController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _showGuideIfNeeded();
+    });
+  }
+
+  void _showGuideIfNeeded() {
+    final l10n = AppLocalizations.of(context);
+    if (l10n == null) return;
+    maybeShowTryOutGuide(
+      context: context,
+      featureKey: 'hash',
+      steps: [
+        GuideStep(
+          title: l10n.hashGuideStep1Title,
+          message: l10n.hashGuideStep1Message,
+          icon: Icons.auto_awesome,
+        ),
+        GuideStep(
+          title: l10n.hashGuideStep2Title,
+          message: l10n.hashGuideStep2Message,
+          icon: Icons.compare_arrows,
+        ),
+        GuideStep(
+          title: l10n.hashGuideStep3Title,
+          message: l10n.hashGuideStep3Message,
+          icon: Icons.science,
+        ),
+      ],
+    );
+  }
 
   @override
   void dispose() {
@@ -87,6 +122,30 @@ class _HashTryOutState extends State<HashTryOut> {
               onAboutPressed: () {
 
                 HashNavigationService.instance.navigatorKey.currentState?.pushNamed(AppRoutes.about);
+              },
+              onHelpPressed: () {
+                final l10n = AppLocalizations.of(context)!;
+                showTryOutGuideDialog(
+                  context: context,
+                  featureKey: 'hash',
+                  steps: [
+                    GuideStep(
+                      title: l10n.hashGuideStep1Title,
+                      message: l10n.hashGuideStep1Message,
+                      icon: Icons.auto_awesome,
+                    ),
+                    GuideStep(
+                      title: l10n.hashGuideStep2Title,
+                      message: l10n.hashGuideStep2Message,
+                      icon: Icons.compare_arrows,
+                    ),
+                    GuideStep(
+                      title: l10n.hashGuideStep3Title,
+                      message: l10n.hashGuideStep3Message,
+                      icon: Icons.science,
+                    ),
+                  ],
+                );
               },
             ),
             const SizedBox(height: 32),
@@ -163,17 +222,17 @@ class _HashTryOutState extends State<HashTryOut> {
             ),
           ),
           const SizedBox(height: 24),
-          _buildResultItem(context, AppLocalizations.of(context)!.dartHashCode, dartOut, isA ? null : _dartAController),
+          _buildResultItem(context, AppLocalizations.of(context)!.dartHashCode, dartOut, AppLocalizations.of(context)!.tooltipHashDart, compareTo: isA ? null : _dartAController),
           const SizedBox(height: 16),
-          _buildResultItem(context, AppLocalizations.of(context)!.sha1HashCode, sha1Out, isA ? null : _sha1AController),
+          _buildResultItem(context, AppLocalizations.of(context)!.sha1HashCode, sha1Out, AppLocalizations.of(context)!.tooltipHashSha1, compareTo: isA ? null : _sha1AController),
           const SizedBox(height: 16),
-          _buildResultItem(context, AppLocalizations.of(context)!.sha256HashCode, sha256Out, isA ? null : _sha256AController),
+          _buildResultItem(context, AppLocalizations.of(context)!.sha256HashCode, sha256Out, AppLocalizations.of(context)!.tooltipHashSha256, compareTo: isA ? null : _sha256AController),
         ],
       ),
     );
   }
 
-  Widget _buildResultItem(BuildContext context, String label, TextEditingController controller, TextEditingController? compareTo) {
+  Widget _buildResultItem(BuildContext context, String label, TextEditingController controller, String tooltip, {TextEditingController? compareTo}) {
     final colorScheme = Theme.of(context).colorScheme;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -187,22 +246,25 @@ class _HashTryOutState extends State<HashTryOut> {
           ),
         ),
         const SizedBox(height: 8),
-        Container(
-          width: double.infinity,
-          padding: const EdgeInsets.all(12),
-          decoration: BoxDecoration(
-            color: colorScheme.surfaceContainerHighest,
-            borderRadius: BorderRadius.circular(2),
-          ),
-          child: compareTo != null
-              ? HashDiffText(text1: controller.text, text2: compareTo.text)
-              : Text(
-                  controller.text.isEmpty ? AppLocalizations.of(context)!.waitingForInput : controller.text,
-                  style: GoogleFonts.jetBrainsMono(
-                    color: controller.text.isEmpty ? colorScheme.onSurfaceVariant : colorScheme.primary,
-                    fontSize: 14,
+        Tooltip(
+          message: tooltip,
+          child: Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: colorScheme.surfaceContainerHighest,
+              borderRadius: BorderRadius.circular(2),
+            ),
+            child: compareTo != null
+                ? HashDiffText(text1: controller.text, text2: compareTo.text)
+                : Text(
+                    controller.text.isEmpty ? AppLocalizations.of(context)!.waitingForInput : controller.text,
+                    style: GoogleFonts.jetBrainsMono(
+                      color: controller.text.isEmpty ? colorScheme.onSurfaceVariant : colorScheme.primary,
+                      fontSize: 14,
+                    ),
                   ),
-                ),
+          ),
         ),
       ],
     );

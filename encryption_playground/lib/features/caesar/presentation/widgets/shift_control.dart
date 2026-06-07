@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../shared/widgets/default_container.dart';
+import '../../../../l10n/app_localizations.dart';
 
 /// Widget responsible for displaying the shift control for the feature
 class ShiftControl extends StatefulWidget {
@@ -60,14 +61,17 @@ class _ShiftControlState extends State<ShiftControl> {
             Row(
               children: [
                 Expanded(
-                  child: Slider(
-                    value: shiftValue.toDouble().clamp(-26.0, 26.0),
-                    min: -26,
-                    max: 26,
-                    divisions: 52,
-                    label: shiftValue.toString(),
-                    activeColor: colorScheme.primary,
-                    onChanged: _onSliderChanged,
+                  child: Tooltip(
+                    message: AppLocalizations.of(context)!.tooltipCaesarShift,
+                    child: Slider(
+                      value: shiftValue.toDouble().clamp(-26.0, 26.0),
+                      min: -26,
+                      max: 26,
+                      divisions: 52,
+                      label: shiftValue.toString(),
+                      activeColor: colorScheme.primary,
+                      onChanged: _onSliderChanged,
+                    ),
                   ),
                 ),
                 const SizedBox(width: 16),
