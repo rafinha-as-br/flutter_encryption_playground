@@ -3,8 +3,8 @@
   "caesar": "César",
   "diffieHellman": "Diffie-Hellman",
   "hash": "Hash",
-  "caesarTryOut": "Experimentar César",
-  "diffieHellmanTryOut": "Experimentar Diffie Hellman",
+  "caesarTryOut": "Experimentar cifra de césar",
+  "diffieHellmanTryOut": "Experimentar algoritmo de Diffie Hellman",
   "hashCodeTryOut": "Experimentar HashCode",
   "enterTextToEncrypt": "Digite o texto para criptografar",
   "enterTextToDecrypt": "Digite o texto para descriptografar",
@@ -113,11 +113,14 @@
   "welcomeDescription": "Explore algoritmos criptográficos, veja como funcionam por baixo dos panos e teste-os interativamente.",
   "learnMoreAboutProject": "Saiba mais sobre o projeto",
   "exploreFeatures": "Explorar Funcionalidades",
-  "cipherSuite": "Suíte de Cifras",
+  "cipherSuite": "Criptografia de cifras e substituição",
+  "cipherSuiteShortTitle" : "Cifras",
   "cipherSuiteDescription": "Explore cifras de substituição clássicas e modernas, como a cifra de César.",
-  "symmetricSuite": "Suíte Simétrica",
+  "symmetricSuite": "Criptografia Simétrica",
+  "symmetricSuiteShortTitle" : "Criptog. Simétrica",
   "symmetricSuiteDescription": "Teste algoritmos de criptografia simétrica onde a mesma chave criptografa e descriptografa.",
-  "asymmetricSuite": "Suíte Assimétrica",
+  "asymmetricSuite": "Criptografia assimétrica",
+  "asymmetricSuiteShortTitle" : "Criptog. Assimétrica",
   "asymmetricSuiteDescription": "Aprenda sobre criptografia de chave pública e protocolos de troca de chaves como Diffie-Hellman.",
   "dashboardDescription": "Uma visão geral do painel",
   "@dashboardDescription": {
@@ -171,7 +174,7 @@
   "@reviewTutorial": {
     "description": "Button to review the tutorial in the side menu"
   },
-  "hashSuite": "Suíte de Hash",
+  "hashSuite": "Hashcode",
   "hashSuiteDescription": "Gere hashes criptográficos usando MD5, SHA-1, SHA-256 e outros.",
   "cipherSuiteSubtitle": "Cifras de substituição e transposição, métodos clássicos de criptografia.",
   "caesarCipherDescription": "Uma cifra de substituição clássica onde cada letra é deslocada por um número fixo de posições.",
@@ -194,6 +197,7 @@
   "developer": "Desenvolvedor",
   "license": "Licença",
   "contact": "Contato",
+  "sourceCode": "Código-fonte",
   "hashFunctionsTitle": "Funções Hash",
   "hashFunctionsDescription": "Uma função hash mapeia dados de tamanho arbitrário para valores de tamanho fixo. Tente alterar uma única letra e observe como toda a saída muda.",
   "waitingForInput": "Aguardando entrada...",
@@ -230,5 +234,15 @@
   "tooltipDhSharedSecret": "Ambos os usuários chegam à mesma chave sem compartilhar seus segredos",
   "tooltipHashDart": "Hash interno do Dart — não é criptograficamente seguro",
   "tooltipHashSha1": "Hash criptográfico de 160 bits — considerado inseguro hoje",
-  "tooltipHashSha256": "Hash seguro de 256 bits — amplamente utilizado na segurança moderna"
+  "tooltipHashSha256": "Hash seguro de 256 bits — amplamente utilizado na segurança moderna",
+  "gotIt": "Entendi",
+  "next": "Próximo",
+  "formula" : "Fórmula",
+  "shiftController" : "Controle da chave",
+  "plainText" : "Texto normal",
+  "cipherText" : "Texto criptografado",
+  "alphabetTransformation" : "Transformação do alfabeto",
+  "changeLanguage" : "Mudar idioma",
+  "resultAppearHere" : "O resultado aparecerá aqui"
+
 }

@@ -3,6 +3,7 @@ import 'package:encryption_playground/features/home/presentation/pages/about_pag
 import 'package:encryption_playground/shared/widgets/default_container.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../../../app/package_info_service.dart';
 import '../../../../../l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -17,6 +18,7 @@ class AboutPageMobile extends StatefulWidget {
 class _AboutPageMobileState extends State<AboutPageMobile> {
   @override
   Widget build(BuildContext context) {
+    final packageInfoService = PackageInfoService.instance;
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.aboutProjectTitle),
@@ -129,9 +131,11 @@ class _AboutPageMobileState extends State<AboutPageMobile> {
                     /// project versions & license
                     Column(
                       children: [
-                        _buildInfoRow(context, AppLocalizations.of(context)!.version, '1.0.0'),
+                        _buildInfoRow(context, AppLocalizations.of(context)!.version, packageInfoService.packageInfo.version),
                         _buildInfoRow(context, AppLocalizations.of(context)!.developer, 'Rafael Antunes Souza'),
                         _buildInfoRow(context, AppLocalizations.of(context)!.license, 'MIT'),
+                        _buildInfoRow(context, AppLocalizations.of(context)!.sourceCode, 'https://github.com/rafinha-as-br/encryption_playground'),
+                        _buildInfoRow(context, packageInfoService.packageInfo.appName, "The educational playground for encryption algorithms")
                       ],
                     ),
                   ],

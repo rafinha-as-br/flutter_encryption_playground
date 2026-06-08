@@ -21,10 +21,10 @@ class AppLocalizationsPt extends AppLocalizations {
   String get hash => 'Hash';
 
   @override
-  String get caesarTryOut => 'Experimentar César';
+  String get caesarTryOut => 'Experimentar cifra de césar';
 
   @override
-  String get diffieHellmanTryOut => 'Experimentar Diffie Hellman';
+  String get diffieHellmanTryOut => 'Experimentar algoritmo de Diffie Hellman';
 
   @override
   String get hashCodeTryOut => 'Experimentar HashCode';
@@ -376,21 +376,30 @@ class AppLocalizationsPt extends AppLocalizations {
   String get exploreFeatures => 'Explorar Funcionalidades';
 
   @override
-  String get cipherSuite => 'Suíte de Cifras';
+  String get cipherSuite => 'Criptografia de cifras e substituição';
+
+  @override
+  String get cipherSuiteShortTitle => 'Cifras';
 
   @override
   String get cipherSuiteDescription =>
       'Explore cifras de substituição clássicas e modernas, como a cifra de César.';
 
   @override
-  String get symmetricSuite => 'Suíte Simétrica';
+  String get symmetricSuite => 'Criptografia Simétrica';
+
+  @override
+  String get symmetricSuiteShortTitle => 'Criptog. Simétrica';
 
   @override
   String get symmetricSuiteDescription =>
       'Teste algoritmos de criptografia simétrica onde a mesma chave criptografa e descriptografa.';
 
   @override
-  String get asymmetricSuite => 'Suíte Assimétrica';
+  String get asymmetricSuite => 'Criptografia assimétrica';
+
+  @override
+  String get asymmetricSuiteShortTitle => 'Criptog. Assimétrica';
 
   @override
   String get asymmetricSuiteDescription =>
@@ -440,7 +449,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get reviewTutorial => 'Rever Tutorial';
 
   @override
-  String get hashSuite => 'Suíte de Hash';
+  String get hashSuite => 'Hashcode';
 
   @override
   String get hashSuiteDescription =>
@@ -517,6 +526,9 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get contact => 'Contato';
+
+  @override
+  String get sourceCode => 'Código-fonte';
 
   @override
   String get hashFunctionsTitle => 'Funções Hash';
@@ -650,4 +662,31 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get tooltipHashSha256 =>
       'Hash seguro de 256 bits — amplamente utilizado na segurança moderna';
+
+  @override
+  String get gotIt => 'Entendi';
+
+  @override
+  String get next => 'Próximo';
+
+  @override
+  String get formula => 'Fórmula';
+
+  @override
+  String get shiftController => 'Controle da chave';
+
+  @override
+  String get plainText => 'Texto normal';
+
+  @override
+  String get cipherText => 'Texto criptografado';
+
+  @override
+  String get alphabetTransformation => 'Transformação do alfabeto';
+
+  @override
+  String get changeLanguage => 'Mudar idioma';
+
+  @override
+  String get resultAppearHere => 'O resultado aparecerá aqui';
 }

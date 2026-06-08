@@ -43,7 +43,7 @@ class CaesarController extends ChangeNotifier{
   void onKeyChanged({required String newKey}){
     key = int.tryParse(newKey) ?? key;
 
-    _processText();
+    onSliderChanged(key.toDouble());
   }
 
   /// On slider changed

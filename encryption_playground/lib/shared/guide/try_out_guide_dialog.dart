@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:encryption_playground/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import '../../features/onboarding/presentation/widgets/onboarding_dots_indicator.dart';
 import '../../features/onboarding/presentation/widgets/onboarding_step_widget.dart';
@@ -53,7 +54,7 @@ class _TryOutGuideDialogState extends State<TryOutGuideDialog> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    final theme = Theme.of(context);;
     final isDark = theme.brightness == Brightness.dark;
     final isLastStep = _currentPage == widget.steps.length - 1;
 
@@ -127,7 +128,7 @@ class _TryOutGuideDialogState extends State<TryOutGuideDialog> {
                       );
                     }
                   },
-                  child: Text(isLastStep ? 'Got it' : 'Next'),
+                  child: Text(isLastStep ? AppLocalizations.of(context)!.gotIt : AppLocalizations.of(context)!.next),
                 ),
               ),
             ],

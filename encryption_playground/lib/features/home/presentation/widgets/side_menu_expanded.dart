@@ -1,3 +1,4 @@
+import 'package:encryption_playground/app/package_info_service.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -15,6 +16,7 @@ class SideMenuExpanded extends StatelessWidget {
     return ValueListenableBuilder<String>(
       valueListenable: HomePageNavigationService.instance.routeTracker.currentRoute,
       builder: (context, currentRoute, child) {
+        final packageInfoService = PackageInfoService.instance;
         return Column(
           children: [
             // Logo
@@ -47,21 +49,21 @@ class SideMenuExpanded extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   SideMenuItem(
-                    title: AppLocalizations.of(context)!.cipherSuite,
+                    title: AppLocalizations.of(context)!.cipherSuiteShortTitle,
                     icon: Icons.security_outlined,
                     isSelected: currentRoute == '/ciphers',
                     onTap: () => HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/ciphers'),
                   ),
                   const SizedBox(height: 8),
                   SideMenuItem(
-                    title: AppLocalizations.of(context)!.symmetricSuite,
+                    title: AppLocalizations.of(context)!.symmetricSuiteShortTitle,
                     icon: Icons.sync_alt_outlined,
                     isSelected: currentRoute == '/symmetric',
                     onTap: () => HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/symmetric'),
                   ),
                   const SizedBox(height: 8),
                   SideMenuItem(
-                    title: AppLocalizations.of(context)!.asymmetricSuite,
+                    title: AppLocalizations.of(context)!.asymmetricSuiteShortTitle,
                     icon: Icons.vpn_key_outlined,
                     isSelected: currentRoute == '/asymmetric',
                     onTap: () => HomePageNavigationService.instance.navigatorKey.currentState?.pushReplacementNamed('/asymmetric'),
@@ -110,14 +112,14 @@ class SideMenuExpanded extends StatelessWidget {
                     icon: const Icon(Icons.language),
                     label: Text(
                       context.watch<LocaleController>().value.languageCode == 'en'
-                          ? 'English'
-                          : 'Português',
+                          ? 'Português'
+                          : 'English',
                     ),
                   ),
                   const SizedBox(height: 16),
                   Center(
                     child: Text(
-                      'v1.0.0',
+                      packageInfoService.packageInfo.version,
                       style: GoogleFonts.spaceGrotesk(
                         color: Theme.of(context).colorScheme.onSurfaceVariant,
                         fontSize: 12,

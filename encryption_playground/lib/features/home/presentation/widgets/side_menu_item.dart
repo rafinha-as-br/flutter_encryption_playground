@@ -40,13 +40,11 @@ class _SideMenuItemState extends State<SideMenuItem> {
       onExit: (_) => setState(() => _isHovered = false),
       child: InkWell(
         onTap: widget.onTap,
-        borderRadius: BorderRadius.circular(2),
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
           curve: Curves.easeInOut,
           decoration: BoxDecoration(
             color: bgColor,
-            borderRadius: BorderRadius.circular(2),
             border: Border(
               left: BorderSide(
                 color: widget.isSelected ? activeColor : inactiveColor,
