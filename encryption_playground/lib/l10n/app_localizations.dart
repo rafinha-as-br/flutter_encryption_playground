@@ -800,6 +800,84 @@ abstract class AppLocalizations {
   /// **'Learn about public-key cryptography and key exchange protocols like Diffie-Hellman.'**
   String get asymmetricSuiteDescription;
 
+  /// A description of the dashboard page
+  ///
+  /// In en, this message translates to:
+  /// **'A dashboard overview'**
+  String get dashboardDescription;
+
+  /// Title for the first onboarding step
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to Encryption Playground'**
+  String get onboardingStep1Title;
+
+  /// Message for the first onboarding step
+  ///
+  /// In en, this message translates to:
+  /// **'A space to learn and experiment with cryptography in a practical way. No prior knowledge is necessary.'**
+  String get onboardingStep1Message;
+
+  /// Title for the second onboarding step
+  ///
+  /// In en, this message translates to:
+  /// **'Experiment without fear'**
+  String get onboardingStep2Title;
+
+  /// Message for the second onboarding step
+  ///
+  /// In en, this message translates to:
+  /// **'Everything happens on your device. No data is sent to servers. Test, make mistakes, and learn freely.'**
+  String get onboardingStep2Message;
+
+  /// Title for the third onboarding step
+  ///
+  /// In en, this message translates to:
+  /// **'What you can do'**
+  String get onboardingStep3Title;
+
+  /// Message for the third onboarding step
+  ///
+  /// In en, this message translates to:
+  /// **'Encrypt and decrypt texts, explore different algorithms, adjust parameters, and compare results side by side.'**
+  String get onboardingStep3Message;
+
+  /// Title for the fourth onboarding step
+  ///
+  /// In en, this message translates to:
+  /// **'Start with Caesar Cipher'**
+  String get onboardingStep4Title;
+
+  /// Message for the fourth onboarding step
+  ///
+  /// In en, this message translates to:
+  /// **'Caesar Cipher is the simplest algorithm and a great starting point. Choose a suite from the menu and start experimenting!'**
+  String get onboardingStep4Message;
+
+  /// Skip button text in onboarding
+  ///
+  /// In en, this message translates to:
+  /// **'Skip'**
+  String get onboardingSkip;
+
+  /// Next button text in onboarding
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get onboardingNext;
+
+  /// Start exploring button text in onboarding
+  ///
+  /// In en, this message translates to:
+  /// **'Start Exploring'**
+  String get onboardingStartExploring;
+
+  /// Button to review the tutorial in the side menu
+  ///
+  /// In en, this message translates to:
+  /// **'Review Tutorial'**
+  String get reviewTutorial;
+
   /// No description provided for @hashSuite.
   ///
   /// In en, this message translates to:

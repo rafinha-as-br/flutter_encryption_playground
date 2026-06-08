@@ -397,6 +397,49 @@ class AppLocalizationsPt extends AppLocalizations {
       'Aprenda sobre criptografia de chave pública e protocolos de troca de chaves como Diffie-Hellman.';
 
   @override
+  String get dashboardDescription => 'Uma visão geral do painel';
+
+  @override
+  String get onboardingStep1Title => 'Bem-vindo ao Encryption Playground';
+
+  @override
+  String get onboardingStep1Message =>
+      'Um espaço para aprender e experimentar criptografia de forma prática. Nenhum conhecimento prévio é necessário.';
+
+  @override
+  String get onboardingStep2Title => 'Experimente sem medo';
+
+  @override
+  String get onboardingStep2Message =>
+      'Tudo acontece no seu dispositivo. Nenhum dado é enviado para servidores. Teste, erre e aprenda livremente.';
+
+  @override
+  String get onboardingStep3Title => 'O que você pode fazer';
+
+  @override
+  String get onboardingStep3Message =>
+      'Criptografe e descriptografe textos, explore diferentes algoritmos, ajuste parâmetros e compare resultados lado a lado.';
+
+  @override
+  String get onboardingStep4Title => 'Comece pela Cifra de César';
+
+  @override
+  String get onboardingStep4Message =>
+      'A Cifra de César é o algoritmo mais simples e um ótimo ponto de partida. Escolha uma suíte no menu e comece a experimentar!';
+
+  @override
+  String get onboardingSkip => 'Pular';
+
+  @override
+  String get onboardingNext => 'Próximo';
+
+  @override
+  String get onboardingStartExploring => 'Começar a Explorar';
+
+  @override
+  String get reviewTutorial => 'Rever Tutorial';
+
+  @override
   String get hashSuite => 'Suíte de Hash';
 
   @override

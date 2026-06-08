@@ -85,6 +85,14 @@ class SideMenuExpanded extends StatelessWidget {
                 children: [
                   OutlinedButton.icon(
                     onPressed: () {
+                      Navigator.of(context, rootNavigator: true).pushNamed('/onboarding');
+                    },
+                    icon: const Icon(Icons.help_outline),
+                    label: Text(AppLocalizations.of(context)!.reviewTutorial),
+                  ),
+                  const SizedBox(height: 8),
+                  OutlinedButton.icon(
+                    onPressed: () {
                       context.read<ThemeController>().toggleTheme();
                     },
                     icon: Icon(
