@@ -767,8 +767,14 @@ abstract class AppLocalizations {
   /// No description provided for @cipherSuite.
   ///
   /// In en, this message translates to:
-  /// **'Cipher Suite'**
+  /// **'Ciphers and Substitution'**
   String get cipherSuite;
+
+  /// No description provided for @cipherSuiteShortTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Ciphers'**
+  String get cipherSuiteShortTitle;
 
   /// No description provided for @cipherSuiteDescription.
   ///
@@ -779,8 +785,14 @@ abstract class AppLocalizations {
   /// No description provided for @symmetricSuite.
   ///
   /// In en, this message translates to:
-  /// **'Symmetric Suite'**
+  /// **'Symmetric encryption'**
   String get symmetricSuite;
+
+  /// No description provided for @symmetricSuiteShortTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Symmetric'**
+  String get symmetricSuiteShortTitle;
 
   /// No description provided for @symmetricSuiteDescription.
   ///
@@ -791,8 +803,14 @@ abstract class AppLocalizations {
   /// No description provided for @asymmetricSuite.
   ///
   /// In en, this message translates to:
-  /// **'Asymmetric Suite'**
+  /// **'Asymmetric encryption'**
   String get asymmetricSuite;
+
+  /// No description provided for @asymmetricSuiteShortTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Asymmetric'**
+  String get asymmetricSuiteShortTitle;
 
   /// No description provided for @asymmetricSuiteDescription.
   ///
@@ -881,7 +899,7 @@ abstract class AppLocalizations {
   /// No description provided for @hashSuite.
   ///
   /// In en, this message translates to:
-  /// **'Hash Suite'**
+  /// **'Hashcode'**
   String get hashSuite;
 
   /// No description provided for @hashSuiteDescription.
@@ -1015,6 +1033,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Contact'**
   String get contact;
+
+  /// No description provided for @sourceCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Source Code'**
+  String get sourceCode;
 
   /// No description provided for @hashFunctionsTitle.
   ///

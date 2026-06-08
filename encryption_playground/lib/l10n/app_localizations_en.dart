@@ -375,21 +375,30 @@ class AppLocalizationsEn extends AppLocalizations {
   String get exploreFeatures => 'Explore Features';
 
   @override
-  String get cipherSuite => 'Cipher Suite';
+  String get cipherSuite => 'Ciphers and Substitution';
+
+  @override
+  String get cipherSuiteShortTitle => 'Ciphers';
 
   @override
   String get cipherSuiteDescription =>
       'Explore classic and modern substitution ciphers like the Caesar cipher.';
 
   @override
-  String get symmetricSuite => 'Symmetric Suite';
+  String get symmetricSuite => 'Symmetric encryption';
+
+  @override
+  String get symmetricSuiteShortTitle => 'Symmetric';
 
   @override
   String get symmetricSuiteDescription =>
       'Test symmetric encryption algorithms where the same key encrypts and decrypts.';
 
   @override
-  String get asymmetricSuite => 'Asymmetric Suite';
+  String get asymmetricSuite => 'Asymmetric encryption';
+
+  @override
+  String get asymmetricSuiteShortTitle => 'Asymmetric';
 
   @override
   String get asymmetricSuiteDescription =>
@@ -439,7 +448,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get reviewTutorial => 'Review Tutorial';
 
   @override
-  String get hashSuite => 'Hash Suite';
+  String get hashSuite => 'Hashcode';
 
   @override
   String get hashSuiteDescription =>
@@ -514,6 +523,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get contact => 'Contact';
+
+  @override
+  String get sourceCode => 'Source Code';
 
   @override
   String get hashFunctionsTitle => 'Hash Functions';
