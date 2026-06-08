@@ -1,8 +1,10 @@
+import 'package:encryption_playground/features/caesar/presentation/pages/caesar_cipher_about_it.dart';
 import 'package:flutter/material.dart';
 import '../../../../../l10n/app_localizations.dart';
 import 'package:encryption_playground/shared/widgets/about_pages_widgets.dart';
 import '../caesar_tab.dart';
 
+/// Desktop layout for the [CaesarCipherAboutIt] page
 class CaesarCipherAboutItDesktop extends StatelessWidget {
   const CaesarCipherAboutItDesktop({super.key});
 

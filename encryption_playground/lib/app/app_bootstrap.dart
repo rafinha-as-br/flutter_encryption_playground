@@ -6,7 +6,9 @@ import '../features/diffie_hellman/presentation/diffie_hellman_controller.dart';
 import 'locale_controller.dart';
 import 'theme_controller.dart';
 import 'app.dart';
+import '../features/onboarding/presentation/onboarding_controller.dart';
 
+/// Main app bootstrap, holds the main providers for the app
 class AppBootstrap extends StatelessWidget {
   const AppBootstrap({super.key});
 
@@ -19,6 +21,7 @@ class AppBootstrap extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => HashController()),
         ChangeNotifierProvider(create: (context) => LocaleController()),
         ChangeNotifierProvider(create: (context) => ThemeController()),
+        ChangeNotifierProvider(create: (context) => OnboardingController()),
       ],
       child: const App(),
     );

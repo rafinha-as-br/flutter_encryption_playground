@@ -6,7 +6,9 @@ import '../shared/theme/app_theme.dart';
 import 'locale_controller.dart';
 import 'theme_controller.dart';
 import 'app_routes.dart';
+import 'app_injector.dart';
 
+/// App root widget, holds the material app for the project
 class App extends StatelessWidget {
   const App({super.key});
 
@@ -16,7 +18,7 @@ class App extends StatelessWidget {
     final themeMode = context.watch<ThemeController>().value;
 
     return MaterialApp(
-      title: 'Encryption Playground',
+      onGenerateTitle: (context) => AppLocalizations.of(context)!.appName,
       locale: locale,
       localizationsDelegates: const [
         AppLocalizations.delegate,
@@ -31,8 +33,10 @@ class App extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: themeMode,
-      initialRoute: AppRoutes.home,
+      initialRoute: AppInjector.onboardingService.isCompleted() ? AppRoutes.home : AppRoutes.onboarding,
       routes: AppRoutes.routes,
+      debugShowCheckedModeBanner: false,
     );
   }
 }
+

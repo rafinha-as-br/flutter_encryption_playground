@@ -4,6 +4,7 @@ import '../../../../l10n/app_localizations.dart';
 import '../../../../shared/theme/app_colors.dart';
 import 'hash_info_dialog.dart';
 
+/// Card widget for the [HashTryOut] page.
 class HashCard extends StatelessWidget {
   final String title;
   final TextEditingController textController;

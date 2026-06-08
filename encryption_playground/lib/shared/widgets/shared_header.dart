@@ -1,0 +1,77 @@
+import 'package:encryption_playground/l10n/app_localizations.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class SharedHeader extends StatelessWidget {
+  final String title;
+  final String description;
+  final VoidCallback onAboutPressed;
+  final VoidCallback? onHelpPressed;
+
+  const SharedHeader({
+    super.key,
+    required this.title,
+    required this.description,
+    required this.onAboutPressed,
+    this.onHelpPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    return Container(
+      padding: const EdgeInsets.all(32),
+      decoration: BoxDecoration(
+        color: colorScheme.surfaceContainer,
+        borderRadius: BorderRadius.circular(2),
+        border: Border.all(color: colorScheme.outlineVariant),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: GoogleFonts.spaceGrotesk(
+                    fontSize: 28,
+                    fontWeight: FontWeight.w700,
+                    color: colorScheme.onSurface,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  description,
+                  style: GoogleFonts.inter(
+                    fontSize: 16,
+                    color: colorScheme.onSurfaceVariant,
+                  ),
+                ),
+                const SizedBox(height: 24),
+                Row(
+                  children: [
+                    OutlinedButton.icon(
+                      onPressed: onAboutPressed,
+                      icon: const Icon(Icons.info_outline),
+                      label: Text(AppLocalizations.of(context)!.about),
+                    ),
+                    if (onHelpPressed != null) ...[
+                      const SizedBox(width: 8),
+                      IconButton(
+                        onPressed: onHelpPressed,
+                        icon: const Icon(Icons.help_outline),
+                        tooltip: AppLocalizations.of(context)!.guide,
+                      ),
+                    ],
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+

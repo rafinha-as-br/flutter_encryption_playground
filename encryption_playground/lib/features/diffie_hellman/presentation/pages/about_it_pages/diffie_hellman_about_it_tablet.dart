@@ -1,7 +1,9 @@
+import 'package:encryption_playground/features/diffie_hellman/presentation/pages/diffie_hellman_about_it.dart';
 import 'package:flutter/material.dart';
 import 'package:encryption_playground/shared/widgets/about_pages_widgets.dart';
 import '../../../../../l10n/app_localizations.dart';
 
+/// Tablet layout for the [DiffieHellmanAboutIt] page
 class DiffieHellmanAboutItTablet extends StatelessWidget {
   const DiffieHellmanAboutItTablet({super.key});
 

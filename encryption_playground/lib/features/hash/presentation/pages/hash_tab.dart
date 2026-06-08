@@ -4,6 +4,7 @@ import '../../../../app/app_routes.dart';
 import 'hash_about_it.dart';
 import 'hash_try_out.dart';
 
+/// Service responsible for the nested navigation on the [HashTab] page.
 class HashNavigationService {
   HashNavigationService._internal();
   static final HashNavigationService _instance = HashNavigationService._internal();
@@ -12,6 +13,7 @@ class HashNavigationService {
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 }
 
+/// Responsible on building the nested Navigator for the [HashTab] page.
 class HashTab extends StatelessWidget {
   const HashTab({super.key});
 
