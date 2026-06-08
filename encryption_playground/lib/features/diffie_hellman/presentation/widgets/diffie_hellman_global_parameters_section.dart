@@ -39,7 +39,8 @@ class DHGlobalParametersSection extends StatelessWidget {
             controller.pController,
             AppLocalizations.of(context)!.primeModulus,
             AppLocalizations.of(context)!.primeModulusHint,
-                (val) => controller.p = int.tryParse(val),
+            (val) => controller.p = int.tryParse(val),
+            tooltip: AppLocalizations.of(context)!.tooltipDhPrime,
           ),
 
           const SizedBox(height: 16),
@@ -49,14 +50,15 @@ class DHGlobalParametersSection extends StatelessWidget {
             controller.gController,
             AppLocalizations.of(context)!.generatorLabel,
             AppLocalizations.of(context)!.generatorHint,
-                (val) => controller.g = int.tryParse(val),
+            (val) => controller.g = int.tryParse(val),
+            tooltip: AppLocalizations.of(context)!.tooltipDhGenerator,
           )
         ],
       ),
     );
   }
 
-  Widget _buildParameterInput(BuildContext context, TextEditingController textController, String label, String hint, ValueChanged<String> onChanged) {
+  Widget _buildParameterInput(BuildContext context, TextEditingController textController, String label, String hint, ValueChanged<String> onChanged, {String? tooltip}) {
     final colorScheme = Theme.of(context).colorScheme;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -70,16 +72,31 @@ class DHGlobalParametersSection extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8),
-        TextField(
-          controller: textController,
-          keyboardType: TextInputType.number,
-          inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-          onChanged: onChanged,
-          decoration: InputDecoration(
-              hintText: hint,
-              fillColor: Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white
+        if (tooltip != null)
+          Tooltip(
+            message: tooltip,
+            child: TextField(
+              controller: textController,
+              keyboardType: TextInputType.number,
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+              onChanged: onChanged,
+              decoration: InputDecoration(
+                  hintText: hint,
+                  fillColor: Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white
+              ),
+            ),
+          )
+        else
+          TextField(
+            controller: textController,
+            keyboardType: TextInputType.number,
+            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+            onChanged: onChanged,
+            decoration: InputDecoration(
+                hintText: hint,
+                fillColor: Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white
+            ),
           ),
-        ),
       ],
     );
   }

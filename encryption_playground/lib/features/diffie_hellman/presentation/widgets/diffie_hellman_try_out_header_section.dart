@@ -8,7 +8,12 @@ import '../pages/diffie_hellman_tab.dart';
 
 /// Responsible for displaying the header for the [DiffieHellmanTryOut] page.
 class DHHeader extends StatelessWidget {
-  const DHHeader({super.key});
+  final VoidCallback? onHelpPressed;
+
+  const DHHeader({
+    super.key,
+    this.onHelpPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +25,7 @@ class DHHeader extends StatelessWidget {
         DiffieHellmanNavigationService.instance.navigatorKey.currentState
             ?.pushNamed(AppRoutes.about);
       },
+      onHelpPressed: onHelpPressed,
     );
   }
 }

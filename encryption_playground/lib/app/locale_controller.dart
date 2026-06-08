@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 /// Controller for toggling the locale between english and portuguese.
 class LocaleController extends ValueNotifier<Locale> {
-  LocaleController() : super(const Locale('en'));
+  LocaleController() : super(const Locale('pt'));
 
   void toggleLocale() {
     if (value.languageCode == 'en') {

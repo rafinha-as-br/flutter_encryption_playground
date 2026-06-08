@@ -533,4 +533,121 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get enterTextHere => 'Digite o texto aqui...';
+
+  @override
+  String get guide => 'Guia';
+
+  @override
+  String get caesarGuideStep1Title => 'Como funciona';
+
+  @override
+  String get caesarGuideStep1Message =>
+      'A cifra de César substitui as letras deslocando-as no alfabeto.';
+
+  @override
+  String get caesarGuideStep2Title => 'Ajuste o deslocamento';
+
+  @override
+  String get caesarGuideStep2Message =>
+      'Use o controle deslizante para alterar a chave de deslocamento e veja a fórmula e a visualização do alfabeto atualizarem.';
+
+  @override
+  String get caesarGuideStep3Title => 'Experimente';
+
+  @override
+  String get caesarGuideStep3Message =>
+      'Digite o texto no campo de entrada para ver o resultado criptografado ou descriptografado. Use o botão Inverter para trocar de modo.';
+
+  @override
+  String get dhGuideStep1Title => 'O que é isso?';
+
+  @override
+  String get dhGuideStep1Message =>
+      'Diffie-Hellman permite que dois usuários criem uma chave secreta compartilhada sem transmiti-la.';
+
+  @override
+  String get dhGuideStep2Title => 'Definir Parâmetros Globais';
+
+  @override
+  String get dhGuideStep2Message =>
+      'Defina o número primo (P) e o gerador (G) na seção de parâmetros globais.';
+
+  @override
+  String get dhGuideStep3Title => 'Geração de Chaves';
+
+  @override
+  String get dhGuideStep3Message =>
+      'As chaves privadas são geradas automaticamente e as chaves públicas são calculadas com a fórmula.';
+
+  @override
+  String get dhGuideStep4Title => 'Segredo Compartilhado';
+
+  @override
+  String get dhGuideStep4Message =>
+      'Ambos os usuários chegam à mesma chave compartilhada, mesmo sem trocar chaves privadas.';
+
+  @override
+  String get hashGuideStep1Title => 'O que são Funções Hash?';
+
+  @override
+  String get hashGuideStep1Message =>
+      'As funções hash transformam qualquer entrada em um valor de tamanho fixo, de forma irreversível.';
+
+  @override
+  String get hashGuideStep2Title => 'Compare os hashes';
+
+  @override
+  String get hashGuideStep2Message =>
+      'Digite um texto na Entrada A e altere-o levemente na Entrada B para ver o efeito avalanche.';
+
+  @override
+  String get hashGuideStep3Title => 'Algoritmos Diferentes';
+
+  @override
+  String get hashGuideStep3Message =>
+      'Observe as diferenças entre Dart hashCode, SHA-1 e SHA-256.';
+
+  @override
+  String get tooltipCaesarShift =>
+      'Ajuste quantas posições cada letra se desloca no alfabeto';
+
+  @override
+  String get tooltipCaesarSwap =>
+      'Alterne entre o modo de criptografia e descriptografia';
+
+  @override
+  String get tooltipCaesarFormula =>
+      'A fórmula matemática usada para criptografar/descriptografar';
+
+  @override
+  String get tooltipDhPrime =>
+      'Um número primo grande que ambas as partes concordam publicamente';
+
+  @override
+  String get tooltipDhGenerator =>
+      'Uma raiz primitiva módulo P, usada como base para os cálculos';
+
+  @override
+  String get tooltipDhPrivateKey =>
+      'Um número secreto conhecido apenas por este usuário';
+
+  @override
+  String get tooltipDhPublicKey =>
+      'Calculado a partir da chave privada — seguro para compartilhar publicamente';
+
+  @override
+  String get tooltipDhSharedSecret =>
+      'Ambos os usuários chegam à mesma chave sem compartilhar seus segredos';
+
+  @override
+  String get tooltipHashDart =>
+      'Hash interno do Dart — não é criptograficamente seguro';
+
+  @override
+  String get tooltipHashSha1 =>
+      'Hash criptográfico de 160 bits — considerado inseguro hoje';
+
+  @override
+  String get tooltipHashSha256 =>
+      'Hash seguro de 256 bits — amplamente utilizado na segurança moderna';
 }
