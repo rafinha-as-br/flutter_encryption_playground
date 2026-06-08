@@ -30,13 +30,17 @@ class _ShiftControlState extends State<ShiftControl> {
   }
 
   void _onKeyChanged(String value){
-    keyController.text = value;
+    final newValue = int.tryParse(value);
+    if(newValue != null){
+      setState(() {
+        shiftValue = newValue;
+      });
+    }
     widget.onKeyChanged(value);
   }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     keyController.text = shiftValue.toString();
@@ -50,7 +54,7 @@ class _ShiftControlState extends State<ShiftControl> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Shift Control',
+              AppLocalizations.of(context)!.shiftController,
               style: GoogleFonts.spaceGrotesk(
                 fontSize: 18,
                 fontWeight: FontWeight.w700,

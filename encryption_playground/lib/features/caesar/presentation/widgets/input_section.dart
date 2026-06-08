@@ -1,3 +1,4 @@
+import 'package:encryption_playground/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -68,8 +69,8 @@ class _InputSectionState extends State<InputSection> {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     final title = widget.isInput
-        ? (widget.isEncrypting ? 'Plaintext' : 'Ciphertext')
-        : (widget.isEncrypting ? 'Ciphertext' : 'Plaintext');
+        ? (widget.isEncrypting ? AppLocalizations.of(context)!.plainText : AppLocalizations.of(context)!.cipherText)
+        : (widget.isEncrypting ? AppLocalizations.of(context)!.cipherText : AppLocalizations.of(context)!.plainText);
 
     return DefaultContainer(
         child: Column(
@@ -90,7 +91,7 @@ class _InputSectionState extends State<InputSection> {
               readOnly: !widget.isInput,
               onChanged: widget.isInput ? widget.onTextChanged : null,
               decoration: InputDecoration(
-                  hintText: widget.isInput ? 'Enter text here...' : 'Result will appear here...',
+                  hintText: widget.isInput ? AppLocalizations.of(context)!.enterTextHere : AppLocalizations.of(context)!.resultAppearHere,
                   fillColor: Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white
               ),
             ),

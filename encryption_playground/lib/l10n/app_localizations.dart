@@ -1261,6 +1261,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'256-bit secure hash — widely used in modern security'**
   String get tooltipHashSha256;
+
+  /// No description provided for @gotIt.
+  ///
+  /// In en, this message translates to:
+  /// **'Got it'**
+  String get gotIt;
+
+  /// No description provided for @next.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get next;
+
+  /// No description provided for @formula.
+  ///
+  /// In en, this message translates to:
+  /// **'Formula'**
+  String get formula;
+
+  /// No description provided for @shiftController.
+  ///
+  /// In en, this message translates to:
+  /// **'Shit Controller'**
+  String get shiftController;
+
+  /// No description provided for @plainText.
+  ///
+  /// In en, this message translates to:
+  /// **'Plaintext'**
+  String get plainText;
+
+  /// No description provided for @cipherText.
+  ///
+  /// In en, this message translates to:
+  /// **'Ciphertext'**
+  String get cipherText;
+
+  /// No description provided for @alphabetTransformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Alphabet transformation'**
+  String get alphabetTransformation;
+
+  /// No description provided for @changeLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Change language'**
+  String get changeLanguage;
+
+  /// No description provided for @resultAppearHere.
+  ///
+  /// In en, this message translates to:
+  /// **'Result will appear here'**
+  String get resultAppearHere;
 }
 
 class _AppLocalizationsDelegate

@@ -658,4 +658,31 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get tooltipHashSha256 =>
       '256-bit secure hash — widely used in modern security';
+
+  @override
+  String get gotIt => 'Got it';
+
+  @override
+  String get next => 'Next';
+
+  @override
+  String get formula => 'Formula';
+
+  @override
+  String get shiftController => 'Shit Controller';
+
+  @override
+  String get plainText => 'Plaintext';
+
+  @override
+  String get cipherText => 'Ciphertext';
+
+  @override
+  String get alphabetTransformation => 'Alphabet transformation';
+
+  @override
+  String get changeLanguage => 'Change language';
+
+  @override
+  String get resultAppearHere => 'Result will appear here';
 }

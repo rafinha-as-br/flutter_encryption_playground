@@ -112,8 +112,8 @@ class SideMenuExpanded extends StatelessWidget {
                     icon: const Icon(Icons.language),
                     label: Text(
                       context.watch<LocaleController>().value.languageCode == 'en'
-                          ? 'English'
-                          : 'Português',
+                          ? 'Português'
+                          : 'English',
                     ),
                   ),
                   const SizedBox(height: 16),

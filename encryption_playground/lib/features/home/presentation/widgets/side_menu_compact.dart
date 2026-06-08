@@ -115,7 +115,7 @@ class SideMenuCompact extends StatelessWidget {
                       context.read<LocaleController>().toggleLocale();
                     },
                     icon: const Icon(Icons.language),
-                    tooltip: 'Change Language',
+                    tooltip: AppLocalizations.of(context)!.changeLanguage,
                   ),
                 ],
               ),

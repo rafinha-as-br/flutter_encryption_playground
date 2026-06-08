@@ -234,5 +234,14 @@
   "tooltipDhSharedSecret": "Both users arrive at the same key without sharing their secrets",
   "tooltipHashDart": "Dart's internal hash — not cryptographically secure",
   "tooltipHashSha1": "160-bit cryptographic hash — considered insecure today",
-  "tooltipHashSha256": "256-bit secure hash — widely used in modern security"
+  "tooltipHashSha256": "256-bit secure hash — widely used in modern security",
+  "gotIt": "Got it",
+  "next": "Next",
+  "formula" : "Formula",
+  "shiftController" : "Shit Controller",
+  "plainText" : "Plaintext",
+  "cipherText" : "Ciphertext",
+  "alphabetTransformation" : "Alphabet transformation",
+  "changeLanguage" : "Change language",
+  "resultAppearHere" : "Result will appear here"
 }

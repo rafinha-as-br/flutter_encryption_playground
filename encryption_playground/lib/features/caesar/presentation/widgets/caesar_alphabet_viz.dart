@@ -1,3 +1,4 @@
+import 'package:encryption_playground/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -22,7 +23,7 @@ class CaesarAlphabetViz extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            'Alphabet Transformation',
+            AppLocalizations.of(context)!.alphabetTransformation,
             style: GoogleFonts.spaceGrotesk(
               fontSize: 18,
               fontWeight: FontWeight.w700,

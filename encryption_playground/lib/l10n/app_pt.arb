@@ -234,5 +234,15 @@
   "tooltipDhSharedSecret": "Ambos os usuários chegam à mesma chave sem compartilhar seus segredos",
   "tooltipHashDart": "Hash interno do Dart — não é criptograficamente seguro",
   "tooltipHashSha1": "Hash criptográfico de 160 bits — considerado inseguro hoje",
-  "tooltipHashSha256": "Hash seguro de 256 bits — amplamente utilizado na segurança moderna"
+  "tooltipHashSha256": "Hash seguro de 256 bits — amplamente utilizado na segurança moderna",
+  "gotIt": "Entendi",
+  "next": "Próximo",
+  "formula" : "Fórmula",
+  "shiftController" : "Controle da chave",
+  "plainText" : "Texto normal",
+  "cipherText" : "Texto criptografado",
+  "alphabetTransformation" : "Transformação do alfabeto",
+  "changeLanguage" : "Mudar idioma",
+  "resultAppearHere" : "O resultado aparecerá aqui"
+
 }

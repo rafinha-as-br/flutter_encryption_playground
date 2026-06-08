@@ -662,4 +662,31 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get tooltipHashSha256 =>
       'Hash seguro de 256 bits — amplamente utilizado na segurança moderna';
+
+  @override
+  String get gotIt => 'Entendi';
+
+  @override
+  String get next => 'Próximo';
+
+  @override
+  String get formula => 'Fórmula';
+
+  @override
+  String get shiftController => 'Controle da chave';
+
+  @override
+  String get plainText => 'Texto normal';
+
+  @override
+  String get cipherText => 'Texto criptografado';
+
+  @override
+  String get alphabetTransformation => 'Transformação do alfabeto';
+
+  @override
+  String get changeLanguage => 'Mudar idioma';
+
+  @override
+  String get resultAppearHere => 'O resultado aparecerá aqui';
 }

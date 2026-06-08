@@ -20,7 +20,7 @@ class FormulaContainer extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Formula',
+                AppLocalizations.of(context)!.formula,
                 style: GoogleFonts.spaceGrotesk(
                   fontSize: 18,
                   fontWeight: FontWeight.w700,

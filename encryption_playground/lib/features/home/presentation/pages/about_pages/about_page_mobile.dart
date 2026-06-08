@@ -131,7 +131,7 @@ class _AboutPageMobileState extends State<AboutPageMobile> {
                     /// project versions & license
                     Column(
                       children: [
-                        _buildInfoRow(context, AppLocalizations.of(context)!.version, '1.0.0'),
+                        _buildInfoRow(context, AppLocalizations.of(context)!.version, packageInfoService.packageInfo.version),
                         _buildInfoRow(context, AppLocalizations.of(context)!.developer, 'Rafael Antunes Souza'),
                         _buildInfoRow(context, AppLocalizations.of(context)!.license, 'MIT'),
                         _buildInfoRow(context, AppLocalizations.of(context)!.sourceCode, 'https://github.com/rafinha-as-br/encryption_playground'),
