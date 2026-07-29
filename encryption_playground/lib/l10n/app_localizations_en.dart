@@ -648,6 +648,10 @@ class AppLocalizationsEn extends AppLocalizations {
       'Both users arrive at the same key without sharing their secrets';
 
   @override
+  String get pNotPrimeWarning =>
+      '⚠️ P is not prime. The algorithm still works, but non-prime values make P easy to factor, completely compromising the security of the Diffie-Hellman protocol.';
+
+  @override
   String get tooltipHashDart =>
       'Dart\'s internal hash — not cryptographically secure';
 
