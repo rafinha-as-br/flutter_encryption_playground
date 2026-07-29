@@ -652,6 +652,10 @@ class AppLocalizationsPt extends AppLocalizations {
       'Ambos os usuários chegam à mesma chave sem compartilhar seus segredos';
 
   @override
+  String get gNotPrimitiveRootInfo =>
+      'ℹ️ G não é raiz primitiva de P. Para máxima segurança, G idealmente deveria ser uma raiz primitiva módulo P, para conseguir gerar todos os valores de chave possíveis. Isso não é obrigatório para o algoritmo funcionar, mas o torna mais forte.';
+
+  @override
   String get tooltipHashDart =>
       'Hash interno do Dart — não é criptograficamente seguro';
 

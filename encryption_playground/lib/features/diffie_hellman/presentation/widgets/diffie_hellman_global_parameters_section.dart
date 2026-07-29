@@ -52,7 +52,12 @@ class DHGlobalParametersSection extends StatelessWidget {
             AppLocalizations.of(context)!.generatorHint,
             (val) => controller.g = int.tryParse(val),
             tooltip: AppLocalizations.of(context)!.tooltipDhGenerator,
-          )
+          ),
+
+          if (controller.gController.text.isNotEmpty && !controller.isGPrimitiveRoot) ...[
+            const SizedBox(height: 12),
+            _buildInfoBanner(context, AppLocalizations.of(context)!.gNotPrimitiveRootInfo),
+          ],
         ],
       ),
     );
@@ -98,6 +103,26 @@ class DHGlobalParametersSection extends StatelessWidget {
             ),
           ),
       ],
+    );
+  }
+
+  Widget _buildInfoBanner(BuildContext context, String message) {
+    final colorScheme = Theme.of(context).colorScheme;
+    return Container(
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: colorScheme.tertiaryContainer,
+        borderRadius: BorderRadius.circular(2),
+        border: Border.all(color: colorScheme.tertiary),
+      ),
+      child: Text(
+        message,
+        style: GoogleFonts.inter(
+          fontSize: 13,
+          fontWeight: FontWeight.w500,
+          color: colorScheme.onTertiaryContainer,
+        ),
+      ),
     );
   }
 }

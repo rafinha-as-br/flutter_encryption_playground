@@ -1,4 +1,5 @@
 import 'package:encryption_playground/features/diffie_hellman/domain/generate_public_key_usecase.dart';
+import 'package:encryption_playground/features/diffie_hellman/domain/is_primitive_root_use_case.dart';
 import 'package:encryption_playground/features/diffie_hellman/domain/mod_exp_usecase.dart';
 import 'package:encryption_playground/features/diffie_hellman/presentation/pages/diffie_hellman_try_out.dart';
 import 'package:flutter/cupertino.dart';
@@ -42,6 +43,16 @@ class DiffieHellmanController extends ChangeNotifier {
     calculate();
   }
 
+  /// Whether the currently entered [g] is a primitive root modulo [p].
+  ///
+  /// This is only meaningful once P and G form a valid pair (G < P, P a
+  /// usable modulus); when that isn't the case yet there is nothing
+  /// sensible to check, so this reports as valid to avoid a misleading
+  /// warning while the user is still filling in the fields.
+  bool get isGPrimitiveRoot {
+    if (_p == null || _g == null || _p! <= 2 || _g! <= 0 || _g! >= _p!) return true;
+    return DiffieHellmanIsPrimitiveRootUseCase.isPrimitiveRoot(_g!, _p!);
+  }
 
   void calculate() {
     if (_p == null || _g == null || _p! <= 2) {
