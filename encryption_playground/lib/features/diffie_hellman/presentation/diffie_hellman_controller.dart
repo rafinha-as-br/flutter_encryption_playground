@@ -42,9 +42,14 @@ class DiffieHellmanController extends ChangeNotifier {
     calculate();
   }
 
+  /// Whether the currently entered [g] respects the mathematical
+  /// requirement of Diffie-Hellman that the generator must be smaller
+  /// than the prime modulus. When either value is missing there is
+  /// nothing to validate yet, so this reports as valid.
+  bool get isGValid => _p == null || _g == null || _g! < _p!;
 
   void calculate() {
-    if (_p == null || _g == null || _p! <= 2) {
+    if (_p == null || _g == null || _p! <= 2 || !isGValid) {
       _resetKeys();
       _clearGeneratedControllersTexts();
       notifyListeners();

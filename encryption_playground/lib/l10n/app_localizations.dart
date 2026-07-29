@@ -1244,6 +1244,12 @@ abstract class AppLocalizations {
   /// **'Both users arrive at the same key without sharing their secrets'**
   String get tooltipDhSharedSecret;
 
+  /// No description provided for @gNotLessThanPError.
+  ///
+  /// In en, this message translates to:
+  /// **'❌ G must be smaller than P. This is a mathematical constraint of the Diffie-Hellman protocol.'**
+  String get gNotLessThanPError;
+
   /// No description provided for @tooltipHashDart.
   ///
   /// In en, this message translates to:
