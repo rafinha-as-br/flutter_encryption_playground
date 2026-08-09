@@ -232,6 +232,7 @@
   "tooltipDhPrivateKey": "Um número secreto conhecido apenas por este usuário",
   "tooltipDhPublicKey": "Calculado a partir da chave privada — seguro para compartilhar publicamente",
   "tooltipDhSharedSecret": "Ambos os usuários chegam à mesma chave sem compartilhar seus segredos",
+  "gNotPrimitiveRootInfo": "ℹ️ G não é raiz primitiva de P. Para máxima segurança, G idealmente deveria ser uma raiz primitiva módulo P, para conseguir gerar todos os valores de chave possíveis. Isso não é obrigatório para o algoritmo funcionar, mas o torna mais forte.",
   "tooltipHashDart": "Hash interno do Dart — não é criptograficamente seguro",
   "tooltipHashSha1": "Hash criptográfico de 160 bits — considerado inseguro hoje",
   "tooltipHashSha256": "Hash seguro de 256 bits — amplamente utilizado na segurança moderna",

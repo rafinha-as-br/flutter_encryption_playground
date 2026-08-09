@@ -1244,6 +1244,12 @@ abstract class AppLocalizations {
   /// **'Both users arrive at the same key without sharing their secrets'**
   String get tooltipDhSharedSecret;
 
+  /// No description provided for @gNotPrimitiveRootInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'ℹ️ G is not a primitive root of P. For maximum security, G should ideally be a primitive root modulo P, so it can generate every possible key value. This is not required for the algorithm to work, but it strengthens it.'**
+  String get gNotPrimitiveRootInfo;
+
   /// No description provided for @tooltipHashDart.
   ///
   /// In en, this message translates to:
