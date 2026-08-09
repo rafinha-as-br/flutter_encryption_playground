@@ -1244,6 +1244,12 @@ abstract class AppLocalizations {
   /// **'Both users arrive at the same key without sharing their secrets'**
   String get tooltipDhSharedSecret;
 
+  /// No description provided for @pNotPrimeWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'⚠️ P is not prime. The algorithm still works, but non-prime values make P easy to factor, completely compromising the security of the Diffie-Hellman protocol.'**
+  String get pNotPrimeWarning;
+
   /// No description provided for @tooltipHashDart.
   ///
   /// In en, this message translates to:

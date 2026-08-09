@@ -232,6 +232,7 @@
   "tooltipDhPrivateKey": "Um número secreto conhecido apenas por este usuário",
   "tooltipDhPublicKey": "Calculado a partir da chave privada — seguro para compartilhar publicamente",
   "tooltipDhSharedSecret": "Ambos os usuários chegam à mesma chave sem compartilhar seus segredos",
+  "pNotPrimeWarning": "⚠️ P não é primo. O algoritmo ainda funciona, mas valores não-primos tornam P fácil de fatorar, comprometendo completamente a segurança do protocolo Diffie-Hellman.",
   "tooltipHashDart": "Hash interno do Dart — não é criptograficamente seguro",
   "tooltipHashSha1": "Hash criptográfico de 160 bits — considerado inseguro hoje",
   "tooltipHashSha256": "Hash seguro de 256 bits — amplamente utilizado na segurança moderna",

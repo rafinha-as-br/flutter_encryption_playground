@@ -1,4 +1,5 @@
 import 'package:encryption_playground/features/diffie_hellman/domain/generate_public_key_usecase.dart';
+import 'package:encryption_playground/features/diffie_hellman/domain/is_prime_use_case.dart';
 import 'package:encryption_playground/features/diffie_hellman/domain/mod_exp_usecase.dart';
 import 'package:encryption_playground/features/diffie_hellman/presentation/pages/diffie_hellman_try_out.dart';
 import 'package:flutter/cupertino.dart';
@@ -42,6 +43,12 @@ class DiffieHellmanController extends ChangeNotifier {
     calculate();
   }
 
+  /// Whether the currently entered [p] is a prime number.
+  ///
+  /// A non-prime P does not stop the algorithm from running — it is easy to
+  /// factor and therefore compromises Diffie-Hellman's security, so the UI
+  /// only warns about it instead of blocking input.
+  bool get isPPrime => _p == null || DiffieHellmanIsPrimeUseCase.isPrime(_p!);
 
   void calculate() {
     if (_p == null || _g == null || _p! <= 2) {

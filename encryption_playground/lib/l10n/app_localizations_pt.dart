@@ -652,6 +652,10 @@ class AppLocalizationsPt extends AppLocalizations {
       'Ambos os usuários chegam à mesma chave sem compartilhar seus segredos';
 
   @override
+  String get pNotPrimeWarning =>
+      '⚠️ P não é primo. O algoritmo ainda funciona, mas valores não-primos tornam P fácil de fatorar, comprometendo completamente a segurança do protocolo Diffie-Hellman.';
+
+  @override
   String get tooltipHashDart =>
       'Hash interno do Dart — não é criptograficamente seguro';
 
