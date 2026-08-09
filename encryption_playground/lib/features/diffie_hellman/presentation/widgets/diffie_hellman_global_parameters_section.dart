@@ -52,7 +52,19 @@ class DHGlobalParametersSection extends StatelessWidget {
             AppLocalizations.of(context)!.generatorHint,
             (val) => controller.g = int.tryParse(val),
             tooltip: AppLocalizations.of(context)!.tooltipDhGenerator,
-          )
+          ),
+
+          if (controller.gController.text.isNotEmpty && !controller.isGValid) ...[
+            const SizedBox(height: 8),
+            Text(
+              AppLocalizations.of(context)!.gNotLessThanPError,
+              style: GoogleFonts.inter(
+                fontSize: 13,
+                fontWeight: FontWeight.w500,
+                color: colorScheme.error,
+              ),
+            ),
+          ],
         ],
       ),
     );

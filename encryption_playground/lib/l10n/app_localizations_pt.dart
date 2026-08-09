@@ -652,6 +652,10 @@ class AppLocalizationsPt extends AppLocalizations {
       'Ambos os usuários chegam à mesma chave sem compartilhar seus segredos';
 
   @override
+  String get gNotLessThanPError =>
+      '❌ G deve ser menor que P. Esta é uma restrição matemática do protocolo Diffie-Hellman.';
+
+  @override
   String get tooltipHashDart =>
       'Hash interno do Dart — não é criptograficamente seguro';
 

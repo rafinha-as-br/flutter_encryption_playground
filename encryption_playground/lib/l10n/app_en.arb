@@ -232,6 +232,7 @@
   "tooltipDhPrivateKey": "A secret number known only to this user",
   "tooltipDhPublicKey": "Calculated from the private key — safe to share publicly",
   "tooltipDhSharedSecret": "Both users arrive at the same key without sharing their secrets",
+  "gNotLessThanPError": "❌ G must be smaller than P. This is a mathematical constraint of the Diffie-Hellman protocol.",
   "tooltipHashDart": "Dart's internal hash — not cryptographically secure",
   "tooltipHashSha1": "160-bit cryptographic hash — considered insecure today",
   "tooltipHashSha256": "256-bit secure hash — widely used in modern security",
