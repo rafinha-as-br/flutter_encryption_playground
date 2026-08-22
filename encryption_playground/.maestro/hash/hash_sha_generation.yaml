@@ -1,0 +1,41 @@
+appId: com.example.encryption_playground
+name: "Hash - geração de SHA-1/SHA-256 a partir da Entrada A"
+---
+- launchApp:
+    clearState: true
+
+# Onboarding só aparece no primeiro launch (shared_preferences). clearState
+# garante que apareça sempre aqui, então tratamos como sempre-presente.
+- tapOn: "Pular"
+
+- scrollUntilVisible:
+    element:
+      text: "Hashcode[\\s\\S]*"
+    direction: DOWN
+
+# O botão "Explore" não carrega o nome da suíte no próprio texto/a11y — só
+# o card pai tem "Hashcode\n<descrição>" como content-desc combinado. Sem
+# isso, tapOn: "Explore" seria ambíguo (3 cards, mesmo texto de botão).
+# Problema de testabilidade real, não uma escolha de teste — ver
+# .maestro/README.md.
+- tapOn:
+    text: "Explore"
+    below:
+      text: "Hashcode[\\s\\S]*"
+
+# Guia de tutorial da feature (primeira visita). O botão "X" de fechar não
+# tem texto/a11y acessível (content-desc vazio) — o único elemento com
+# a11y é o barrier de tela cheia ("Dispensar"), que não fecha ao tocar no
+# centro (cai dentro do card do diálogo). Fallback por coordenada
+# percentual é a única forma confiável hoje. Ver .maestro/README.md.
+- tapOn:
+    point: "79%,24%"
+
+- tapOn: "Digite o texto aqui..."
+- inputText: "MaestroQA2026"
+- hideKeyboard
+
+- assertVisible: "652291fa08a1c26ae0f094399e26b42123570104"
+- assertVisible: "caaaadcc5229872eb191c882e896df96b9afa80aa3b5ab7321d5656d06bc52ce"
+
+- takeScreenshot: "hash_sha_generation_result"
